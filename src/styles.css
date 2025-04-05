@@ -1,43 +1,84 @@
 body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh; /* Ensures body is at least viewport height */
+
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  text-align: center;
+  background-color: lightblue;
+
+  display: flex;          
+  flex-flow: column; 
+  justify-content: space-between;
 }
 
-.container {
-  max-width: 800px;
-  margin: 20px auto;
-}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-.book-card {
-  background: white;
   padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #eee; 
+}
+
+nav div#nav-options {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+nav div#user-options {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+nav button {
+  display: block;
+}
+
+main {
+
+}
+
+main h1 {
+  margin: 0;
   margin-bottom: 15px;
-  text-align: left;
+  
 }
 
-h1 {
-  color: #333;
+
+main#main-menu {
+  
 }
 
-h3 {
-  color: #007bff;
+main#login {
+   
 }
 
-h4 {
-  margin-top: 10px;
+main#dashboard {
+  display: flex; 
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+main#dashboard aside {
+  display: flex;
+  flex-direction: column;
+
+  background-color: lightgray;
+  padding: 15px;
+
 }
 
-ul li {
-  background: #e9ecef;
-  padding: 5px;
-  margin: 5px 0;
-  border-radius: 3px;
+main#dashboard section {
+  background-color: lightgreen;
+  padding: 15px;
+}
+
+footer {
+
+  min-width: 600px;  
+  height: 160px; 
+
+  background-color: lightpink;
+  padding: 15px; 
+
 }
