@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import InputField from "./InputField";
 
-function LoginForm({returnToMain}) {
+function Login({onLoginSuccess, returnToMainMenu}) {
+
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,11 +35,7 @@ function LoginForm({returnToMain}) {
         return; 
       }
 
-      alert("LOGIN CORRECTO")
-      setIsLoading(false);
-      
-      // Send data to Django
-      
+      // Send data to Django 
       try {
 
         const credentials = btoa(`${username}:${password}`); 
@@ -56,22 +53,23 @@ function LoginForm({returnToMain}) {
 
           const data = await response.json();
           console.log(data);
-          console.log("Login successful! Token:", data.token);
-          localStorage.setItem("authToken", data.token);
-          alert("Login Successful! Token received.");
+          console.log("authToken", data.token);
+
+          onLoginSuccess(data, data.token)
 
         } else {
 
           console.error(`Login failed:`, response.status, response.statusText);
           // Try to get error message from backend if available, otherwise show generic one
-          let errorMessage = `Usuari o contrasenya incorrectes.`;
+          let errorMessage = `Credencials incorrectes`;
 
           try {
 
             const errorData = await response.json();
+            console.log(errorData)
             if (errorData.detail) {
               // Ninja often returns errors in 'detail'
-              errorMessage = errorData.detail;
+              console.log(errorData.detail);
             }
 
           } catch (e) {
@@ -84,19 +82,23 @@ function LoginForm({returnToMain}) {
 
         console.error(`Network error or other issue during login: ${error}`);
         setErrors({ api: `Error de xarxa o problema en iniciar sessió.` });
-        
+
       } finally {
         setIsLoading(false); // Stop loading regardless of outcome
       }
       
-
     }, 2500)
     
   };
 
   return (
     <>
-      <button onClick={returnToMain} disabled={isLoading}>Tornar</button>
+      <button onClick={returnToMainMenu} disabled={isLoading}>Tornar</button>
+      {Object.keys(errors).length > 0 &&
+          Object.values(errors).map((errorMsg, index) => (
+            <p key={index}>{errorMsg}</p>
+          ))}
+
       <form onSubmit={handleSubmit} noValidate>
         <h2>Iniciar Sessió</h2>
 
@@ -110,12 +112,6 @@ function LoginForm({returnToMain}) {
           name="password"
           type="password"
         />
-
-        {Object.keys(errors).length > 0 &&
-          Object.values(errors).map((errorMsg, index) => (
-            <p key={index}>{errorMsg}</p>
-          ))}
-
         <button type="submit" disabled={isLoading}>
           {isLoading ? 'Entrant...' : 'Entrar'}
         </button>
@@ -124,4 +120,4 @@ function LoginForm({returnToMain}) {
   );
 }
 
-export default LoginForm;
+export default Login;
