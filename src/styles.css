@@ -1,28 +1,32 @@
 body {
-
   margin: 0;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100vh; /* Ensures body is at least viewport height */
 
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  background-color: lightblue;
 
+  display: flex;          
+  flex-flow: column; 
+  justify-content: space-between;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 15px;
+  background-color: #eee; 
 }
 
-nav #nav-options {
+nav div#nav-options {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-nav #user-options {
+nav div#user-options {
   display: flex;
   align-items: center;
   gap: 15px;
@@ -32,3 +36,49 @@ nav button {
   display: block;
 }
 
+main {
+
+}
+
+main h1 {
+  margin: 0;
+  margin-bottom: 15px;
+  
+}
+
+
+main#main-menu {
+  
+}
+
+main#login {
+   
+}
+
+main#dashboard {
+  display: flex; 
+}
+
+main#dashboard aside {
+  display: flex;
+  flex-direction: column;
+
+  background-color: lightgray;
+  padding: 15px;
+
+}
+
+main#dashboard section {
+  background-color: lightgreen;
+  padding: 15px;
+}
+
+footer {
+
+  min-width: 600px;  
+  height: 160px; 
+
+  background-color: lightpink;
+  padding: 15px; 
+
+}

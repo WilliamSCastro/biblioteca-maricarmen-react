@@ -1,4 +1,4 @@
-// components/AppContent.js (or wherever you put components)
+
 import { useState } from "react";
 import "../App.css";
 import "../styles.css";
@@ -37,7 +37,7 @@ function AppContent() {
   };
 
   return (
-    <div className="App">
+    <>
       <NavBar
         screen={currentScreen}
         onGoToMainMenu={handleGoToMainPage}
@@ -45,8 +45,6 @@ function AppContent() {
         onLoginClick={handleGoToLogin}
         onLogoutClick={handleLogoutClick}
       />
-
-      <main>
         {currentScreen === "inicio" && <MainMenu />}
         {currentScreen === "login" && (
           <Login
@@ -55,8 +53,11 @@ function AppContent() {
           />
         )}
         {currentScreen === "dashboard" && user && <Dashboard noUserDetected={handleGoToMainPage}/>}
-      </main>
-    </div>
+
+        <footer>
+          <p>Esto es el footer</p>
+        </footer>
+    </>
   );
 }
 

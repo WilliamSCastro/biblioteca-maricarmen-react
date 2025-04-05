@@ -6,13 +6,7 @@ function NavBar({ screen, onLoginClick, onLogoutClick,onGoToMainMenu, onGoToDash
   const { user } = useUserContext();
 
   return (
-    <nav
-      style={{
-        borderBottom: "1px solid grey",
-        paddingBottom: "10px",
-        marginBottom: "20px",
-      }}
-    >
+    <nav>
       <h1>Biblioteca Maricarmen</h1>
       {!user && screen === "inicio" && (
         <button onClick={onLoginClick}>Login</button>

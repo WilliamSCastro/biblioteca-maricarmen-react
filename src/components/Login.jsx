@@ -92,7 +92,7 @@ function Login({onLoginSuccess, returnToMainMenu}) {
   };
 
   return (
-    <>
+    <main id="login">
       <button onClick={returnToMainMenu} disabled={isLoading}>Tornar</button>
       {Object.keys(errors).length > 0 &&
           Object.values(errors).map((errorMsg, index) => (
@@ -116,7 +116,7 @@ function Login({onLoginSuccess, returnToMainMenu}) {
           {isLoading ? 'Entrant...' : 'Entrar'}
         </button>
       </form>
-    </>
+    </main>
   );
 }
 

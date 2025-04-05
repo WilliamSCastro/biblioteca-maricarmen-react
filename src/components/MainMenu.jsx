@@ -2,9 +2,9 @@ import React from 'react';
 
 function MainMenu() {
   return (
-    <div>
+    <main id="main-menu">
       Página de inicio
-    </div>
+    </main>
   );
 }
 
