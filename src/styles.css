@@ -1,23 +1,38 @@
+* {
+  box-sizing: border-box;  
+}
+
 body {
-  margin: 0;
+
   min-width: 320px;
-  min-height: 100vh; /* Ensures body is at least viewport height */
+  min-height: 100vh;
+  height: 100vh;
 
   font-family: Arial, sans-serif;
   background-color: lightblue;
 
+  margin: 0;
+
   display: flex;          
   flex-flow: column; 
-  justify-content: space-between;
+
 }
 
+
+
 nav {
+
+  height:12vh;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   padding: 15px;
   background-color: #eee; 
+
+  flex: 0 0 auto;
+  
 }
 
 nav div#nav-options {
@@ -37,13 +52,13 @@ nav button {
 }
 
 main {
-
+  height: 70vh;
+  min-height: auto;
 }
 
-main h1 {
+main h2 {
   margin: 0;
   margin-bottom: 15px;
-  
 }
 
 
@@ -66,19 +81,28 @@ main#dashboard aside {
   background-color: lightgray;
   padding: 15px;
 
+  flex: 0 1 20%;
 }
 
 main#dashboard section {
-  background-color: lightgreen;
+
+  flex-grow: 1;
   padding: 15px;
+
+  background-color: lightgreen;
+
+  overflow-y: auto;
+
 }
 
 footer {
-
+  padding: 15px; 
+  height: 160px;
+  min-height: 18vh;
   min-width: 600px;  
-  height: 160px; 
+
+
 
   background-color: lightpink;
-  padding: 15px; 
 
 }
