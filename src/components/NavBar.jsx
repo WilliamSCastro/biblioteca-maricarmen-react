@@ -1,6 +1,6 @@
 import React from "react";
 import { useUserContext } from "../store/UserProvider";
-
+import Button from "./Button";
 function NavBar({ screen, onLoginClick, onLogoutClick,onGoToMainMenu, onGoToDashboard  }) {
 
   const { user } = useUserContext();
@@ -9,17 +9,17 @@ function NavBar({ screen, onLoginClick, onLogoutClick,onGoToMainMenu, onGoToDash
     <nav>
       <h1>Biblioteca Maricarmen</h1>
       {!user && screen === "inicio" && (
-        <button onClick={onLoginClick}>Login</button>
+        <Button onClick={onLoginClick}>Login</Button>
       )}
       {user && (screen === "inicio" || screen === "dashboard") && (
         <>
           <div id="nav-options">
-            <button onClick={onGoToMainMenu}>Página Principal</button>
-            <button onClick={onGoToDashboard}>Dashboard</button>
+            <Button onClick={onGoToMainMenu}>Página Principal</Button>
+            <Button onClick={onGoToDashboard}>Dashboard</Button>
           </div>
           <div id="user-options">
             <p>Benvingut, {user.first_name} | {user.role}</p>
-            <button onClick={onLogoutClick}>Logout</button>
+            <Button onClick={onLogoutClick}>Logout</Button>
           </div>
         </>
       )}

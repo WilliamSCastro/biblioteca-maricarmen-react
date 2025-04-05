@@ -9,7 +9,7 @@ body {
   height: 100vh;
 
   font-family: Arial, sans-serif;
-  background-color: lightblue;
+ 
 
   margin: 0;
 
@@ -19,22 +19,46 @@ body {
 }
 
 
-
 nav {
 
-  height:12vh;
+  height: 56px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  background-color: #FFFFFFFF;
   padding: 15px;
-  background-color: #eee; 
+  border-bottom: 0.5px solid black;
 
   flex: 0 0 auto;
   
 }
 
+nav button{
+
+  width: 160px;
+  height: 36px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  color: #FFFFFFFF;
+  background: #0043A8FF;
+  border: none;
+  border-radius: 3px;
+  font-family: "Oswald", sans-serif;
+}
+nav h1{
+  font-family: "Oswald", sans-serif;
+  font-size: 28px;
+  line-height: 42px;
+  font-weight: 700;
+  color: #000000FF;
+
+}
 nav div#nav-options {
   display: flex;
   align-items: center;
@@ -47,23 +71,26 @@ nav div#user-options {
   gap: 15px;
 }
 
-nav button {
-  display: block;
-}
+
 
 main {
   height: 70vh;
   min-height: auto;
+  background-color: #ffffff; 
 }
 
 main h2 {
   margin: 0;
   margin-bottom: 15px;
+  
 }
 
 
 main#main-menu {
-  
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
 }
 
 main#login {
@@ -106,3 +133,91 @@ footer {
   background-color: lightpink;
 
 }
+
+
+.searchDiv{
+  margin: 0 auto;
+  gap: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.searchDiv button{
+  width: 94px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFFFF;
+  background: #0043A8FF;
+  border: none;
+  border-radius: 3px;
+  font-size: 18px;
+}
+
+.searchDiv button:hover{
+  width: 94px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFFFF;
+  background: #003380FF;
+  border: none;
+  border-radius: 3px;
+}
+
+.searchDiv input{
+  width: 396px;
+  height: 35px;
+  font-size: 14px;
+}
+.searchDiv input{
+  width: 396px;
+  height: 35px;
+  font-size: 14px;
+  color: #BDC1CAFF;
+  background: #FFFFFFFF;
+  border-color: #0043A8FF;
+}
+
+.h1Cataleg{
+  margin: 0 auto;
+  font-family: "Oswald", sans-serif;
+}
+
+.containerFindBooks{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+}
+
+.tableBooks{
+  border-radius: 3px;
+}
+
+.tableBooks th {
+
+  background-color: rgb(214, 213, 213);
+  color: #565D6DFF;
+}
+td, th {
+
+    width: 298px;
+    height: 40px;
+}
+.tableBooks th:nth-child(1), td:nth-child(1) {
+ width: 350px;
+}
+
+
+.tableBooks th:nth-child(2), td:nth-child(2) {
+  width: 250px;
+}
+
+
+
+
