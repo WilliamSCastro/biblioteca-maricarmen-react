@@ -1,4 +1,5 @@
 const API_URL = 'http://localhost:8000/api/llibres'; // Ajusta según tu Django API
+const API_LOGIN = ``;
 
 export const getBooks = () => {
   console.log('llamando API...');

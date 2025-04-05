@@ -1,14 +1,17 @@
-import { useState } from 'react';
-import './App.css';
-import BookList from './components/BookList';
-import './styles.css';
+// App.js
+import "./App.css";
+import "./styles.css";
+import AppContent from "./components/AppContent"; // Import the new component
+import { UserProvider } from "./store/UserProvider"; // Only import the Provider
 
 function App() {
+
   return (
-    <div className="App">
-      <BookList />
-    </div>
+    <UserProvider>
+      <AppContent />
+    </UserProvider>
   );
+  
 }
 
 export default App;
