@@ -20,8 +20,8 @@ export default function DashboardMenu({ setScreen, currentScreen }) {
         className={currentScreen === DASHBOARD_SCREENS.UPDATE_USER ? "active" : ""}
       >
           <img src={userImage} alt="" />
-          <p>Perfil d'usuari</p>
-          <p className="end">&#8702;</p>
+          <span>Perfil d'usuari</span>
+          <span className="end">&#8702;</span>
       </Button>
       {(isAdmin(user.role) || isBibliotecari(user.role)) && (
         <>
@@ -32,13 +32,13 @@ export default function DashboardMenu({ setScreen, currentScreen }) {
             className={currentScreen === DASHBOARD_SCREENS.IMPORT_USERS ? "active" : ""}
           >
               <img src={importImage} alt="" />
-              <p>Importar usuaris amb CSV</p>
-              <p className="end">&#8702;</p>
+              <span>Importar usuaris amb CSV</span>
+              <span className="end">&#8702;</span>
           </Button>
           <a href="/admin">
             <img src={adminImage} alt="" />
-            <p>Administració</p>
-            <p className="end">&#8702;</p>
+            <span>Administració</span>
+            <span className="end">&#8702;</span>
           </a>
         </>
       )}

@@ -24,6 +24,33 @@ p {
 
 }
 
+.default-button {
+  width: 160px;
+  height: 36px;
+  padding: 5px 12px;
+
+  font-family: "Oswald", sans-serif;
+  font-size: 18px;
+
+  color: #FFFFFFFF;
+  background: #0043A8FF;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+
+  
+}
+
+.default-button:hover {
+  background: rgb(39, 118, 238);
+  cursor: pointer;
+}
+
+.default-button:disabled {
+  background: #BDC1CAFF;
+  cursor: not-allowed;
+}
+
 body {
 
   min-width: 320px;
@@ -42,35 +69,40 @@ body {
 
 nav {
 
-  height: 56px;
+  height: 80px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #FFFFFFFF;
   padding: 15px;
-  border-bottom: 0.5px solid black;
+  border-bottom: 0.5px solid rgb(216, 216, 216);
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
 
   flex: 0 0 auto;
   
 }
 
-nav button{
-
-  width: 160px;
-  height: 36px;
-  padding: 0 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: 600;
-  color: #FFFFFFFF;
-  background: #0043A8FF;
+.page-selection {
   border: none;
-  border-radius: 3px;
+  background-color: white;
+
   font-family: "Oswald", sans-serif;
+  font-size: 18px;
+
+  color: rgb(100, 100, 100);
+  padding-bottom: 7px;
+}
+
+.page-selection:hover {
+  border-bottom: 2px solid rgb(140, 140, 140);
+  cursor: pointer;
+}
+
+.page-selection.active {
+  color: #0043A8FF;
+  border-bottom: 2px solid #0043A8FF;
+  padding-bottom: 7px;
 }
 
 nav h1 {
@@ -267,7 +299,7 @@ main#dashboard aside img {
   width: 30px;
 }
 
-main#dashboard aside p {
+main#dashboard aside span {
   font-size: 16px;
 }
 
@@ -282,7 +314,7 @@ main#dashboard section {
   flex-grow: 1;
   padding: 15px;
 
-  background-color: lightgreen;
+  /* background-color: lightgreen; */
 
   overflow-y: auto;
 

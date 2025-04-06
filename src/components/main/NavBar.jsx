@@ -11,17 +11,17 @@ function NavBar({ screen, onLoginClick, onLogoutClick,onGoToMainMenu, onGoToDash
     <nav>
       <h1>Biblioteca Maricarmen</h1>
       {!user && screen === MAIN_SCREENS.CATALEG && (
-        <Button onClick={onLoginClick}>Iniciar sessió</Button>
+        <Button onClick={onLoginClick} className="default-button">Iniciar sessió</Button>
       )}
       {user && (screen === MAIN_SCREENS.CATALEG || screen === MAIN_SCREENS.DASHBOARD) && (
         <>
           <div id="nav-options">
-            <Button onClick={onGoToMainMenu}>Página Principal</Button>
-            <Button onClick={onGoToDashboard}>Dashboard</Button>
+            <Button onClick={onGoToMainMenu} className={screen === MAIN_SCREENS.CATALEG ? "page-selection active" : "page-selection"}>Página Principal</Button>
+            <Button onClick={onGoToDashboard} className={screen === MAIN_SCREENS.DASHBOARD ? "page-selection active" : "page-selection"}>Dashboard</Button>
           </div>
           <div id="user-options">
             <p>Benvingut, {user.first_name} ({user.role})</p>
-            <Button onClick={onLogoutClick}>Tancar sessió &#10132;</Button>
+            <Button onClick={onLogoutClick} className="default-button">Tancar sessió &#10132;</Button>
           </div>
         </>
       )}
