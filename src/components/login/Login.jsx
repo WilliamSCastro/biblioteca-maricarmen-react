@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { logIn } from '../services/api';
-import InputField from "./InputField";
-import Button from "./Button";
+import { logIn } from '../../services/api';
+import InputField from "../utils/InputField";
+import Button from "../utils/Button";
 
 function Login({ onLoginSuccess, returnToMainMenu }) {
   const [errors, setErrors] = useState({});

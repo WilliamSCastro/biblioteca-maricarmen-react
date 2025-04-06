@@ -1,4 +1,4 @@
-import { useUserContext } from "../store/UserProvider";
+import { useUserContext } from "../../store/UserProvider";
 
 export default function Profile() {
   const { user } = useUserContext();

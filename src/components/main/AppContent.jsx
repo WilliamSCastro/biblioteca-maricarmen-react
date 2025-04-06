@@ -1,13 +1,13 @@
 
 import { useState } from "react";
-import "../App.css";
-import "../styles.css";
+import "../../App.css";
+import "../../styles.css";
 import NavBar from "./NavBar";
-import MainMenu from "./MainMenu";
-import Login from './Login';
-import Dashboard from "./Dashboard";
-import { useUserContext } from "../store/UserProvider"; 
-import { MAIN_SCREENS } from "../constants";
+import MainMenu from "../MainMenu";
+import Login from '../login/Login';
+import Dashboard from "../dashboard/Dashboard";
+import { useUserContext } from "../../store/UserProvider"; 
+import { MAIN_SCREENS } from "../../constants";
 import Footer from "./Footer";
 
 function AppContent() {

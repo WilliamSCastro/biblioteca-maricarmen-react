@@ -211,7 +211,7 @@ main#login div form button:disabled {
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
 }
 
-#return-button:hover {
+#return-button:not(:disabled):hover{
   background-color: rgb(218, 218, 218);
   cursor: pointer;
 }
@@ -229,12 +229,53 @@ main#dashboard {
 main#dashboard aside {
   display: flex;
   flex-direction: column;
-
-  background-color: lightgray;
+  gap: 10px;
+  /* background-color: lightgray; */
   padding: 15px;
 
   flex: 0 1 20%;
 }
+
+main#dashboard aside button, main#dashboard aside a {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 8px 20px;
+  text-decoration: none;
+  color: rgb(58, 58, 58);
+  background-color: white;
+
+  border: 1px solid #DEE1E6FF;
+  border-radius: 3px;
+
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+}
+
+main#dashboard aside button:hover, main#dashboard aside a:hover {
+  background-color: rgb(211, 211, 211);
+  cursor: pointer;
+}
+
+main#dashboard aside button.active {
+  background-color: #F0F6FFFF;
+  border: 1px solid #0043A8FF;
+  cursor: pointer;
+}
+
+main#dashboard aside img {
+  width: 30px;
+  width: 30px;
+}
+
+main#dashboard aside p {
+  font-size: 16px;
+}
+
+main#dashboard aside .end {
+  margin-left: auto;
+}
+
+
 
 main#dashboard section {
 

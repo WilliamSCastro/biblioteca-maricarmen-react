@@ -1,44 +1,26 @@
 import React from "react";
 import { useState } from "react";
-import { useUserContext } from "../store/UserProvider";
+import { useUserContext } from "../../store/UserProvider";
 import Profile from "./Profile";
-import { isAdmin, isBibliotecari, DASHBOARD_SCREENS } from "../constants";
+import { DASHBOARD_SCREENS } from "../../constants";
+import DashboardMenu from "./DashboardMenu";
 
 function Dashboard({ noUserDetected }) {
 
   const { user } = useUserContext();
-  console.log(user);
-
-  const [currentDashboardScreen, setCurrentDashboardScreen] = useState(DASHBOARD_SCREENS.WELCOME);
-
   if (!user) {
     noUserDetected();
   }
 
+  const [currentDashboardScreen, setCurrentDashboardScreen] = useState(DASHBOARD_SCREENS.WELCOME);
+
+  function handleScreenSelection(screen){
+    setCurrentDashboardScreen(screen)
+  }
+
   return (
     <main id="dashboard">
-      <aside>
-        <h2>Dashboard</h2>
-        <button
-          onClick={() => {
-            setCurrentDashboardScreen(DASHBOARD_SCREENS.UPDATE_USER);
-          }}
-        >
-          Perfil d'usuari
-        </button>
-        {(isAdmin(user.role) || isBibliotecari(user.role)) && (
-          <>
-            <button
-              onClick={() => {
-                setCurrentDashboardScreen(DASHBOARD_SCREENS.IMPORT_USERS);
-              }}
-            >
-              Importació d'usuaris
-            </button>
-            <a href="/admin">Administració</a>
-          </>
-        )}
-      </aside>
+      <DashboardMenu setScreen={handleScreenSelection} currentScreen={currentDashboardScreen}/>
       <section>
         {currentDashboardScreen === DASHBOARD_SCREENS.WELCOME && (
           <>

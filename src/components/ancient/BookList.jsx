@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getBooks } from '../services/api';
+import { getBooks } from '../../services/api';
 import BookItem from './BookItem';
 import imgReact from '../assets/react.svg';
 

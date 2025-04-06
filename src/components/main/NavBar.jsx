@@ -1,7 +1,7 @@
 import React from "react";
-import { useUserContext } from "../store/UserProvider";
-import { MAIN_SCREENS } from "../constants";
-import Button from "./Button";
+import { useUserContext } from "../../store/UserProvider";
+import { MAIN_SCREENS } from "../../constants";
+import Button from "../utils/Button";
 
 function NavBar({ screen, onLoginClick, onLogoutClick,onGoToMainMenu, onGoToDashboard  }) {
 
@@ -11,7 +11,7 @@ function NavBar({ screen, onLoginClick, onLogoutClick,onGoToMainMenu, onGoToDash
     <nav>
       <h1>Biblioteca Maricarmen</h1>
       {!user && screen === MAIN_SCREENS.CATALEG && (
-        <Button onClick={onLoginClick}>Login</Button>
+        <Button onClick={onLoginClick}>Iniciar sessió</Button>
       )}
       {user && (screen === MAIN_SCREENS.CATALEG || screen === MAIN_SCREENS.DASHBOARD) && (
         <>
@@ -21,7 +21,7 @@ function NavBar({ screen, onLoginClick, onLogoutClick,onGoToMainMenu, onGoToDash
           </div>
           <div id="user-options">
             <p>Benvingut, {user.first_name} ({user.role})</p>
-            <Button onClick={onLogoutClick}>Sortir</Button>
+            <Button onClick={onLogoutClick}>Tancar sessió &#10132;</Button>
           </div>
         </>
       )}
