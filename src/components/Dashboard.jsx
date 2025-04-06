@@ -1,11 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import { useUserContext } from "../store/UserProvider";
+import Profile from "./Profile";
+import { isAdmin, isBibliotecari, DASHBOARD_SCREENS } from "../constants";
 
 function Dashboard({ noUserDetected }) {
+
   const { user } = useUserContext();
-  const [currentDashboardScreen, setCurrentDashboardScreen] =
-    useState("default");
+  console.log(user);
+
+  const [currentDashboardScreen, setCurrentDashboardScreen] = useState(DASHBOARD_SCREENS.WELCOME);
 
   if (!user) {
     noUserDetected();
@@ -17,16 +21,16 @@ function Dashboard({ noUserDetected }) {
         <h2>Dashboard</h2>
         <button
           onClick={() => {
-            setCurrentDashboardScreen("updateUserData");
+            setCurrentDashboardScreen(DASHBOARD_SCREENS.UPDATE_USER);
           }}
         >
           Perfil d'usuari
         </button>
-        {(user.role === "Administrador" || user.role === "Bibliotecari") && (
+        {(isAdmin(user.role) || isBibliotecari(user.role)) && (
           <>
             <button
               onClick={() => {
-                setCurrentDashboardScreen("import");
+                setCurrentDashboardScreen(DASHBOARD_SCREENS.IMPORT_USERS);
               }}
             >
               Importació d'usuaris
@@ -36,19 +40,15 @@ function Dashboard({ noUserDetected }) {
         )}
       </aside>
       <section>
-        {currentDashboardScreen === "default" && (
+        {currentDashboardScreen === DASHBOARD_SCREENS.WELCOME && (
           <>
             <h2>Inici</h2>
             <p>Esto es la página de inicio</p>
           </>
         )}
-        {currentDashboardScreen === "updateUserData" && (
-          <>
-            <h2>Perfil</h2>
-            <p>Esto es la página de modificación de usuario</p>
-          </>
-        )}
-        {currentDashboardScreen === "import" && (
+        {currentDashboardScreen === DASHBOARD_SCREENS.UPDATE_USER && <Profile/>}
+
+        {currentDashboardScreen === DASHBOARD_SCREENS.IMPORT_USERS && (
           <>
             <h2>Importación</h2>
             <p>Esto es la página de importación</p>

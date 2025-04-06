@@ -7,33 +7,34 @@ import MainMenu from "./MainMenu";
 import Login from './Login';
 import Dashboard from "./Dashboard";
 import { useUserContext } from "../store/UserProvider"; 
+import { MAIN_SCREENS } from "../constants";
 
 function AppContent() {
 
   const { user, login, logout } = useUserContext(); 
 
-  const [currentScreen, setCurrentScreen] = useState("inicio");
+  const [currentScreen, setCurrentScreen] = useState(MAIN_SCREENS.CATALEG);
 
   function handleGoToMainPage() {
-    setCurrentScreen("inicio");
+    setCurrentScreen(MAIN_SCREENS.CATALEG);
   }
 
   const handleGoToDashboard = () => {
-    setCurrentScreen("dashboard");
+    setCurrentScreen(MAIN_SCREENS.DASHBOARD);
   };
 
   const handleGoToLogin = () => {
-    setCurrentScreen("login");
+    setCurrentScreen(MAIN_SCREENS.LOGIN);
   };
 
   const handleLoginSuccess = (userData, token) => {
     login(userData, token);
-    setCurrentScreen("dashboard");
+    setCurrentScreen(MAIN_SCREENS.DASHBOARD);
   };
 
   const handleLogoutClick = () => {
     logout();
-    setCurrentScreen("inicio");
+    setCurrentScreen(MAIN_SCREENS.CATALEG);
   };
 
   return (
@@ -45,14 +46,14 @@ function AppContent() {
         onLoginClick={handleGoToLogin}
         onLogoutClick={handleLogoutClick}
       />
-        {currentScreen === "inicio" && <MainMenu />}
-        {currentScreen === "login" && (
+        {currentScreen === MAIN_SCREENS.CATALEG && <MainMenu />}
+        {currentScreen === MAIN_SCREENS.LOGIN && (
           <Login
             onLoginSuccess={handleLoginSuccess}
             returnToMainMenu={handleGoToMainPage}
           />
         )}
-        {currentScreen === "dashboard" && user && <Dashboard noUserDetected={handleGoToMainPage}/>}
+        {currentScreen === MAIN_SCREENS.DASHBOARD && user && <Dashboard noUserDetected={handleGoToMainPage}/>}
 
         <footer>
           <p>Esto es el footer</p>
