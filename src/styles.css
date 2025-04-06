@@ -94,7 +94,7 @@ nav {
   padding-bottom: 7px;
 }
 
-.page-selection:hover {
+.page-selection:not(.active):hover {
   border-bottom: 2px solid rgb(140, 140, 140);
   cursor: pointer;
 }
@@ -283,7 +283,7 @@ main#dashboard aside button, main#dashboard aside a {
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
 }
 
-main#dashboard aside button:hover, main#dashboard aside a:hover {
+main#dashboard aside button:not(.active):hover, main#dashboard aside a:hover {
   background-color: rgb(211, 211, 211);
   cursor: pointer;
 }
@@ -291,7 +291,6 @@ main#dashboard aside button:hover, main#dashboard aside a:hover {
 main#dashboard aside button.active {
   background-color: #F0F6FFFF;
   border: 1px solid #0043A8FF;
-  cursor: pointer;
 }
 
 main#dashboard aside img {
