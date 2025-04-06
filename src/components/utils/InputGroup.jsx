@@ -1,14 +1,14 @@
 import React from 'react';
 
 // Componente para renderizar un campo de formulario (label + input + error)
-function InputField({ label, id, name, type = 'text'}) {
+function InputField({ label, id, name, type = 'text', placeholder}) {
   return (
-    <div>
-      <label htmlFor={id}>{label}:</label>
+    <div id="input-field">
       <input
         type={type}
         id={id}
         name={name} // 'name' es crucial para FormData
+        placeholder={placeholder}
       />
     </div>
   );
