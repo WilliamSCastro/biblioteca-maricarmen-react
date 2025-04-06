@@ -20,7 +20,9 @@ export function isBibliotecari(userRole){
 
 export const MAIN_SCREENS = {
     CATALEG: "cataleg",
-    DASHBOARD: "dashboard"
+    DASHBOARD: "dashboard",
+    LOGIN: "login",
+    
 }
 
 export const DASHBOARD_SCREENS = {

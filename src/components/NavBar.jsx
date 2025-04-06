@@ -1,6 +1,7 @@
 import React from "react";
 import { useUserContext } from "../store/UserProvider";
 import { MAIN_SCREENS } from "../constants";
+import Button from "./Button";
 
 function NavBar({ screen, onLoginClick, onLogoutClick,onGoToMainMenu, onGoToDashboard  }) {
 
@@ -10,17 +11,17 @@ function NavBar({ screen, onLoginClick, onLogoutClick,onGoToMainMenu, onGoToDash
     <nav>
       <h1>Biblioteca Maricarmen</h1>
       {!user && screen === MAIN_SCREENS.CATALEG && (
-        <button onClick={onLoginClick}>Login</button>
+        <Button onClick={onLoginClick}>Login</Button>
       )}
       {user && (screen === MAIN_SCREENS.CATALEG || screen === MAIN_SCREENS.DASHBOARD) && (
         <>
           <div id="nav-options">
-            <button onClick={onGoToMainMenu}>Página Principal</button>
-            <button onClick={onGoToDashboard}>Dashboard</button>
+            <Button onClick={onGoToMainMenu}>Página Principal</Button>
+            <Button onClick={onGoToDashboard}>Dashboard</Button>
           </div>
           <div id="user-options">
-            <p>Benvingut, {user.first_name}  ({user.role})</p>
-            <button onClick={onLogoutClick}>Logout</button>
+            <p>Benvingut, {user.first_name} ({user.role})</p>
+            <Button onClick={onLogoutClick}>Logout</Button>
           </div>
         </>
       )}
