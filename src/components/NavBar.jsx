@@ -21,7 +21,7 @@ function NavBar({ screen, onLoginClick, onLogoutClick,onGoToMainMenu, onGoToDash
           </div>
           <div id="user-options">
             <p>Benvingut, {user.first_name} ({user.role})</p>
-            <Button onClick={onLogoutClick}>Logout</Button>
+            <Button onClick={onLogoutClick}>Sortir</Button>
           </div>
         </>
       )}

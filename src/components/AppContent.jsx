@@ -8,6 +8,7 @@ import Login from './Login';
 import Dashboard from "./Dashboard";
 import { useUserContext } from "../store/UserProvider"; 
 import { MAIN_SCREENS } from "../constants";
+import Footer from "./Footer";
 
 function AppContent() {
 
@@ -55,9 +56,7 @@ function AppContent() {
         )}
         {currentScreen === MAIN_SCREENS.DASHBOARD && user && <Dashboard noUserDetected={handleGoToMainPage}/>}
 
-        <footer>
-          <p>Esto es el footer</p>
-        </footer>
+        <Footer/>
     </>
   );
 }

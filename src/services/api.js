@@ -31,12 +31,8 @@ export const logIn = async (username, password) => {
     });
 
     if (!response.ok) {
-      let errorMessage = `Credencials incorrectes`;
       try {
         const errorData = await response.json();
-        if (errorData && errorData.detail) {
-          errorMessage = errorData.detail;
-        }
         console.error(
           "API Login Error Data:",
           errorData,
@@ -48,6 +44,7 @@ export const logIn = async (username, password) => {
           e
         );
       }
+      let errorMessage = `Credencials incorrectes`;
       return { success: false, error: errorMessage };
     }
 
