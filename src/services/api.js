@@ -1,6 +1,7 @@
 const API_URL = "http://localhost:8000/api/llibres";
 const API_LOGIN = `http://127.0.0.1:8000/api/token`;
 const API_ME = `http://127.0.0.1:8000/api/me`;
+const API_UPDATE_USER_DATA = "http://localhost:8000/api/update-profile/";
 
 export const getBooks = () => {
   console.log(`llamando API getBooks en ${API_URL}`);
@@ -133,6 +134,50 @@ export const getUserData = async (token) => {
     return {
       success: false,
       error: "Error de servidor. Torna a intentar-ho més tard.",
+    };
+  }
+};
+
+export const updateUserData = async (formData, token) => {
+  try {
+    const response = await fetch(API_UPDATE_USER_DATA, {
+      method: "POST",
+      headers: {
+        // Important: If sending FormData, you usually *don't* set Content-Type manually.
+        // The browser sets it correctly, including the boundary.
+        // 'Content-Type': 'multipart/form-data', // Usually remove this line
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    if (!response.ok) {
+      if (response.status === 500) {
+        return {
+          success: false,
+          type: "saving_error",
+          error:
+            "Error al intentar actualitzar el perfil. Torna a intentar-ho més tard",
+        };
+      } else {
+        const errorData = await response.json();
+        return {
+          success: false,
+          type: "error_at_data",
+          error: errorData,
+        };
+      }
+    }
+    const data = await response.json();
+    return { success: true, data: data };
+    
+  } catch (error) {
+    // Network error or other exception during fetch/processing
+    console.error("Error en la API:", error);
+    return {
+      success: false,
+      type: "network_error", // More specific type
+      error: "Error de xarxa o connexió. Torna a intentar-ho més tard.",
     };
   }
 };

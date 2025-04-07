@@ -17,6 +17,10 @@ export function UserProvider({ children }) {
     setUser(null);
   };
 
+  function handleUserUpdates(objUserData){
+    setUser(objUserData)
+  }
+
   useEffect(() => {
 
     const checkLoginStatus = async () => {
@@ -71,7 +75,7 @@ export function UserProvider({ children }) {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, isLoadingUserData, login, logout }}>
+    <UserContext.Provider value={{ user, isLoadingUserData, login, logout, handleUserUpdates }}>
       {children}
     </UserContext.Provider>
   );
