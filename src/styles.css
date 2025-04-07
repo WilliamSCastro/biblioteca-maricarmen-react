@@ -49,6 +49,7 @@ p {
   
 }
 
+
 .default-button:hover {
   background: rgb(39, 118, 238);
   cursor: pointer;
@@ -149,7 +150,7 @@ nav div#user-options {
 
 
 main {
-  height: 70vh;
+  min-height: 70vh;
   min-height: auto;
   background-color: #ffffff; 
 }
@@ -340,14 +341,7 @@ main#dashboard section {
 
 }
 
-footer {
-  padding: 15px; 
-  height: 160px;
-  min-height: 18vh;
-  min-width: 600px;  
-  background-color: lightpink;
 
-}
 
 
 
@@ -412,27 +406,7 @@ footer {
   padding: 40px;
 }
 
-.tableBooks{
-  border-radius: 3px;
-}
 
-.tableBooks th {
-
-  background-color: rgb(214, 213, 213);
-  color: #565D6DFF;
-}
-td, th {
-
-    width: 298px;
-    height: 40px;
-}
-.tableBooks th:nth-child(1), td:nth-child(1) {
- width: 350px;
-}
-
-.tableBooks th:nth-child(2), td:nth-child(2) {
-  width: 250px;
-}
 
 .fiveBestDiv {
   width: 384px;
@@ -470,4 +444,192 @@ td, th {
   background: rgb(227, 227, 227);
   border-radius: 4px;
   cursor: pointer;
+}
+
+.catalegContainer {
+  width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Encabezado: título y botón */
+.catalegHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.catalegTitle {
+  font-size: 2rem;
+  margin: 0;
+  color: #333;
+  font-weight: 700;
+}
+
+.defaultButton {
+  background-color:#0043A8FF;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.defaultButton:hover {
+  background-color:#003680;;
+}
+
+/* Secciones de detalles */
+.catalegSection {
+  margin-bottom: 20px;
+}
+
+.catalegSection p {
+  margin: 6px 0;
+  line-height: 1.5;
+  color: #555;
+}
+
+/* Subtítulos para separar secciones */
+.subclassTitle {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 6px;
+  font-weight: 600;
+}
+
+/* Lista de ejemplars */
+.exemplarsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.exemplarItem {
+  border-top: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.exemplarItem:first-child {
+  border-top: none;
+}
+
+.exemplarItem p {
+  margin: 4px 0;
+  color: #444;
+}
+
+/* Mensaje "No hay datos disponibles" */
+.noData {
+  text-align: center;
+  color: #888;
+  margin-top: 40px;
+  font-size: 1.2rem;
+}
+.catalogTable {
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto;
+  border-collapse: collapse;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+}
+
+.catalogTable thead {
+  background: #0043A8FF; /* Color base */
+  color: #fff;
+}
+
+.catalogTable thead th {
+  padding: 16px 24px;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.catalogTable tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.3s ease;
+}
+
+.catalogTable tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.catalogTable tbody tr:hover {
+  background-color: #e6f0ff; /* Tono azul muy claro basado en el color principal */
+}
+
+.catalogTable tbody td {
+  padding: 16px 24px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.catalogTable .tableButtonCell {
+  text-align: center;
+}
+
+.catalogTable tbody td a,
+.catalogTable tbody td button {
+  background-color: #0043A8FF;
+  color: #fff;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.catalogTable tbody td a:hover,
+.catalogTable tbody td button:hover {
+  background-color: #003680; /* Un tono más oscuro para el hover */
+  transform: scale(1.03);
+}
+
+.footer {
+  background-color: #66a3ff;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+}
+
+.footerText {
+  font-size: 0.9rem;
+  font-weight: 300;
+  margin: 0;
 }
