@@ -63,7 +63,7 @@ export default function Profile() {
         }
 
       } else {
-
+        console.log(res)
         if (res.type === "error_at_data") {
 
           console.log(res.error.formErrors);
