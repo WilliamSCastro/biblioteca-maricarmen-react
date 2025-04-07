@@ -6,6 +6,8 @@ import { UserProvider } from "./store/UserProvider"; // Only import the Provider
 
 function App() {
 
+  
+
   return (
     <UserProvider>
       <AppContent />

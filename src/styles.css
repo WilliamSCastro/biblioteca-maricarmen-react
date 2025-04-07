@@ -24,6 +24,14 @@ p {
 
 }
 
+#loading-userdata { 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh 
+}
+
+
 .default-button {
   width: 160px;
   height: 36px;
