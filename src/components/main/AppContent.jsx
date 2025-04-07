@@ -41,12 +41,9 @@ function AppContent() {
   };
 
   if (isLoadingUserData) {
-    // Muestra un indicador de carga mientras se verifica el estado de autenticación
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-        {/* Puedes poner un texto, un spinner, etc. */}
-        <h1>Cargando aplicación...</h1>
-        {/* <LoadingSpinner /> */}
+      <div id="loading-userdata" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <h1>Carregant aplicació...</h1>
       </div>
     );
   }

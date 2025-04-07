@@ -5,7 +5,7 @@ const UserContext = createContext();
 
 export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [isLoadingUserData, setIsLoadingUserData] = useState(true); // Inicia como true
+  const [isLoadingUserData, setIsLoadingUserData] = useState(true); 
 
   const login = (userData, token) => {
     localStorage.setItem("authToken", token);
@@ -18,6 +18,7 @@ export function UserProvider({ children }) {
   };
 
   useEffect(() => {
+
     const checkLoginStatus = async () => {
       console.log("Iniciando verificación de estado de login...");
       let token = null;
@@ -62,8 +63,11 @@ export function UserProvider({ children }) {
       }
     };
 
-    checkLoginStatus();
-    // El array vacío asegura que se ejecute solo una vez al montar
+    setTimeout(() => {
+        checkLoginStatus();
+    }, 3000)
+  
+
   }, []);
 
   return (
