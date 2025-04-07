@@ -89,6 +89,12 @@ nav {
   flex: 0 0 auto;
   
 }
+.divLogo{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
 .page-selection {
   border: none;
@@ -336,6 +342,8 @@ footer {
 }
 
 
+
+/* Search Book */
 .searchDiv{
   margin: 0 auto;
   gap: 30px;
@@ -343,7 +351,7 @@ footer {
   justify-content: space-between;
 }
 
-.searchDiv button {
+.searchDiv button{
   width: 94px;
   height: 35px;
   display: flex;
@@ -414,11 +422,44 @@ td, th {
  width: 350px;
 }
 
-
 .tableBooks th:nth-child(2), td:nth-child(2) {
   width: 250px;
 }
 
+.fiveBestDiv {
+  width: 384px;
+  
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  background-color: rgb(255, 255, 255);
+  opacity: 1;
+  z-index: 1000;
+  border: 1px solid black;
+  border-radius: 4px;
+}
 
+.fiveItem{
 
+  padding: 16px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  color: black;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.fiveItem:hover{
 
+  padding: 16px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  color: black;
+  background: rgb(227, 227, 227);
+  border-radius: 4px;
+  cursor: pointer;
+}
