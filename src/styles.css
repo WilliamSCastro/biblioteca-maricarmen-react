@@ -278,6 +278,8 @@ main#login div form button:disabled {
 
 main#dashboard {
   display: flex; 
+  height: 100%;
+  gap: 10px;
 }
 
 main#dashboard aside {
