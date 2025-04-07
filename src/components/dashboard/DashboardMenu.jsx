@@ -35,7 +35,7 @@ export default function DashboardMenu({ setScreen, currentScreen }) {
               <span>Importar usuaris amb CSV</span>
               <span className="end">&#8702;</span>
           </Button>
-          <a href="/admin">
+          <a href="/admin/">
             <img src={adminImage} alt="" />
             <span>Administració</span>
             <span className="end">&#8702;</span>
