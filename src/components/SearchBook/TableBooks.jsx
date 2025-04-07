@@ -1,4 +1,4 @@
-export default function TableBooks({listBooks}){
+export default function TableBooks(){
 
 
     return(
