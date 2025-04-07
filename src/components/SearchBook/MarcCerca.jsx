@@ -3,12 +3,12 @@ import Button from "../utils/Button";
 import { useSearchBooks } from '../../store/SearchBooksProvider';
 export default function MarcCerca(){
 
-    const { setTextInputSearch } = useSearchBooks();
+    const { setTextInputSearch, searchBooks } = useSearchBooks();
     return(
         <div className="searchDiv">
 
                 <input className="inputSearch" onChange={(e) => {setTextInputSearch(e.target.value)}}></input>
-                <Button className="searchButton">Cercar</Button>
+                <Button onClick={searchBooks} className="searchButton">Cercar</Button>
         </div>
 
     );

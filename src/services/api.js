@@ -136,3 +136,31 @@ export const getUserData = async (token) => {
     };
   }
 };
+
+
+export const getSearch = async (searchParams, limit) => {
+  try {
+    const response = await fetch(`http://localhost:8000/api/buscar/?${searchParams}`);
+    const data = await response.json();
+
+    if (limit === 0) {
+      // Devuelve todos los datos
+      return data;
+    } else {
+      // Devuelve solo los primeros "limit" elementos (por ejemplo, 5 resultados)
+      return data.slice(0, limit);
+    }
+  } catch (err) {
+    console.error('Error:', err);
+    return [];
+  }
+};
+
+
+export const fetchCatalegById = async (id) => {
+  const response = await fetch(`http://localhost:8000/api/cataleg/${id}`);
+  if (!response.ok) {
+    throw new Error('Error al obtener los datos del Cataleg');
+  }
+  return response.json();
+};
