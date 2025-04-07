@@ -14,7 +14,7 @@ import Footer from "./Footer";
 
 function AppContent() {
 
-  const { user, login, logout } = useUserContext(); 
+  const { user, login, logout, isLoadingUserData } = useUserContext(); 
 
   const [currentScreen, setCurrentScreen] = useState(MAIN_SCREENS.CATALEG);
 
@@ -39,6 +39,14 @@ function AppContent() {
     logout();
     setCurrentScreen(MAIN_SCREENS.CATALEG);
   };
+
+  if (isLoadingUserData) {
+    return (
+      <div id="loading-userdata" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <h1>Carregant aplicació...</h1>
+      </div>
+    );
+  }
 
   return (
     <>
