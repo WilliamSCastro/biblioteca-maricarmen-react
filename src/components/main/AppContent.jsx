@@ -12,7 +12,7 @@ import Footer from "./Footer";
 
 function AppContent() {
 
-  const { user, login, logout } = useUserContext(); 
+  const { user, login, logout, isLoadingUserData } = useUserContext(); 
 
   const [currentScreen, setCurrentScreen] = useState(MAIN_SCREENS.CATALEG);
 
@@ -37,6 +37,17 @@ function AppContent() {
     logout();
     setCurrentScreen(MAIN_SCREENS.CATALEG);
   };
+
+  if (isLoadingUserData) {
+    // Muestra un indicador de carga mientras se verifica el estado de autenticación
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        {/* Puedes poner un texto, un spinner, etc. */}
+        <h1>Cargando aplicación...</h1>
+        {/* <LoadingSpinner /> */}
+      </div>
+    );
+  }
 
   return (
     <>

@@ -1,69 +1,78 @@
-import { createContext, useState, useEffect, useContext} from 'react'
-import { getUserData } from '../services/api';
+import { createContext, useState, useEffect, useContext } from "react";
+import { getUserData } from "../services/api";
 
 const UserContext = createContext();
 
-export function UserProvider({children}) {
+export function UserProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [isLoadingUserData, setIsLoadingUserData] = useState(true); // Inicia como true
 
-    const [user, setUser] = useState(null);
+  const login = (userData, token) => {
+    localStorage.setItem("authToken", token);
+    setUser(userData);
+  };
 
-    const login = (userData, token) => {
-        localStorage.setItem("authToken", token);
-        setUser(userData);
-    };
-    
-    const logout = () => {
-        localStorage.removeItem("authToken");
-        setUser(null);
-    };
+  const logout = () => {
+    localStorage.removeItem("authToken");
+    setUser(null);
+  };
 
-    useEffect(() => {
- 
-        const checkLoginStatus = async () => {
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      console.log("Iniciando verificación de estado de login...");
+      let token = null;
 
-            console.log("SE HA MIRADO SI EXISTE TOKEN")
-            let token = null;
+      try {
+        token = localStorage.getItem("authToken");
+
+        if (token) {
+          console.log("Token encontrado. Verificando con API...");
+          const response = await getUserData(token);
+          console.log("Respuesta de getUserData:", response);
+
+          if (response && response.success) {
+            console.log("Token válido. Usuario autenticado.");
+            setUser(response.userData);
+          } else {
+            setUser(null);
             try {
-                token = localStorage.getItem("authToken");
-            } catch (error) {
-                console.error("Error al leer localStorage:", error);
-                return;
+              localStorage.removeItem("authToken");
+              console.log("Token inválido eliminado de localStorage.");
+            } catch (e) {
+              console.error("Error eliminando token inválido:", e);
             }
-            console.log(token)
-    
-    
-        //   if (token) {
-            
-        //     console.log("Token encontrado en localStorage. Verificando...");
-        //     const response = await getUserData(token); // Debes tener esta función en tu API
-    
-        //     if (response.success) {
-            
-        //       console.log("Token válido. Autenticando usuario.");
-        //       setUser(response.userData);
-            
-        //     }
+          }
+        } else {
+          console.log("No se encontró token en localStorage.");
+          setUser(null);
+        }
+      } catch (error) {
+        console.error("Error inesperado durante checkLoginStatus:", error);
+        setUser(null);
+        try {
+          if (token) {
+            localStorage.removeItem("authToken");
+            console.log("Token eliminado de localStorage debido a error.");
+          }
+        } catch (e) {
+          console.error("Error limpiando token tras error general:", e);
+        }
+      } finally {
+        setIsLoadingUserData(false);
+      }
+    };
 
-        //   } else {
-        //     console.log("No se encontró token en localStorage.");
-        //   }
+    checkLoginStatus();
+    // El array vacío asegura que se ejecute solo una vez al montar
+  }, []);
 
-        };
-    
-        checkLoginStatus(); 
-    
-      }, []);
-
-
-
-    
-    return (
-         <UserContext.Provider value={{ user, login, logout }}>
-         {children}
-        </UserContext.Provider>
-    )
+  return (
+    <UserContext.Provider value={{ user, isLoadingUserData, login, logout }}>
+      {children}
+    </UserContext.Provider>
+  );
 }
 
 export const useUserContext = () => {
-    return useContext(UserContext);
-  };
+  return useContext(UserContext);
+};
