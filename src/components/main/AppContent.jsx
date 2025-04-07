@@ -3,12 +3,14 @@ import { useState } from "react";
 import "../../App.css";
 import "../../styles.css";
 import NavBar from "./NavBar";
-import MainMenu from "../MainMenu";
+import MainMenu from "../SearchBook/MainMenu";
 import Login from '../login/Login';
 import Dashboard from "../dashboard/Dashboard";
 import { useUserContext } from "../../store/UserProvider"; 
+import { SearchBooksProvider } from '../../store/SearchBooksProvider';
 import { MAIN_SCREENS } from "../../constants";
 import Footer from "./Footer";
+
 
 function AppContent() {
 
@@ -47,7 +49,7 @@ function AppContent() {
         onLoginClick={handleGoToLogin}
         onLogoutClick={handleLogoutClick}
       />
-        {currentScreen === MAIN_SCREENS.CATALEG && <MainMenu />}
+        {currentScreen === MAIN_SCREENS.CATALEG && <SearchBooksProvider><MainMenu /></SearchBooksProvider>}
         {currentScreen === MAIN_SCREENS.LOGIN && (
           <Login
             onLoginSuccess={handleLoginSuccess}
