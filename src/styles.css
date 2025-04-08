@@ -233,7 +233,6 @@ main#login div form button:disabled {
   height: 44px;
   padding-left: 16px;
   padding-right: 16px;
-  font-family: Roboto;
   font-size: 16px;
   line-height: 26px;
   font-weight: 400;
@@ -332,8 +331,6 @@ main#dashboard aside .end {
   margin-left: auto;
 }
 
-
-
 main#dashboard section {
 
   flex-grow: 1;
@@ -345,8 +342,96 @@ main#dashboard section {
 
 }
 
+#title-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+#title-box h2 {
+  margin: 0;
+}
 
 
+#title-box img {
+  background-color: lightblue;
+  width: 80px;
+  height: 80px;
+}
+
+div.info-box {
+  margin-bottom: 6px;
+}
+
+div.info-box > h3,  div.info-box > p {
+  margin: 0;
+}
+
+div.input-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+div.input-box label {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+div.input-box input {
+  height: 36px;
+  border: 1px solid #BDC1CAFF;
+  padding-left: 5px;
+  font-size: 16px;
+  background-color: white;
+  border-radius: 2px;
+  outline: none;
+  border-radius: 2px;
+  border: 1px solid #BDC1CAFF;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+  width: 30%;
+}
+
+div.input-box input:hover {
+  border-color: rgb(131,131,131);
+}
+
+div.input-box input:focus {
+  border-color: black;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+#upload_avatar_box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+#upload_avatar_box h3 {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+#upload_avatar_box label {
+  display: flex;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 2px;
+  border: 1px solid #BDC1CAFF;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+}
+
+#upload_avatar_box label:hover {
+  background-color: rgb(236, 236, 236);
+  cursor: pointer;
+}
 
 
 /* Search Book */

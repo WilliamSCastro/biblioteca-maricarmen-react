@@ -11,10 +11,14 @@ import Modal from "../../utils/Modal";
 
 export function ProfileForm({ user, onUserUpdate }) {
   const [errors, setErrors] = useState({});
-console.log(user)
   const [isLoading, setIsLoading] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [fileName, setFileName] = useState(null);
+
+  function handleFileNameChange(name) {
+    setFileName(name)
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -60,6 +64,7 @@ console.log(user)
       if (res.data.type === "success_modify") {
         onUserUpdate(res.data.userData);
         setModalMessage("Les dades s'han actualitzat correctament");
+        setFileName(null)
       } else {
         setModalMessage("No hi han hagut canvis");
       }
@@ -104,7 +109,7 @@ console.log(user)
           error={errors.telefon}
         />
         
-        <AvatarInput error={errors.avatar} />
+        <AvatarInput error={errors.avatar}  fileName={fileName} setFileNameInAvatar={handleFileNameChange}/>
         <input
           type="submit"
           value={isLoading ? "Actualizant" : "Actualitzar"}
