@@ -4,6 +4,7 @@ import { useUserContext } from "../../store/UserProvider";
 import Profile from "./Profile/Profile";
 import { DASHBOARD_SCREENS } from "../../constants";
 import DashboardMenu from "./DashboardMenu";
+import UserImport from "./UserImport";
 
 function Dashboard({ noUserDetected }) {
 
@@ -31,30 +32,7 @@ function Dashboard({ noUserDetected }) {
         {currentDashboardScreen === DASHBOARD_SCREENS.UPDATE_USER && <Profile/>}
 
         {currentDashboardScreen === DASHBOARD_SCREENS.IMPORT_USERS && (
-          <>
-            <h2>Importación</h2>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-            <p>Esto es la página de importación</p>
-          </>
+         <UserImport/>
         )}
       </section>
     </main>
