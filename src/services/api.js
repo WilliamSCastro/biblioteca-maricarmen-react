@@ -208,3 +208,33 @@ export const fetchCatalegById = async (id) => {
   }
   return response.json();
 };
+
+
+
+export const importCSV = async (file) => {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  try {
+    const response = await fetch("http://localhost:8000/api/import-users/", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    return {
+      ok: response.ok,
+      status: response.status,
+      data,
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      status: 500,
+      data: null,
+      error: "Error al conectar con el servidor.",
+    };
+  }
+};
+
