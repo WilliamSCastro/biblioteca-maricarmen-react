@@ -5,6 +5,7 @@ import Profile from "./Profile/Profile";
 import { DASHBOARD_SCREENS } from "../../constants";
 import DashboardMenu from "./DashboardMenu";
 import UserImport from "./UserImport";
+import Welcome from "./Welcome";
 
 function Dashboard({ noUserDetected }) {
 
@@ -23,12 +24,7 @@ function Dashboard({ noUserDetected }) {
     <main id="dashboard">
       <DashboardMenu setScreen={handleScreenSelection} currentScreen={currentDashboardScreen}/>
       <section>
-        {currentDashboardScreen === DASHBOARD_SCREENS.WELCOME && (
-          <>
-            <h2>Inici</h2>
-            <p>Esto es la página de inicio</p>
-          </>
-        )}
+        {currentDashboardScreen === DASHBOARD_SCREENS.WELCOME && <Welcome/>}
         {currentDashboardScreen === DASHBOARD_SCREENS.UPDATE_USER && <Profile/>}
 
         {currentDashboardScreen === DASHBOARD_SCREENS.IMPORT_USERS && (
