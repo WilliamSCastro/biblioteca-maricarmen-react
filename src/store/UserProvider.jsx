@@ -67,10 +67,7 @@ export function UserProvider({ children }) {
       }
     };
 
-    setTimeout(() => {
-        checkLoginStatus();
-    }, 3000)
-  
+    checkLoginStatus();  
 
   }, []);
 
