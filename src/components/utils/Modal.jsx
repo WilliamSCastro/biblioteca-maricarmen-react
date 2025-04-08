@@ -16,7 +16,7 @@ function Modal({ children, isOpen }) {
   }, [isOpen]);
 
   return (
-    <dialog ref={dialog} className="modal" style={{ padding: "2rem", textAlign: "center" }}>
+    <dialog ref={dialog} className="modal">
       {children}
     </dialog>
   );

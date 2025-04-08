@@ -342,6 +342,22 @@ main#dashboard section {
 
 }
 
+#welcome-dashboard {
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  align-items: center;
+  height: 100%;
+}
+
+#welcome-dashboard h2 {
+  font-size: 32px
+}
+
+#welcome-dashboard p {
+  font-size: 24px
+}
+
 #title-box {
   display: flex;
   align-items: center;
@@ -797,4 +813,20 @@ input[type="file"] {
 .summaryMessage ul {
   margin-top: 10px;
   padding-left: 20px;
+}
+
+.modal {
+  min-width: 25rem;
+  padding: 30px;
+  z-index: 2;
+  border: 1px solid black;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.modal[open] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

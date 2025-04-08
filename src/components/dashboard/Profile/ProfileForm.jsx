@@ -87,7 +87,7 @@ export function ProfileForm({ user, onUserUpdate }) {
       <Modal isOpen={isModalOpen}>
         <p>{modalMessage}</p>
         {!isLoading && (
-          <button className="default-button" onClick={closeModal} style={{ marginTop: "1rem" }}>
+          <button className="default-button" onClick={closeModal}>
             Acceptar
           </button>
         )}
