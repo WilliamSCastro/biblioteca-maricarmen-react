@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useUserContext } from "../../store/UserProvider";
-import Profile from "./Profile";
+import Profile from "./Profile/Profile";
 import { DASHBOARD_SCREENS } from "../../constants";
 import DashboardMenu from "./DashboardMenu";
 

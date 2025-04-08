@@ -81,6 +81,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  gap: 5px;
 }
 
 nav {
@@ -153,6 +154,7 @@ main {
   min-height: 70vh;
   min-height: auto;
   background-color: #ffffff; 
+  height: 100%;
 }
 
 main h2 {

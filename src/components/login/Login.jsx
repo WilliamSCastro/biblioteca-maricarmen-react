@@ -28,31 +28,27 @@ function Login({ onLoginSuccess, returnToMainMenu }) {
         currentErrors.password = "El camp contrasenya no pot estar buit.";
       }
 
-      setTimeout(async ()=>{
-
-        if (Object.keys(currentErrors).length > 0) {
-          setErrors(currentErrors);
-          setIsLoading(false);
-          return;
-        }
-
-        const result = await logIn(username, password);
+      if (Object.keys(currentErrors).length > 0) {
+        setErrors(currentErrors);
         setIsLoading(false);
+        return;
+      }
 
-        if (result.success) {
+      const result = await logIn(username, password);
+      setIsLoading(false);
 
-          console.log("Login component received successful user data:", result.userData);
-          console.log("Login component received token:", result.token);
-          onLoginSuccess(result.userData, result.token);
+      if (result.success) {
 
-        } else {
+        console.log("Login component received successful user data:", result.userData);
+        console.log("Login component received token:", result.token);
+        onLoginSuccess(result.userData, result.token);
 
-          console.error("Login component received error:", result.error);
-          setErrors({ api: result.error || 'Ha ocorregut un error inesperat.' });
+      } else {
 
-        }
+        console.error("Login component received error:", result.error);
+        setErrors({ api: result.error || 'Ha ocorregut un error inesperat.' });
 
-      }, 4000)
+      }
 
   };
 
