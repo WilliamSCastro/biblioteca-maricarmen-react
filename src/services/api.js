@@ -218,7 +218,7 @@ export const importCSV = async (file) => {
   formData.append("file", file);
 
   try {
-    const response = await fetch("https://biblioteca4.ieti.site/import-users/", {
+    const response = await fetch("https://biblioteca4.ieti.site/api/import-users/", {
       method: "POST",
       body: formData,
     });
