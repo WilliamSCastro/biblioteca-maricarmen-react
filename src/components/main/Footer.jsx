@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="footerContent">
         <img src={logo} alt="Logo de la Web" className="logo" />
         <p className="footerText">
-          © 2025 Biblioteca Maricarmen Brito. Todos los derechos reservados.
+          © 2025 Biblioteca Maricarmen Brito. Tots els drets reservats.
         </p>
       </div>
     </footer>

@@ -15,14 +15,14 @@ const UserImport = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!file) {
-      setError("Por favor, selecciona un archivo CSV.");
+      setError("Si us plau, selecciona un arxiu CSV");
       return;
     }
     
     const { ok, data, error } = await importCSV(file);
 
     if (!ok) {
-      setError(data?.error || error || "Error desconocido");
+      setError(data?.error || error || "Error desconegut. Contacta amb l'administrador");
       return;
     }
     
@@ -30,16 +30,16 @@ const UserImport = () => {
     }
     return (
       <div className="importContainer">
-        <h2>Importación masiva de usuarios</h2>
+        <h2>Importació massiva d'usuaris</h2>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="csvFile">Selecciona el archivo CSV:</label>
+          <label htmlFor="csvFile">Click aquí per seleccionar l'arxiu CSV:</label>
           <input 
             type="file" 
             id="csvFile" 
             accept=".csv" 
             onChange={handleFileChange} 
           />
-          <button type="submit">Importar usuarios</button>
+          <button type="submit">Importar usuaris</button>
         </form>
         
         {error && (
