@@ -8,24 +8,28 @@ import CatalegDetail from './CatalegDetail';
 
 function MainMenu() {
 
-  const { infoCataleg, fiveBestResults, locatedBooks } = useSearchBooks();
-  
+  const { hasSearched,infoCataleg, fiveBestResults, locatedBooks } = useSearchBooks();
+
 
 
   return (
     <main id="main-menu">
 
-      
 
-        <SearchBooks></SearchBooks>
-        {fiveBestResults.length > 0 && <FiveBest></FiveBest>}
-        {infoCataleg && Object.keys(infoCataleg).length > 0 && <CatalegDetail />}
-        {locatedBooks.length === 0 && Object.keys(infoCataleg).length === 0 && <h4>No hi ha llibres disponibles</h4> }
-        {locatedBooks.length > 0 && Object.keys(infoCataleg).length === 0  && <TableBooks></TableBooks> }
 
-      
-      
-      
+      <SearchBooks></SearchBooks>
+      {fiveBestResults.length > 0 && <FiveBest></FiveBest>}
+      {infoCataleg && Object.keys(infoCataleg).length > 0 && <CatalegDetail />}
+      {hasSearched === true &&
+        Array.isArray(locatedBooks) &&
+        locatedBooks.length === 0 &&
+        Object.keys(infoCataleg).length === 0 &&
+        <h4>No hi ha llibres disponibles</h4>}
+      {locatedBooks.length > 0 && Object.keys(infoCataleg).length === 0 && <TableBooks></TableBooks>}
+
+
+
+
     </main>
   );
 }

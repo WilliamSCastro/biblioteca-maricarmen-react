@@ -64,7 +64,7 @@ body {
 
   min-width: 320px;
   min-height: 100vh;
-  height: 100vh;
+  
 
   font-family: Arial, sans-serif;
  
@@ -152,7 +152,7 @@ nav div#user-options {
 
 main {
   min-height: 70vh;
-  min-height: auto;
+  height: auto;
   background-color: #ffffff; 
   height: 100%;
 }
