@@ -66,7 +66,7 @@ function AppContent() {
         )}
         {currentScreen === MAIN_SCREENS.DASHBOARD && user && <Dashboard noUserDetected={handleGoToMainPage}/>}
 
-        <Footer/>
+        <Footer screen={currentScreen}/>
     </>
   );
 }
