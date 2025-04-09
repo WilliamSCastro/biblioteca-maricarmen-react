@@ -154,6 +154,7 @@ export const updateUserData = async (formData, token) => {
 
     if (!response.ok) {
       if (response.status === 500) {
+	
         return {
           success: false,
           type: "saving_error",
@@ -185,7 +186,7 @@ export const updateUserData = async (formData, token) => {
 
 export const getSearch = async (searchParams, limit) => {
   try {
-    const response = await fetch(`http://localhost:8000/api/buscar/?${searchParams}`);
+    const response = await fetch(`https://biblioteca4.ieti.site/api/buscar/?${searchParams}`);
     const data = await response.json();
 
     if (limit === 0) {
@@ -203,7 +204,7 @@ export const getSearch = async (searchParams, limit) => {
 
 
 export const fetchCatalegById = async (id) => {
-  const response = await fetch(`http://localhost:8000/api/cataleg/${id}`);
+  const response = await fetch(`https://biblioteca4.ieti.site/api/cataleg/${id}`);
   if (!response.ok) {
     throw new Error('Error al obtener los datos del Cataleg');
   }
@@ -217,7 +218,7 @@ export const importCSV = async (file) => {
   formData.append("file", file);
 
   try {
-    const response = await fetch("http://localhost:8000/api/import-users/", {
+    const response = await fetch("https://biblioteca4.ieti.site/import-users/", {
       method: "POST",
       body: formData,
     });

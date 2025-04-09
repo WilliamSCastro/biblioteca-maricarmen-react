@@ -51,7 +51,7 @@ p {
 
 
 .default-button:hover {
-  background: rgb(39, 118, 238);
+  background:#003680;
   cursor: pointer;
 }
 
@@ -218,7 +218,7 @@ main#login div form button {
 }
 
 main#login div form button:hover {
-  background: rgb(39, 118, 238);
+  background: #003680;
 }
 
 main#login div form button:disabled {
@@ -481,6 +481,7 @@ input[type="file"] {
   background: #003380FF;
   border: none;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .searchDiv input{
