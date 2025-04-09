@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../../assets/logo.png"; // Ajusta la ruta según la ubicación de tu logo
 import { MAIN_SCREENS } from "../../constants";
+import banner from "../../assets/banner.gif"; 
 
 const Footer = ({ screen }) => {
   return (
@@ -13,7 +14,7 @@ const Footer = ({ screen }) => {
       </div>
       {(screen === MAIN_SCREENS.CATALEG || screen === MAIN_SCREENS.LOGIN) && (
         <div className="banner">
-          
+          <a href="https://agora.xtec.cat/iesesteveterradas/"><img src={banner} alt="Banner" /></a>
         </div>
       )}
     </footer>
