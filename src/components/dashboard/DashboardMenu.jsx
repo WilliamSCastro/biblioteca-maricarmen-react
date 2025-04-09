@@ -11,7 +11,7 @@ export default function DashboardMenu({ setScreen, currentScreen }) {
 
   return (
     <aside>
-      <h2>Dashboard</h2>
+      <h2>Panell d'administració</h2>
       <Button
         onClick={() => {
           setScreen(DASHBOARD_SCREENS.UPDATE_USER);

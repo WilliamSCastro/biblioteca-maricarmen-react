@@ -19,8 +19,8 @@ function NavBar({ screen, onLoginClick, onLogoutClick,onGoToMainMenu, onGoToDash
       {user && (screen === MAIN_SCREENS.CATALEG || screen === MAIN_SCREENS.DASHBOARD) && (
         <>
           <div id="nav-options">
-            <Button onClick={onGoToMainMenu} className={screen === MAIN_SCREENS.CATALEG ? "page-selection active" : "page-selection"}>Página Principal</Button>
-            <Button onClick={onGoToDashboard} className={screen === MAIN_SCREENS.DASHBOARD ? "page-selection active" : "page-selection"}>Dashboard</Button>
+            <Button onClick={onGoToMainMenu} className={screen === MAIN_SCREENS.CATALEG ? "page-selection active" : "page-selection"}>Pàgina Principal</Button>
+            <Button onClick={onGoToDashboard} className={screen === MAIN_SCREENS.DASHBOARD ? "page-selection active" : "page-selection"}>Administració</Button>
           </div>
           <div id="user-options">
             <p>Benvingut, {user.first_name} ({user.role})</p>
