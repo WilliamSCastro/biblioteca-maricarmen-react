@@ -12,16 +12,13 @@ input:-webkit-autofill:focus {
   transition-delay: calc(infinity * 1s);
 }
 
-h1 {
-
+h1, h2, h3, h4, label {
+  font-family: "Oswald", sans-serif;
 }
 
-h2 {
 
-}
-
-p {
-
+p, input {
+  font-family: "Arial", sans-serif;
 }
 
 #loading-userdata { 
@@ -51,7 +48,7 @@ p {
 
 
 .default-button:hover {
-  background: rgb(39, 118, 238);
+  background:#003680;
   cursor: pointer;
 }
 
@@ -64,7 +61,10 @@ body {
 
   min-width: 320px;
   min-height: 100vh;
+<<<<<<< HEAD
+=======
   
+>>>>>>> Jorge
 
   font-family: Arial, sans-serif;
  
@@ -80,7 +80,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  min-height: 100vh;
   gap: 5px;
 }
 
@@ -163,6 +163,10 @@ main h2 {
   
 }
 
+main#dashboard h2 {
+  font-family: 'Oswald';
+}
+
 
 main#main-menu {
   display: flex;
@@ -175,7 +179,6 @@ main#login {
   display: flex;
   justify-content: center;
   align-items: start;
-  padding-top: 80px;
 }
 
 main#login > div {
@@ -218,7 +221,7 @@ main#login div form button {
 }
 
 main#login div form button:hover {
-  background: rgb(39, 118, 238);
+  background: #003680;
 }
 
 main#login div form button:disabled {
@@ -233,7 +236,6 @@ main#login div form button:disabled {
   height: 44px;
   padding-left: 16px;
   padding-right: 16px;
-  font-family: Roboto;
   font-size: 16px;
   line-height: 26px;
   font-weight: 400;
@@ -281,6 +283,7 @@ main#login div form button:disabled {
 main#dashboard {
   display: flex; 
   height: 100%;
+  flex-grow: 1;
   gap: 10px;
 }
 
@@ -332,8 +335,6 @@ main#dashboard aside .end {
   margin-left: auto;
 }
 
-
-
 main#dashboard section {
 
   flex-grow: 1;
@@ -345,8 +346,115 @@ main#dashboard section {
 
 }
 
+#welcome-dashboard {
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  align-items: center;
+  height: 100%;
+}
+
+#welcome-dashboard h2 {
+  font-size: 32px
+}
+
+#welcome-dashboard p {
+  font-size: 24px
+}
+
+#title-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+#title-box h2 {
+  margin: 0;
+}
 
 
+#title-box img {
+  background-color: lightblue;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  object-position: center;
+
+}
+
+div.info-box {
+  margin-bottom: 6px;
+}
+
+div.info-box > h3,  div.info-box > p {
+  margin: 0;
+}
+
+div.input-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+div.input-box label {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+div.input-box input {
+  height: 36px;
+  border: 1px solid #BDC1CAFF;
+  padding-left: 5px;
+  font-size: 16px;
+  background-color: white;
+  border-radius: 2px;
+  outline: none;
+  border-radius: 2px;
+  border: 1px solid #BDC1CAFF;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+  width: 30%;
+}
+
+div.input-box input:hover {
+  border-color: rgb(131,131,131);
+}
+
+div.input-box input:focus {
+  border-color: black;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+#upload_avatar_box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+#upload_avatar_box h3 {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+#upload_avatar_box label {
+  display: flex;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 2px;
+  border: 1px solid #BDC1CAFF;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+}
+
+#upload_avatar_box label:hover {
+  background-color: rgb(236, 236, 236);
+  cursor: pointer;
+}
 
 
 /* Search Book */
@@ -380,6 +488,7 @@ main#dashboard section {
   background: #003380FF;
   border: none;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .searchDiv input{
@@ -613,9 +722,10 @@ main#dashboard section {
 .footer {
   background-color: #66a3ff;
   color: #fff;
-  padding: 20px 0;
-  text-align: center;
+  /* padding: 20px 0;
+  text-align: center; */
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
 }
 
 .footerContent {
@@ -625,6 +735,12 @@ main#dashboard section {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+}
+
+.banner {
+  width: 600px;
+  height: 160px;
+  background-color: lightcyan;
 }
 
 .logo {
@@ -712,4 +828,20 @@ main#dashboard section {
 .summaryMessage ul {
   margin-top: 10px;
   padding-left: 20px;
+}
+
+.modal {
+  min-width: 25rem;
+  padding: 30px;
+  z-index: 2;
+  border: 1px solid black;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.modal[open] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

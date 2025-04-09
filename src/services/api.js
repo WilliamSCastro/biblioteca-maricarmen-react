@@ -1,7 +1,7 @@
-const API_URL = "http://localhost:8000/api/llibres";
-const API_LOGIN = `http://127.0.0.1:8000/api/token`;
-const API_ME = `http://127.0.0.1:8000/api/me`;
-const API_UPDATE_USER_DATA = "http://localhost:8000/api/update-profile/";
+const API_URL = "http://https://biblioteca4.ieti.site/api/llibres";
+const API_LOGIN = `https://biblioteca4.ieti.site/api/token`;
+const API_ME = `https://biblioteca4.ieti.site/api/me`;
+const API_UPDATE_USER_DATA = "https://biblioteca4.ieti.site/api/update-profile/";
 
 export const getBooks = () => {
   console.log(`llamando API getBooks en ${API_URL}`);
@@ -22,7 +22,8 @@ export const logIn = async (username, password) => {
   const credentials = btoa(`${username}:${password}`);
   const authHeader = `Basic ${credentials}`;
   console.log(`llamando API logIn en ${API_LOGIN}`);
-
+  console.log(credentials)
+  console.log(authHeader)
   try {
     const response = await fetch(API_LOGIN, {
       method: "GET",
@@ -153,6 +154,7 @@ export const updateUserData = async (formData, token) => {
 
     if (!response.ok) {
       if (response.status === 500) {
+	
         return {
           success: false,
           type: "saving_error",
@@ -184,7 +186,7 @@ export const updateUserData = async (formData, token) => {
 
 export const getSearch = async (searchParams, limit) => {
   try {
-    const response = await fetch(`http://localhost:8000/api/buscar/?${searchParams}`);
+    const response = await fetch(`https://biblioteca4.ieti.site/api/buscar/?${searchParams}`);
     const data = await response.json();
 
     if (limit === 0) {
@@ -202,7 +204,7 @@ export const getSearch = async (searchParams, limit) => {
 
 
 export const fetchCatalegById = async (id) => {
-  const response = await fetch(`http://localhost:8000/api/cataleg/${id}`);
+  const response = await fetch(`https://biblioteca4.ieti.site/api/cataleg/${id}`);
   if (!response.ok) {
     throw new Error('Error al obtener los datos del Cataleg');
   }
@@ -216,7 +218,7 @@ export const importCSV = async (file) => {
   formData.append("file", file);
 
   try {
-    const response = await fetch("http://localhost:8000/api/import-users/", {
+    const response = await fetch("https://biblioteca4.ieti.site/import-users/", {
       method: "POST",
       body: formData,
     });

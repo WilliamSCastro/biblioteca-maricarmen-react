@@ -4,14 +4,14 @@ import { ProfileForm } from "./ProfileForm";
 
 export default function Profile() {
   const { user, handleUserUpdates } = useUserContext();
-  
-
+  const url = `https://biblioteca4.ieti.site${user.imatge_url}`;
+  console.log(url)
   return (
     <>
-      <h2>{user.username}</h2>
-      <div style={{width: "20px", heigth: "20px", backgroundColor:"lightblue"}}>
-            <img src={user.imatge_url} alt="" />
-        </div>
+      <div id="title-box">
+        {user.imatge_url && <img src={url} alt="user_image" />}
+        <h2>{user.username}</h2>
+      </div>
       <UserInfo user={user} />
       <ProfileForm user={user} onUserUpdate={handleUserUpdates} />
     </>

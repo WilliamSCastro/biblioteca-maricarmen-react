@@ -15,16 +15,59 @@ const UserImport = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!file) {
-      setError("Por favor, selecciona un archivo CSV.");
+      setError("Si us plau, selecciona un arxiu CSV");
       return;
     }
 
     const { ok, data, error } = await importCSV(file);
 
     if (!ok) {
-      setError(data?.error || error || "Error desconocido");
+      setError(data?.error || error || "Error desconegut. Contacta amb l'administrador");
       return;
     }
+<<<<<<< HEAD
+    
+    setSummary(data);
+    }
+    return (
+      <div className="importContainer">
+        <h2>Importació massiva d'usuaris</h2>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="csvFile">Click aquí per seleccionar l'arxiu CSV:</label>
+          <input 
+            type="file" 
+            id="csvFile" 
+            accept=".csv" 
+            onChange={handleFileChange} 
+          />
+          <button type="submit">Importar usuaris</button>
+        </form>
+        
+        {error && (
+          <div className="errorMessage">
+            <p>{error}</p>
+          </div>
+        )}
+        
+        {summary && (
+          <div className="summaryMessage">
+            <p>{summary.message}</p>
+            {summary.errors && summary.errors.length > 0 && (
+              <ul>
+                {summary.errors.map((errMsg, idx) => (
+                  <li key={idx}>{errMsg}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
+      </div>
+    );
+  ;
+  
+  };
+=======
+>>>>>>> Jorge
 
     setSummary(data);
   }
