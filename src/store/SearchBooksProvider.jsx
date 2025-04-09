@@ -1,15 +1,16 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import {getSearch} from '../services/api'
+import {getSearch,fetchCatalegById} from '../services/api'
 // Crear el contexto
 export const SearchBooks = createContext();
 
 export function SearchBooksProvider({ children }) {
-  const [locatedBooks, setLocatedBooks] = useState([]);
+  const [locatedBooks, setLocatedBooks] = useState(0);
   const [fiveBestResults, setfiveBestResults] = useState([]);
   const [selectedBook, setSelectedBook] = useState([]);
   const [textInputSearch, setTextInputSearch] = useState('');
   const [infoCataleg, setInfoCataleg] = useState([]);
   const [locatedBooksCopy, setLocatedBooksCopy] = useState([]);
+  const [hasSearched, setHasSearched] = useState(false);
   // Este useEffect se ejecuta solo cuando cambia textInputSearch
   useEffect(() => {
     if (textInputSearch.length >= 3) {
@@ -45,6 +46,7 @@ export function SearchBooksProvider({ children }) {
       
       setfiveBestResults([]);
       setInfoCataleg([])
+      setHasSearched(true)
     }
    
   };
@@ -55,19 +57,16 @@ export function SearchBooksProvider({ children }) {
   }
   const fetchCataleg = async (id) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/cataleg/${id}`);
-      if (!response.ok) {
-        throw new Error('Error al obtener los datos');
-      }
-      const data = await response.json();
+      
+      const data = await fetchCatalegById(id)
       setInfoCataleg(data);
-      console.log(infoCataleg)
+     
       setLocatedBooksCopy(locatedBooks);
       setfiveBestResults([]); 
       setLocatedBooks([]);
-
+      
     } catch (err) {
-      setError(err.message);
+      console.log(err.message);
     }
   }
 
@@ -84,13 +83,15 @@ export function SearchBooksProvider({ children }) {
     selectedBook,
     textInputSearch,
     infoCataleg,
+    hasSearched,
     setLocatedBooks,
     setfiveBestResults,
     setSelectedBook,
     setTextInputSearch,
     searchBooks,
     fetchCataleg,
-    goToBack
+    goToBack,
+    setHasSearched
   };
 
   return (
