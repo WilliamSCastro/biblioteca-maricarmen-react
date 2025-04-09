@@ -102,7 +102,7 @@ export function ProfileForm({ user, onUserUpdate }) {
         />
         <ProfileInput
           id="telefon"
-          label="Telefon"
+          label="Telèfon"
           type="tel"
           defaultValue={user.telefon ?? ""}
           placeholder={user.telefon === null ? "936587412" : undefined}
