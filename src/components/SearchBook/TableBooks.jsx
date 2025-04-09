@@ -22,7 +22,7 @@ export default function TableBooks() {
           <td>{book.autor}</td>
           <td className="tableButtonCell">
             <Button className="default-button" onClick={() => fetchCataleg(book.id)}>
-              Obtener ID
+              Veure detall
             </Button>
           </td>
         </tr>
