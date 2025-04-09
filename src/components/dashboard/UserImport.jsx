@@ -25,7 +25,7 @@ const UserImport = () => {
       setError(data?.error || error || "Error desconegut. Contacta amb l'administrador");
       return;
     }
-<<<<<<< HEAD
+
     
     setSummary(data);
     }
@@ -65,12 +65,7 @@ const UserImport = () => {
     );
   ;
   
-  };
-=======
->>>>>>> Jorge
 
-    setSummary(data);
-  }
   return (
     <div className="importContainer">
       <h2>Importació massiva d'usuaris</h2>
