@@ -60,7 +60,11 @@ p, input {
 body {
 
   min-width: 320px;
+
  
+
+
+  min-height: 100vh;
 
 
   font-family: Arial, sans-serif;
@@ -838,3 +842,5 @@ div.input-box input:focus {
   justify-content: center;
   align-items: center;
 }
+
+
