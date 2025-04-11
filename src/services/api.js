@@ -21,9 +21,9 @@ export const getBooks = () => {
 export const logIn = async (username, password) => {
   const credentials = btoa(`${username}:${password}`);
   const authHeader = `Basic ${credentials}`;
-  console.log(`llamando API logIn en ${API_LOGIN}`);
-  console.log(credentials)
-  console.log(authHeader)
+  // console.log(`llamando API logIn en ${API_LOGIN}`);
+  // console.log(credentials)
+  // console.log(authHeader)
   try {
     const response = await fetch(API_LOGIN, {
       method: "GET",
@@ -52,7 +52,7 @@ export const logIn = async (username, password) => {
 
     try {
       const rawData = await response.json();
-      console.log("API Login Success Raw Data:", rawData);
+      // console.log("API Login Success Raw Data:", rawData);
 
       if (
         !rawData ||
@@ -92,7 +92,7 @@ export const logIn = async (username, password) => {
 };
 
 export const getUserData = async (token) => {
-  console.log(`Calling API getUserData at ${API_ME} with token`);
+  // console.log(`Calling API getUserData at ${API_ME} with token`);
 
   try {
     const response = await fetch(API_ME, {
@@ -105,7 +105,7 @@ export const getUserData = async (token) => {
     if (!response.ok) {
       // Handle errors like invalid/expired token (e.g., 401 Unauthorized)
       let errorMessage = `Error fetching user data (Status: ${response.status})`;
-      console.log(response.status);
+      // console.log(response.status);
       if (response.status === 401) {
         errorMessage = "Invalid or expired token.";
       } else {
@@ -127,7 +127,7 @@ export const getUserData = async (token) => {
 
     // Token is valid, get user data
     const userData = await response.json();
-    console.log("API getUserData Success:", userData);
+    // console.log("API getUserData Success:", userData);
     // The backend should NOT return the token again here, just user info
     return { success: true, userData: userData };
   } catch (networkError) {
@@ -186,18 +186,23 @@ export const updateUserData = async (formData, token) => {
 
 export const getSearch = async (searchParams, limit) => {
   try {
-    const response = await fetch(`https://biblioteca4.ieti.site/api/buscar/?${searchParams}`);
+    const response = await fetch(`http://localhost:8000/api/buscar/?${searchParams}`);
+
+    if (!response.ok) {
+      const text = await response.text(); // Intentá al menos ver qué devolvió
+      console.error('Respuesta no válida del servidor:', response.status, text);
+      return [];
+    }
+
     const data = await response.json();
 
     if (limit === 0) {
-      // Devuelve todos los datos
       return data;
     } else {
-      // Devuelve solo los primeros "limit" elementos (por ejemplo, 5 resultados)
       return data.slice(0, limit);
     }
   } catch (err) {
-    console.error('Error:', err);
+    console.error('Error en getSearch:', err);
     return [];
   }
 };
@@ -218,7 +223,7 @@ export const importCSV = async (file) => {
   formData.append("file", file);
 
   try {
-    const response = await fetch("https://biblioteca4.ieti.site/api/import-users/", {
+    const response = await fetch("http://localhost:8000/api/import-users/", {
       method: "POST",
       body: formData,
     });

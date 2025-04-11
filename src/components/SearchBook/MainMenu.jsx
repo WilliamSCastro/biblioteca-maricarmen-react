@@ -5,10 +5,11 @@ import TableBooks from './TableBooks';
 import { useSearchBooks } from '../../store/SearchBooksProvider';
 import FiveBest from './FiveBest';
 import CatalegDetail from './CatalegDetail';
-
+import Modal from '../utils/Modal'
 function MainMenu() {
 
-  const { hasSearched,infoCataleg, fiveBestResults, locatedBooks } = useSearchBooks();
+  const { hasSearched,infoCataleg, isLoadingModal ,fiveBestResults, locatedBooks } = useSearchBooks();
+
 
 
 
@@ -17,7 +18,12 @@ function MainMenu() {
 
 
 
+       
+
       <SearchBooks></SearchBooks>
+      <Modal isOpen={isLoadingModal}>
+          <p>Carregant Dades...</p>
+        </Modal>
       {fiveBestResults.length > 0 && <FiveBest></FiveBest>}
       {infoCataleg && Object.keys(infoCataleg).length > 0 && <CatalegDetail />}
       {hasSearched === true &&

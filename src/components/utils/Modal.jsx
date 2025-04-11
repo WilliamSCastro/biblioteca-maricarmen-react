@@ -10,6 +10,7 @@ function Modal({ children, isOpen }) {
 
     if (isOpen) {
       dialog.current.showModal();
+     
     } else if (dialog.current.open) {
       dialog.current.close();
     }

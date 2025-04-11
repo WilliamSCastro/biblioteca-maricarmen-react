@@ -11,7 +11,7 @@ function NavBar({ screen, onLoginClick, onLogoutClick,onGoToMainMenu, onGoToDash
     <nav>
       <div className="divLogo">
         <img src={logo} width={100}></img>
-        <h1>Biblioteca Maricarmen</h1>
+        <h1>Biblioteca Maricarmen Brito</h1>
       </div>
       {!user && screen === MAIN_SCREENS.CATALEG && (
         <Button onClick={onLoginClick} className="default-button">Iniciar sessió</Button>
