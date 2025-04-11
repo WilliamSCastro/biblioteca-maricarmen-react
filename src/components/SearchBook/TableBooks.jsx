@@ -9,7 +9,7 @@ export default function TableBooks() {
         <table className="catalogTable">
   <thead>
     <tr>
-      <th>Titol</th>
+      <th>Títol</th>
       <th>Autor</th>
       <th>Més Dades</th>
     </tr>

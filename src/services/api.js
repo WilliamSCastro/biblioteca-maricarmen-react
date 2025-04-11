@@ -186,18 +186,23 @@ export const updateUserData = async (formData, token) => {
 
 export const getSearch = async (searchParams, limit) => {
   try {
-    const response = await fetch(`https://biblioteca4.ieti.site/api/buscar/?${searchParams}`);
+    const response = await fetch(`http://localhost:8000/api/buscar/?${searchParams}`);
+
+    if (!response.ok) {
+      const text = await response.text(); // Intentá al menos ver qué devolvió
+      console.error('Respuesta no válida del servidor:', response.status, text);
+      return [];
+    }
+
     const data = await response.json();
 
     if (limit === 0) {
-      // Devuelve todos los datos
       return data;
     } else {
-      // Devuelve solo los primeros "limit" elementos (por ejemplo, 5 resultados)
       return data.slice(0, limit);
     }
   } catch (err) {
-    console.error('Error:', err);
+    console.error('Error en getSearch:', err);
     return [];
   }
 };
@@ -218,7 +223,7 @@ export const importCSV = async (file) => {
   formData.append("file", file);
 
   try {
-    const response = await fetch("https://biblioteca4.ieti.site/api/import-users/", {
+    const response = await fetch("http://localhost:8000/api/import-users/", {
       method: "POST",
       body: formData,
     });

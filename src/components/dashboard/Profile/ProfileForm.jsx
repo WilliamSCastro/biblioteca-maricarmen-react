@@ -14,11 +14,8 @@ export function ProfileForm({ user, onUserUpdate }) {
   const [isLoading, setIsLoading] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [fileName, setFileName] = useState(null);
 
-  function handleFileNameChange(name) {
-    setFileName(name)
-  }
+
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -64,7 +61,6 @@ export function ProfileForm({ user, onUserUpdate }) {
       if (res.data.type === "success_modify") {
         onUserUpdate(res.data.userData);
         setModalMessage("Les dades s'han actualitzat correctament");
-        setFileName(null)
       } else {
         setModalMessage("No hi han hagut canvis");
       }
@@ -109,7 +105,7 @@ export function ProfileForm({ user, onUserUpdate }) {
           error={errors.telefon}
         />
         
-        <AvatarInput error={errors.avatar}  fileName={fileName} setFileNameInAvatar={handleFileNameChange}/>
+        <AvatarInput error={errors.avatar}  />
         <input
           type="submit"
           value={isLoading ? "Actualizant" : "Actualitzar"}

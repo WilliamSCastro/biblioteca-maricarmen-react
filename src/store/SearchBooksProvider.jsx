@@ -11,6 +11,11 @@ export function SearchBooksProvider({ children }) {
   const [infoCataleg, setInfoCataleg] = useState([]);
   const [locatedBooksCopy, setLocatedBooksCopy] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
+
+
+
+  const [isLoadingModal, setIsLoadingModal] = useState(false) 
+
   // Este useEffect se ejecuta solo cuando cambia textInputSearch
   useEffect(() => {
     if (textInputSearch.length >= 3) {
@@ -18,8 +23,7 @@ export function SearchBooksProvider({ children }) {
         const params = new URLSearchParams();
         params.append('q', textInputSearch);
   
-        
-  
+      
         const results = await getSearch(params.toString(), 5);
         setfiveBestResults(results);
   
@@ -34,21 +38,26 @@ export function SearchBooksProvider({ children }) {
 
   const searchBooks = async () => {
     const params = new URLSearchParams();
-
-    if( textInputSearch === ""){
-      setLocatedBooks([]);
-    }else{
-      params.append('q', textInputSearch);
-
-
-      const results = await getSearch(params.toString(), 0);
-      setLocatedBooks(results);
-      
-      setfiveBestResults([]);
-      setInfoCataleg([])
-      setHasSearched(true)
+  
+    setIsLoadingModal(true); // 👈 Mostrar modal de carga
+  
+    try {
+      if (textInputSearch === "") {
+        setLocatedBooks([]);
+      } else {
+        params.append('q', textInputSearch);
+  
+        const results = await getSearch(params.toString(), 0);
+        setLocatedBooks(results);
+        setfiveBestResults([]);
+        setInfoCataleg([]);
+        setHasSearched(true);
+      }
+    } catch (error) {
+      console.error("Error buscando libros:", error);
+    } finally {
+      setIsLoadingModal(false); // 👈 Ocultar modal
     }
-   
   };
 
   const goToBack = () =>{
@@ -84,6 +93,8 @@ export function SearchBooksProvider({ children }) {
     textInputSearch,
     infoCataleg,
     hasSearched,
+    isLoadingModal,            
+    setIsLoadingModal,          
     setLocatedBooks,
     setfiveBestResults,
     setSelectedBook,
@@ -93,7 +104,6 @@ export function SearchBooksProvider({ children }) {
     goToBack,
     setHasSearched
   };
-
   return (
     <SearchBooks.Provider value={values}>
       {children}
