@@ -1,7 +1,12 @@
-const API_URL = "http://https://biblioteca4.ieti.site/api/llibres";
-const API_LOGIN = `https://biblioteca4.ieti.site/api/token`;
-const API_ME = `https://biblioteca4.ieti.site/api/me`;
-const API_UPDATE_USER_DATA = "https://biblioteca4.ieti.site/api/update-profile/";
+// const API_URL = "http://https://biblioteca4.ieti.site/api/llibres";
+// const API_LOGIN = `https://biblioteca4.ieti.site/api/token`;
+// const API_ME = `https://biblioteca4.ieti.site/api/me`;
+// const API_UPDATE_USER_DATA = "https://biblioteca4.ieti.site/api/update-profile/";
+
+const API_URL = "http://127.0.0.1:8000/api/llibres";
+const API_LOGIN = `http://127.0.0.1:8000/api/token`;
+const API_ME = `http://127.0.0.1:8000/api/me`;
+const API_UPDATE_USER_DATA = "http://127.0.0.1:8000/api/update-profile/";
 
 export const getBooks = () => {
   console.log(`llamando API getBooks en ${API_URL}`);
