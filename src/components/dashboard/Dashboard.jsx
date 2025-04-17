@@ -23,14 +23,11 @@ function Dashboard({ noUserDetected }) {
   return (
     <main id="dashboard">
       <DashboardMenu setScreen={handleScreenSelection} currentScreen={currentDashboardScreen}/>
-      <section>
-        {currentDashboardScreen === DASHBOARD_SCREENS.WELCOME && <Welcome/>}
-        {currentDashboardScreen === DASHBOARD_SCREENS.UPDATE_USER && <Profile/>}
-
-        {currentDashboardScreen === DASHBOARD_SCREENS.IMPORT_USERS && (
-         <UserImport/>
-        )}
-      </section>
+      {currentDashboardScreen === DASHBOARD_SCREENS.WELCOME && <Welcome/>}
+      {currentDashboardScreen === DASHBOARD_SCREENS.UPDATE_USER && <Profile/>}
+      {currentDashboardScreen === DASHBOARD_SCREENS.IMPORT_USERS && (
+        <UserImport/>
+      )}
     </main>
   );
 }
