@@ -322,6 +322,7 @@ main#login div form {
 }
 
 main#login div form button {
+  font-family: Oswald, sans-serif;
   color: #FFFFFFFF;
   background: #0043A8FF;
   border: none;
@@ -671,7 +672,7 @@ html.dark .fiveBestDiv {
 }
 
 .fiveItem {
-
+  font-family: "Roboto", sans-serif;
   padding: 16px 16px;
   display: flex;
   align-items: center;
