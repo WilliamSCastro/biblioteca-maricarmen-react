@@ -14,7 +14,7 @@ const Footer = ({ screen }) => {
       </div>
       {(screen === MAIN_SCREENS.CATALEG || screen === MAIN_SCREENS.LOGIN) && (
         <div className="banner">
-          <a href="https://agora.xtec.cat/iesesteveterradas/"><img src={banner} alt="Banner" /></a>
+          <a href="https://agora.xtec.cat/iesesteveterradas/"></a>
         </div>
       )}
     </footer>

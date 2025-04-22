@@ -6,16 +6,14 @@ import {
 } from "../../../services/validators";
 import { updateUserData } from "../../../services/api";
 import { ProfileInput } from "./ProfileInput";
-import { AvatarInput } from "./AvatarInput";
 import Modal from "../../utils/Modal";
+import { AvatarInput } from "./AvatarInput";
 
 export function ProfileForm({ user, onUserUpdate }) {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -104,7 +102,6 @@ export function ProfileForm({ user, onUserUpdate }) {
           placeholder={user.telefon === null ? "936587412" : undefined}
           error={errors.telefon}
         />
-        
         <AvatarInput error={errors.avatar}  />
         <input
           type="submit"
