@@ -1234,74 +1234,74 @@ main#main-menu {
 }
 
 /* Modo noche para PrestamoView */
-html.dark .prestamo-container {
+.app-content.dark .prestamo-container {
   background-color: #030a22;
   color: #ffffff;
 }
 
-html.dark .exemplar-card {
+.app-content.dark .exemplar-card {
   background-color: #121c33;
   border-color: #002169;
 }
 
-html.dark .subheader {
+.app-content.dark .subheader {
   color: #ffffff;
 }
 
-html.dark .search-section {
+.app-content.dark .search-section {
   background-color: #121c33;
   border-color: #002169;
 }
 
-html.dark .search-input {
+.app-content.dark .search-input {
   background-color: #1a2433;
   border: 2px solid #032047;
   color: #ffffff;
 }
 
-html.dark .search-button {
+.app-content.dark .search-button {
   background-color: var(--secondary-blue);
   color: var(--text-light);
 }
 
-html.dark .search-button:hover {
+.app-content.dark .search-button:hover {
   background-color: var(--primary-blue);
 }
 
-html.dark .results-table th {
+.app-content.dark .results-table th {
   background-color: var(--secondary-blue);
   color: var(--text-light);
 }
 
-html.dark .results-table td {
+.app-content.dark .results-table td {
   border-color: #0b1940;
   color: #ffffff;
 }
 
-html.dark .results-table tr:nth-child(even) {
+.app-content.dark .results-table tr:nth-child(even) {
   background-color: #0b1940;
 }
 
-html.dark .results-table tr:hover {
+.app-content.dark .results-table tr:hover {
   background-color: #002f6f;
 }
 
-html.dark .results-table tr.selected {
+.app-content.dark .results-table tr.selected {
   background-color: #002169;
   color: var(--text-light);
 }
 
-html.dark .selected-user-card {
+.app-content.dark .selected-user-card {
   background-color: #121c33;
   border-color: #002169;
   color: #ffffff;
 }
 
-html.dark .loan-button {
+.app-content.dark .loan-button {
   background-color: var(--secondary-blue);
   color: var(--text-light);
 }
 
-html.dark .loan-button:hover {
+.app-content.dark .loan-button:hover {
   background-color: var(--primary-blue);
 }
