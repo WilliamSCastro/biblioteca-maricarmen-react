@@ -5,8 +5,9 @@ import { useUserContext } from "../../store/UserProvider";
 
 const CatalegDetail = () => {
   const { infoCataleg, goToBack, setIsALoanAButtonActive, setLoanExemplarId } = useContext(SearchBooks);
-   const { user } = useUserContext();
-
+  const { user } = useUserContext();
+  user.role = "Bibliotecari"
+  user.centre = "Centre A"
   // Si no hay datos, mostramos un mensaje
   if (!infoCataleg) {
     return <div className="noData">No hay datos disponibles.</div>;
@@ -146,12 +147,19 @@ const CatalegDetail = () => {
                 <p><strong>Baixa:</strong> {exemplar.baixa ? 'Sí' : 'No'}</p>
                 {exemplar.centre && (
                   <p>
-                    <strong>Centre:</strong> {exemplar.centre.nom} 
-                   
+                    <strong>Centre:</strong> {exemplar.centre.nom}
+
                   </p>
 
                 )}
-                 {user?.role?.toLowerCase() === "bibliotecari" && !exemplar.exclos_prestec  && <Button onClick={() => setChangeOnLoanButton(exemplar.id)} className = "default-button-green">Préstec</Button>}
+               
+                {user?.role?.toLowerCase() === "bibliotecari" &&
+                  !exemplar?.exclos_prestec &&
+                  user?.centre === exemplar?.centre.nom &&  !exemplar.baixa && (
+                    <Button onClick={() => setChangeOnLoanButton(exemplar.id)} className="default-button-green">
+                      Préstec
+                    </Button>
+                  )}
               </li>
             ))}
           </ul>
