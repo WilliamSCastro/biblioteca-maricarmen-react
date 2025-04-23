@@ -43,7 +43,20 @@ body {
   background-color: white;
 }
 
-html.dark #root {
+/* .app-content.dark #root {
+  background-color: #030a22;
+} */
+
+.app-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  gap: 5px;
+  background-color: white;
+}
+
+.app-content.dark {
   background-color: #030a22;
 }
 
@@ -111,11 +124,11 @@ html.dark #root {
   border-color: #BDC1CAFF;
 }
 
-html.dark .input-field:hover {
+.app-content.dark .input-field:hover {
   background-color: rgb(240, 250, 255);
 }
 
-html.dark .input-field:focus {
+.app-content.dark .input-field:focus {
 
   background-color: rgb(215, 225, 255);
 }
@@ -153,7 +166,7 @@ nav {
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
-html.dark nav {
+.app-content.dark nav {
   background-color: #080c19;
   box-shadow: 0px 3px 5px 0px rgba(255, 255, 255, 0.1);
 }
@@ -171,7 +184,7 @@ nav h1 {
   font-weight: 700;
 }
 
-html.dark nav h1 {
+.app-content.dark nav h1 {
   color: white;
 }
 
@@ -203,16 +216,16 @@ nav div#nav-options {
   padding-bottom: 7px;
 }
 
-html.dark .page-selection {
+.app-content.dark .page-selection {
   background-color: #080c19;
   color: #bdc1ca;
 }
 
-html.dark .page-selection:not(.active):hover {
+.app-content.dark .page-selection:not(.active):hover {
   border-color: #bdc1ca;
 }
 
-html.dark .page-selection.active {
+.app-content.dark .page-selection.active {
   color: white;
   border-color: white;
 }
@@ -223,7 +236,7 @@ nav div#user-options {
   gap: 15px;
 }
 
-html.dark nav div#user-options {
+.app-content.dark nav div#user-options {
   color: white;
 }
 
@@ -237,7 +250,7 @@ html.dark nav div#user-options {
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
 }
 
-html.dark .footer {
+.app-content.dark .footer {
   background-color: #080c19;
   box-shadow: 0 -2px 8px rgba(255, 255, 255, 0.1);
 }
@@ -274,7 +287,7 @@ main {
   
 }
 
-html.dark main {
+.app-content.dark main {
   background-color: #030a22; 
 }
 
@@ -305,7 +318,7 @@ main#login div h2 {
   margin-bottom: 20px;
 }
 
-html.dark main#login div h2 {
+.app-content.dark main#login div h2 {
   color: white;
 }
 
@@ -381,7 +394,7 @@ main#dashboard aside {
   flex: 0 1 20%;
 }
 
-html.dark main#dashboard aside h2 {
+.app-content.dark main#dashboard aside h2 {
   color: white;
 }
 
@@ -399,7 +412,7 @@ main#dashboard aside button, main#dashboard aside a {
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
 }
 
-html.dark main#dashboard aside button, html.dark main#dashboard aside a {
+.app-content.dark main#dashboard aside button, .app-content.dark main#dashboard aside a {
   color: white;
   background-color: #071647;
   border: 1px solid #071647;
@@ -412,7 +425,7 @@ main#dashboard aside button:not(.active):hover, main#dashboard aside a:hover {
   cursor: pointer;
 }
 
-html.dark main#dashboard aside button:not(.active):hover, html.dark main#dashboard aside a:hover {
+.app-content.dark main#dashboard aside button:not(.active):hover, .app-content.dark main#dashboard aside a:hover {
   background-color: #002b6b;
 }
 
@@ -421,7 +434,7 @@ main#dashboard aside button.active {
   border: 1px solid #0043A8FF;
 }
 
-html.dark  main#dashboard aside button.active {
+.app-content.dark  main#dashboard aside button.active {
   background-color: #0043a8;
   border: 1px solid #0043a8;
 }
@@ -466,7 +479,7 @@ section #welcome-dashboard p {
   font-size: 24px
 }
 
-html.dark section #welcome-dashboard h2, html.dark section #welcome-dashboard p {
+.app-content.dark section #welcome-dashboard h2, .app-content.dark section #welcome-dashboard p {
   color: white;
 }
 
@@ -481,7 +494,7 @@ section#user-profile #title-box h2 {
   margin: 0;
 }
 
-html.dark #user-profile #title-box h2 {
+.app-content.dark #user-profile #title-box h2 {
   color: white;
 }
 
@@ -500,7 +513,7 @@ section#user-profile div.info-box > h3,  section#user-profile div.info-box > p {
   margin: 0;
 }
 
-html.dark section#user-profile div.info-box > h3, html.dark section#user-profile div.info-box > p {
+.app-content.dark section#user-profile div.info-box > h3, .app-content.dark section#user-profile div.info-box > p {
   color: white;
 }
 
@@ -515,7 +528,7 @@ section#user-profile div.input-box label {
   font-size: 18px;
 }
 
-html.dark section#user-profile div.input-box label {
+.app-content.dark section#user-profile div.input-box label {
   color: white;
 }
 
@@ -541,11 +554,11 @@ section#user-profile div.input-box input:focus {
   border-color: black;
 }
 
-html.dark section#user-profile div.input-box input:hover {
+.app-content.dark section#user-profile div.input-box input:hover {
   background-color: rgb(240, 250, 255);
 }
 
-html.dark section#user-profile div.input-box input:focus {
+.app-content.dark section#user-profile div.input-box input:focus {
   background-color: rgb(215, 225, 255);
 }
 
@@ -561,7 +574,7 @@ section#user-profile #upload_avatar_box h3 {
   margin-bottom: 5px;
 }
 
-html.dark section#user-profile #upload_avatar_box h3, html.dark section#user-profile #upload_avatar_box input {
+.app-content.dark section#user-profile #upload_avatar_box h3, .app-content.dark section#user-profile #upload_avatar_box input {
   color: white;
 }
 
@@ -633,11 +646,11 @@ main#main-menu {
   font-family: "Oswald", sans-serif;
 }
 
-html.dark .h1Cataleg{
+.app-content.dark .h1Cataleg{
   color: white;
 }
 
-html.dark #main-menu h4 {
+.app-content.dark #main-menu h4 {
   color: white
 }
 
@@ -665,7 +678,7 @@ html.dark #main-menu h4 {
   border-radius: 4px;
 }
 
-html.dark .fiveBestDiv {
+.app-content.dark .fiveBestDiv {
 
   background-color: #071647;
   border: none;
@@ -684,7 +697,7 @@ html.dark .fiveBestDiv {
 
 }
 
-html.dark .fiveItem {
+.app-content.dark .fiveItem {
  
   background-color: #071647;
   color: white;
@@ -703,7 +716,7 @@ html.dark .fiveItem {
   cursor: pointer;
 }
 
-html.dark .fiveItem:hover {
+.app-content.dark .fiveItem:hover {
   background-color: #0043a8;
 }
 
@@ -717,7 +730,7 @@ html.dark .fiveItem:hover {
   font-family: 'Roboto', sans-serif;
 }
 
-html.dark .catalegContainer {
+.app-content.dark .catalegContainer {
   background-color: #121c33;
   box-shadow: 0 3px 8px rgba(255, 255, 255, 0.1);
 }
@@ -737,7 +750,7 @@ html.dark .catalegContainer {
   font-weight: 700;
 }
 
-html.dark .catalegTitle {
+.app-content.dark .catalegTitle {
   color: white;
 }
 
@@ -768,7 +781,7 @@ html.dark .catalegTitle {
   color: #555;
 }
 
-html.dark .catalegSection p {
+.app-content.dark .catalegSection p {
   color: white;
 }
 
@@ -783,7 +796,7 @@ html.dark .catalegSection p {
   font-weight: 600;
 }
 
-html.dark .subclassTitle {
+.app-content.dark .subclassTitle {
   color: white;
 }
 
@@ -829,7 +842,7 @@ html.dark .subclassTitle {
   font-family: 'Roboto', sans-serif;
 }
 
-html.dark .catalogTable {
+.app-content.dark .catalogTable {
   color: white;
   background-color: #121c33;
   border: 1px solid #e6e6e6;
@@ -857,7 +870,7 @@ html.dark .catalogTable {
   transition: background 0.3s ease;
 }
 
-html.dark .catalogTable tbody tr {
+.app-content.dark .catalogTable tbody tr {
   border-bottom: 1px solid #002169;
 }
 
@@ -865,7 +878,7 @@ html.dark .catalogTable tbody tr {
   background-color: #f9f9f9;
 }
 
-html.dark .catalogTable tbody tr:nth-child(even) {
+.app-content.dark .catalogTable tbody tr:nth-child(even) {
   background-color: #010e57;
 }
 
@@ -873,7 +886,7 @@ html.dark .catalogTable tbody tr:nth-child(even) {
   background-color: #e6f0ff; /* Tono azul muy claro basado en el color principal */
 }
 
-html.dark .catalogTable tbody tr:hover {
+.app-content.dark .catalogTable tbody tr:hover {
   background-color: #002169; /* Tono azul muy claro basado en el color principal */
 }
 
@@ -883,7 +896,7 @@ html.dark .catalogTable tbody tr:hover {
   color: #333;
 }
 
-html.dark .catalogTable tbody td {
+.app-content.dark .catalogTable tbody td {
   color: white;
 }
 
@@ -926,7 +939,7 @@ html.dark .catalogTable tbody td {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-html.dark .importContainer {
+.app-content.dark .importContainer {
 
   background-color: #121c33;
   border: 1px solid #121c33;
@@ -940,7 +953,7 @@ html.dark .importContainer {
   font-size: 1.8rem;
 }
 
-html.dark .importContainer h2 {
+.app-content.dark .importContainer h2 {
   color: rgb(0, 102, 255);
 }
 
@@ -956,7 +969,7 @@ html.dark .importContainer h2 {
   color: #333;
 }
 
-html.dark .importContainer label {
+.app-content.dark .importContainer label {
   color: white;
 }
 
@@ -967,7 +980,7 @@ html.dark .importContainer label {
   font-size: 1rem;
 }
 
-html.dark .importContainer input[type="file"] {
+.app-content.dark .importContainer input[type="file"] {
   color: white;
 }
 
@@ -997,7 +1010,7 @@ html.dark .importContainer input[type="file"] {
   font-weight: 500;
 }
 
-html.dark .errorMessage {
+.app-content.dark .errorMessage {
   background-color: #a50000;
   color: #ffffff;
   padding: 10px;
@@ -1015,11 +1028,11 @@ html.dark .errorMessage {
   font-weight: 500;
 }
 
-html.dark .summaryMessage {
+.app-content.dark .summaryMessage {
   background-color: #071647;
 }
 
-html.dark .summaryMessage p {
+.app-content.dark .summaryMessage p {
   color: white;
 }
 
@@ -1043,7 +1056,7 @@ html.dark .summaryMessage p {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
 
-html.dark .modal {
+.app-content.dark .modal {
   color: white;
   background-color: #071647;
   border: 1px solid white;
