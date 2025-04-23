@@ -3,7 +3,7 @@ import ItemBestBook from "./ItemBestBooks";
 import {SearchBooks} from '../../store/SearchBooksProvider'
 export default function FiveBest() {
     
-    const {fiveBestResults, fetchCataleg} = useContext(SearchBooks);
+    const {fiveBestResults, fetchCataleg, setSelectedBook} = useContext(SearchBooks);
     
   return (
       
@@ -11,7 +11,7 @@ export default function FiveBest() {
         {fiveBestResults.map((book, index) => (
           <ItemBestBook
             key={index}
-            onClick={() => fetchCataleg(book["id"])}
+            onClick={() => {fetchCataleg(book["id"]), setSelectedBook(book["id"])}}
           ><span className="bold-text" >{book["titol"]}</span>  - {book["autor"]}</ItemBestBook>
         ))}
       </div>

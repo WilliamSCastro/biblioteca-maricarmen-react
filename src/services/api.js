@@ -214,7 +214,7 @@ export const getSearch = async (searchParams, limit) => {
 
 
 export const fetchCatalegById = async (id) => {
-  const response = await fetch(`https://biblioteca4.ieti.site/api/cataleg/${id}`);
+  const response = await fetch(`http://localhost:8000/api/cataleg/${id}`);
   if (!response.ok) {
     throw new Error('Error al obtener los datos del Cataleg');
   }
@@ -250,3 +250,35 @@ export const importCSV = async (file) => {
   }
 };
 
+
+export async function searchUsers(query) {
+  const q = query?.trim();
+  if (!q) return [];
+  const url = 'http://localhost:8000/api/users/?query=' + encodeURIComponent(q);
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(`Error ${res.status} buscando usuarios`);
+  }
+  const data = await res.json();
+  return Array.isArray(data) ? data : [];
+}
+
+export async function createLoan(userId, exemplarId) {
+  const res = await fetch('http://localhost:8000/api/loans/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ userId, exemplarId }),
+  });
+  const text = await res.text();
+  if (!res.ok) {
+    let detail;
+    try { detail = JSON.parse(text).detail; }
+    catch { detail = text; }
+    throw new Error(detail || `Error ${res.status} al realizar préstamo`);
+  }
+  try {
+    return JSON.parse(text);
+  } catch {
+    return text;
+  }
+}
