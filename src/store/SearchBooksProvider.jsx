@@ -17,6 +17,7 @@ export function SearchBooksProvider({ children }) {
   const [isALoanAButtonActive, setIsALoanAButtonActive] = useState(false)
   const [loanExemplarID, setLoanExemplarId] = useState(null);
   const [isLoadingModal, setIsLoadingModal] = useState(false) 
+  
 
   // Este useEffect se ejecuta solo cuando cambia textInputSearch
   useEffect(() => {

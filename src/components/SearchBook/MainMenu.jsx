@@ -21,7 +21,7 @@ function MainMenu() {
 
        
 
-      <SearchBooks></SearchBooks>
+      { !isALoanAButtonActive && <SearchBooks></SearchBooks>}
       <Modal isOpen={isLoadingModal}>
           <p>Carregant Dades...</p>
         </Modal>
@@ -31,9 +31,9 @@ function MainMenu() {
       {hasSearched === true &&
         Array.isArray(locatedBooks) &&
         locatedBooks.length === 0 &&
-        Object.keys(infoCataleg).length === 0 &&
+        Object.keys(infoCataleg).length === 0 && !isALoanAButtonActive && 
         <h4>No hi ha llibres disponibles</h4>}
-      {locatedBooks.length > 0 && Object.keys(infoCataleg).length === 0 && <TableBooks></TableBooks>}
+      {locatedBooks.length > 0 && Object.keys(infoCataleg).length === 0 && !isALoanAButtonActive && <TableBooks></TableBooks>}
 
 
 

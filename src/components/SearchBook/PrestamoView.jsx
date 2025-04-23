@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useSearchBooks } from "../../store/SearchBooksProvider";
 import { searchUsers, createLoan } from '../../services/api';
+
+
 const PrestamoView = () => {
+  
+  const [hasSearchUser , setHasSearchUser] = useState(false)
   const {
     fetchCataleg,
     userQuery,
@@ -15,41 +19,47 @@ const PrestamoView = () => {
     selectedBook
   } = useSearchBooks();
 
-  // 1. Buscar usuarios via utils/api.js
-const handleSearchUser = async () => {
-  try {
-    // Llama a la función externalizada
-    const users = await searchUsers(userQuery);
-    setUserResults(users);
-  } catch (error) {
-    console.error('Error al buscar usuarios:', error);
-    alert('Error al buscar usuarios');
-  }
-};
+  // Función para volver atrás
+  const handleBack = () => {
+    setIsALoanAButtonActive(false)
+  };
 
-// 2. Crear préstamo via utils/api.js
-const handleLoan = async () => {
-  if (!selectedUser) {
-    return alert('Seleccione primero un usuario');
-  }
-  try {
-    // Llama a la función externalizada
-    await createLoan(selectedUser.id, loanExemplarID);
-    alert('Préstamo realizado con éxito');
-    setIsALoanAButtonActive(false);
-    setSelectedUser(null);
-    setUserResults([]);
-    setUserQuery('');
-    fetchCataleg(selectedBook);
-  } catch (error) {
-    console.error('Error al realizar el préstamo:', error);
-    alert(`Error al realizar el préstamo: ${error.message}`);
-  }
-};
+  const handleSearchUser = async () => {
+    try {
+      const users = await searchUsers(userQuery);
+      setUserResults(users);
+      setHasSearchUser(true);
+    } catch (error) {
+      console.error('Error al buscar usuarios:', error);
+      alert('Error al buscar usuarios');
+    }
+  };
+
+  const handleLoan = async () => {
+    if (!selectedUser) {
+      return alert('Seleccione primero un usuario');
+    }
+    try {
+      await createLoan(selectedUser.id, loanExemplarID);
+      alert('Préstamo realizado con éxito');
+      setIsALoanAButtonActive(false);
+      setSelectedUser(null);
+      setUserResults([]);
+      setUserQuery('');
+      fetchCataleg(selectedBook);
+    } catch (error) {
+      console.error('Error al realizar el préstamo:', error);
+      alert(`Error al realizar el préstamo: ${error.message}`);
+    }
+  };
 
   return (
     <div className="prestamo-container">
       <h2 className="header">Préstec d'Exemplar</h2>
+
+      <button onClick={handleBack} className="defaultButton">
+        Tornar enrere
+      </button>
 
       <div className="search-section">
         <h3 className="subheader">Cercar Usuari</h3>
@@ -66,7 +76,7 @@ const handleLoan = async () => {
           </button>
         </div>
 
-        <table className="results-table">
+       { hasSearchUser && userResults && ( <table className="results-table">
           <thead>
             <tr>
               <th>Nom</th>
@@ -88,7 +98,7 @@ const handleLoan = async () => {
                 <td>{u.username}</td>
               </tr>
             ))}
-            {userResults.length === 0 && (
+            {userResults.length === 0  && (
               <tr>
                 <td colSpan="4" style={{ textAlign: 'center' }}>
                   Cap resultat
@@ -96,7 +106,7 @@ const handleLoan = async () => {
               </tr>
             )}
           </tbody>
-        </table>
+        </table>)}
 
         {selectedUser && (
           <div className="selected-user-card">

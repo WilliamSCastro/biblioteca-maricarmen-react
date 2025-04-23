@@ -1154,6 +1154,7 @@ main#main-menu {
   border-radius: var(--border-radius);
   padding: var(--padding-md);
   margin-bottom: 24px;
+  margin-top: 20px;
 }
 .search-section .search-input {
   width: calc(100% - 120px);
