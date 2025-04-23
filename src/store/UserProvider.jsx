@@ -15,17 +15,15 @@ export function UserProvider({ children }) {
       return window.matchMedia("(prefers-color-scheme: dark)").matches;
     });
   
-    useEffect(() => {
-      if (isDark) {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-      }
-    }, [isDark]);
-  
-    const toggleTheme = () => setIsDark((prev) => !prev);
+  useEffect(() => {
+    if (isDark) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+  }, [isDark]);
+
+  const toggleTheme = () => setIsDark((prev) => !prev);
 
   const login = (userData, token) => {
     localStorage.setItem("authToken", token);
