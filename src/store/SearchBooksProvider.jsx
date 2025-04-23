@@ -11,9 +11,11 @@ export function SearchBooksProvider({ children }) {
   const [infoCataleg, setInfoCataleg] = useState([]);
   const [locatedBooksCopy, setLocatedBooksCopy] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
-
-
-
+  const [userQuery, setUserQuery] = useState('');
+  const [userResults, setUserResults] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [isALoanAButtonActive, setIsALoanAButtonActive] = useState(false)
+  const [loanExemplarID, setLoanExemplarId] = useState(null);
   const [isLoadingModal, setIsLoadingModal] = useState(false) 
 
   // Este useEffect se ejecuta solo cuando cambia textInputSearch
@@ -93,7 +95,12 @@ export function SearchBooksProvider({ children }) {
     textInputSearch,
     infoCataleg,
     hasSearched,
-    isLoadingModal,            
+    isLoadingModal, 
+    userQuery,   
+    userResults,
+    selectedUser,
+    isALoanAButtonActive,
+    loanExemplarID,
     setIsLoadingModal,          
     setLocatedBooks,
     setfiveBestResults,
@@ -102,7 +109,12 @@ export function SearchBooksProvider({ children }) {
     searchBooks,
     fetchCataleg,
     goToBack,
-    setHasSearched
+    setHasSearched,
+    setUserQuery,
+    setUserResults,
+    setSelectedUser,
+    setIsALoanAButtonActive,
+    setLoanExemplarId
   };
   return (
     <SearchBooks.Provider value={values}>
