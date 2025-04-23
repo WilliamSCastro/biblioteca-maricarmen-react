@@ -85,6 +85,41 @@ body {
   
 }
 
+
+.default-button-green{
+  width: 160px;
+  height: 36px;
+  padding: 5px 12px;
+
+  font-family: "Oswald", sans-serif;
+  font-size: 18px;
+
+  color: #FFFFFFFF;
+  background: rgb(0, 161, 8);
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+
+  
+}
+.default-button-green:hover {
+
+  width: 160px;
+  height: 36px;
+  padding: 5px 12px;
+
+  font-family: "Oswald", sans-serif;
+  font-size: 18px;
+
+  color: #FFFFFFFF;
+  background: rgb(2, 96, 6);
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+}
+
+
+
 .default-button:hover {
   background:#003680;
   cursor: pointer;
@@ -1071,3 +1106,202 @@ main#main-menu {
 }
 
 
+/* Variables de color y espaciado */
+:root {
+  --primary-blue: #0D47A1;
+  --secondary-blue: #1976D2;
+  --light-blue: #6B9EF6;
+  --text-dark: #212121;
+  --text-light: #FFFFFF;
+  --bg-light: #F5F5F5;
+  --border-radius: 4px;
+  --padding-md: 16px;
+}
+
+/* Contenedor principal centrado */
+.prestamo-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--padding-md);
+  font-family: 'Arial', sans-serif;
+  color: var(--text-dark);
+}
+
+
+
+/* Tarjeta de ejemplar */
+.exemplar-card {
+  background-color: var(--bg-light);
+  border: 1px solid var(--secondary-blue);
+  border-radius: var(--border-radius);
+  padding: var(--padding-md);
+  margin-bottom: 24px;
+}
+.subheader {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--primary-blue);
+  margin-bottom: 8px;
+}
+.exemplar-card p {
+  margin: 8px 0;
+}
+
+/* Sección de búsqueda */
+.search-section {
+  background-color: var(--bg-light);
+  border: 1px solid var(--secondary-blue);
+  border-radius: var(--border-radius);
+  padding: var(--padding-md);
+  margin-bottom: 24px;
+}
+.search-section .search-input {
+  width: calc(100% - 120px);
+  padding: 12px;
+  border: 2px solid var(--secondary-blue);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  outline: none;
+}
+.search-button {
+  width: 100px;
+  padding: 12px;
+  margin-left: 8px;
+  background-color: var(--secondary-blue);
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--text-light);
+  font-weight: 600;
+  cursor: pointer;
+}
+.search-button:hover {
+  background-color: var(--primary-blue);
+}
+
+/* Tabla de resultados */
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+.results-table th,
+.results-table td {
+  padding: 12px;
+  border: 1px solid var(--bg-light);
+}
+.results-table th {
+  background-color: var(--light-blue);
+  color: var(--text-light);
+  text-align: left;
+}
+.results-table tr.selected {
+  background-color: var(--secondary-blue);
+  color: var(--text-light);
+}
+.results-table tr:hover {
+  background-color: var(--light-blue);
+  cursor: pointer;
+}
+
+/* Tarjeta de usuario seleccionado */
+.selected-user-card {
+  background-color: var(--bg-light);
+  border: 1px solid var(--secondary-blue);
+  border-radius: var(--border-radius);
+  padding: var(--padding-md);
+  margin-top: 16px;
+}
+.selected-user-card p {
+  margin: 8px 0;
+}
+
+/* Botón de préstamo */
+.loan-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 16px;
+  background-color: var(--secondary-blue);
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--text-light);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.loan-button:hover {
+  background-color: var(--primary-blue);
+}
+
+/* Modo noche para PrestamoView */
+html.dark .prestamo-container {
+  background-color: #030a22;
+  color: #ffffff;
+}
+
+html.dark .exemplar-card {
+  background-color: #121c33;
+  border-color: #002169;
+}
+
+html.dark .subheader {
+  color: #ffffff;
+}
+
+html.dark .search-section {
+  background-color: #121c33;
+  border-color: #002169;
+}
+
+html.dark .search-input {
+  background-color: #1a2433;
+  border: 2px solid #032047;
+  color: #ffffff;
+}
+
+html.dark .search-button {
+  background-color: var(--secondary-blue);
+  color: var(--text-light);
+}
+
+html.dark .search-button:hover {
+  background-color: var(--primary-blue);
+}
+
+html.dark .results-table th {
+  background-color: var(--secondary-blue);
+  color: var(--text-light);
+}
+
+html.dark .results-table td {
+  border-color: #0b1940;
+  color: #ffffff;
+}
+
+html.dark .results-table tr:nth-child(even) {
+  background-color: #0b1940;
+}
+
+html.dark .results-table tr:hover {
+  background-color: #002f6f;
+}
+
+html.dark .results-table tr.selected {
+  background-color: #002169;
+  color: var(--text-light);
+}
+
+html.dark .selected-user-card {
+  background-color: #121c33;
+  border-color: #002169;
+  color: #ffffff;
+}
+
+html.dark .loan-button {
+  background-color: var(--secondary-blue);
+  color: var(--text-light);
+}
+
+html.dark .loan-button:hover {
+  background-color: var(--primary-blue);
+}

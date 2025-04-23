@@ -1,13 +1,20 @@
 import React, { useContext } from 'react';
 import { SearchBooks } from '../../store/SearchBooksProvider';
 import Button from '../utils/Button';
+import { useUserContext } from "../../store/UserProvider";
 
 const CatalegDetail = () => {
-  const { infoCataleg, goToBack } = useContext(SearchBooks);
-
+  const { infoCataleg, goToBack, setIsALoanAButtonActive, setLoanExemplarId } = useContext(SearchBooks);
+   const { user } = useUserContext();
+  user.role = "Bibliotecari"
   // Si no hay datos, mostramos un mensaje
   if (!infoCataleg) {
     return <div className="noData">No hay datos disponibles.</div>;
+  }
+
+  const setChangeOnLoanButton = (exemplarID) => {
+    setIsALoanAButtonActive(true)
+    setLoanExemplarId(exemplarID)
   }
 
   const {
@@ -139,9 +146,12 @@ const CatalegDetail = () => {
                 <p><strong>Baixa:</strong> {exemplar.baixa ? 'Sí' : 'No'}</p>
                 {exemplar.centre && (
                   <p>
-                    <strong>Centre:</strong> {exemplar.centre.nom} (ID: {exemplar.centre.id})
+                    <strong>Centre:</strong> {exemplar.centre.nom} 
+                   
                   </p>
+
                 )}
+                 {user?.role?.toLowerCase() === "bibliotecari" && !exemplar.exclos_prestec  && <Button onClick={() => setChangeOnLoanButton(exemplar.id)} className = "default-button-green">Préstec</Button>}
               </li>
             ))}
           </ul>
