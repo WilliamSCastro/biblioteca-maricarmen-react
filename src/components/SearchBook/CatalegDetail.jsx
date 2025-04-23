@@ -6,7 +6,7 @@ import { useUserContext } from "../../store/UserProvider";
 const CatalegDetail = () => {
   const { infoCataleg, goToBack, setIsALoanAButtonActive, setLoanExemplarId } = useContext(SearchBooks);
    const { user } = useUserContext();
-  user.role = "Bibliotecari"
+
   // Si no hay datos, mostramos un mensaje
   if (!infoCataleg) {
     return <div className="noData">No hay datos disponibles.</div>;

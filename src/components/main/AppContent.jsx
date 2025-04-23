@@ -44,14 +44,25 @@ function AppContent() {
 
   if (isLoadingUserData) {
     return (
-      <div id="loading-userdata" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <div
+        id="loading-userdata"
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+          backgroundColor: isDark ? '#071647' : 'inherit',
+          color: isDark ? 'white' : 'inherit',
+        }}
+      >
         <h1>Carregant aplicació...</h1>
       </div>
     );
   }
 
+  // ...existing code...
   return (
-    <>
+    <div className={isDark ? "app-content dark" : "app-content"}>
       <NavBar
         screen={currentScreen}
         onGoToMainMenu={handleGoToMainPage}
@@ -72,7 +83,7 @@ function AppContent() {
         <Button className="toggle-button" onClick={toggleTheme}>
           {isDark ? "Activar mode clar" : "Activar mode obscur"}
         </Button>
-    </>
+      </div>
   );
 }
 
