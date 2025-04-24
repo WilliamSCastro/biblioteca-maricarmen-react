@@ -245,22 +245,30 @@ export const importCSV = async (file) => {
 };
 
 
-export async function searchUsers(query) {
+export async function searchUsers(query, token) {
   const q = query?.trim();
   if (!q) return [];
+
   const url = `${API}/users/?query=` + encodeURIComponent(q);
-  const res = await fetch(url);
+  
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
   if (!res.ok) {
     throw new Error(`Error ${res.status} buscando usuarios`);
   }
+
   const data = await res.json();
   return Array.isArray(data) ? data : [];
 }
-
-export async function createLoan(userId, exemplarId) {
+export async function createLoan(userId, exemplarId, token) {
   const res = await fetch(`${API}/loans/`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json' ,  Authorization: `Bearer ${token}`,},
+    
     body: JSON.stringify({ userId, exemplarId }),
   });
   const text = await res.text();
