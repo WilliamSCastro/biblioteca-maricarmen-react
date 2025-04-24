@@ -38,24 +38,30 @@ const RentalHistory = () => {
         setCurrentPage(pageNumber);
     };
 
-    if (isLoadingUserData) {
-        return <p>Carregant informació de l'usuari...</p>;
-    }
-
-    if (!user) {
-        return <p>No s'ha pogut carregar la informació de l'usuari.</p>;
+    if (!rentals || rentals.length === 0) {
+        return (
+            <section id="user-profile">
+                <div id="welcome-dashboard">
+                    <h2>Historial de Préstecs</h2>
+                    <p>No hi ha préstecs disponibles.</p>
+                </div>
+                
+            </section>
+        );
     }
 
     return (
-        <div>
-            <h2>Historial de Préstecs</h2>
-            <RentalTable rentals={currentRentals} />
-            <Pagination
-                totalPages={totalPages}
-                currentPage={currentPage}
-                onPageChange={handlePageChange}
-            />
-        </div>
+        <section id="user-profile">
+            <div id="title-box">
+                <h2>Historial de Préstecs</h2>
+            </div>
+                <RentalTable rentals={currentRentals} />
+                <Pagination
+                    totalPages={totalPages}
+                    currentPage={currentPage}
+                    onPageChange={handlePageChange}
+                />
+        </section>
     );
 };
 
