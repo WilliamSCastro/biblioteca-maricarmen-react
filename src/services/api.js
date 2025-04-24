@@ -1,17 +1,10 @@
-// const API_URL = "http://127.0.0.1:8000/api/llibres";
-// const API_LOGIN = `http://127.0.0.1:8000/api/token`;
-// const API_ME = `http://127.0.0.1:8000/api/me`;
-// const API_UPDATE_USER_DATA = "http://127.0.0.1:8000/api/update-profile/";
-
-const API_URL = "http://127.0.0.1:8000/api/llibres";
-const API_LOGIN = `http://127.0.0.1:8000/api/token`;
-const API_ME = `http://127.0.0.1:8000/api/me`;
-const API_UPDATE_USER_DATA = "http://127.0.0.1:8000/api/update-profile/";
-const API = `http://127.0.0.1:8000/api`;
+// API URL
+//const API = `http://127.0.0.1:8000/api`;
+const API = `https://biblioteca4.ieti.site/api`;
 
 export const getBooks = () => {
-  console.log(`llamando API getBooks en ${API_URL}`);
-  return fetch(API_URL)
+  console.log(`llamando API getBooks en ${API}/llibres/`);
+  return fetch(`${API}/llibres/`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Error al obtener los libros");
@@ -31,7 +24,7 @@ export const logIn = async (username, password) => {
   // console.log(credentials)
   // console.log(authHeader)
   try {
-    const response = await fetch(API_LOGIN, {
+    const response = await fetch(`${API}/token`, {
       method: "GET",
       headers: {
         Authorization: authHeader,
@@ -101,7 +94,7 @@ export const getUserData = async (token) => {
   // console.log(`Calling API getUserData at ${API_ME} with token`);
 
   try {
-    const response = await fetch(API_ME, {
+    const response = await fetch(`${API}/me`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`, // Use Bearer token authentication
@@ -147,7 +140,7 @@ export const getUserData = async (token) => {
 
 export const updateUserData = async (formData, token) => {
   try {
-    const response = await fetch(API_UPDATE_USER_DATA, {
+    const response = await fetch(`${API}/update-profile/`, {
       method: "POST",
       headers: {
         // Important: If sending FormData, you usually *don't* set Content-Type manually.
@@ -192,7 +185,7 @@ export const updateUserData = async (formData, token) => {
 
 export const getSearch = async (searchParams, limit) => {
   try {
-    const response = await fetch(`http://localhost:8000/api/buscar/?${searchParams}`);
+    const response = await fetch(`${API}/buscar/?${searchParams}`);
 
     if (!response.ok) {
       const text = await response.text(); // Intentá al menos ver qué devolvió
@@ -215,7 +208,7 @@ export const getSearch = async (searchParams, limit) => {
 
 
 export const fetchCatalegById = async (id) => {
-  const response = await fetch(`http://localhost:8000/api/cataleg/${id}`);
+  const response = await fetch(`${API}/cataleg/${id}`);
   if (!response.ok) {
     throw new Error('Error al obtener los datos del Cataleg');
   }
@@ -229,7 +222,7 @@ export const importCSV = async (file) => {
   formData.append("file", file);
 
   try {
-    const response = await fetch("http://localhost:8000/api/import-users/", {
+    const response = await fetch(`${API}/import-users/`, {
       method: "POST",
       body: formData,
     });
@@ -255,7 +248,7 @@ export const importCSV = async (file) => {
 export async function searchUsers(query) {
   const q = query?.trim();
   if (!q) return [];
-  const url = 'http://localhost:8000/api/users/?query=' + encodeURIComponent(q);
+  const url = `${API}/users/?query=` + encodeURIComponent(q);
   const res = await fetch(url);
   if (!res.ok) {
     throw new Error(`Error ${res.status} buscando usuarios`);
@@ -265,7 +258,7 @@ export async function searchUsers(query) {
 }
 
 export async function createLoan(userId, exemplarId) {
-  const res = await fetch('http://localhost:8000/api/loans/', {
+  const res = await fetch(`${API}/loans/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ userId, exemplarId }),

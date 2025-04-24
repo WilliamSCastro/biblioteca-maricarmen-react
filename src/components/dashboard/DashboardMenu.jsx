@@ -7,6 +7,8 @@ import importImage from "../../assets/importDashboard.svg"
 import adminImageDarkMode from "../../assets/adminDashboardDarkMode.png"
 import userImageDarkMode from "../../assets/userDashboardDarkMode.png"
 import importImageDarkMode from "../../assets/importDashboardDarkMode.png"
+import RentalHistoryImage from "../../assets/rentalHistoryDashboard.svg"
+import RentalHistoryImageDarkMode from "../../assets/rentalHistoryDashboardDarkMode.svg"
 
 export default function DashboardMenu({ setScreen, currentScreen }) {
 
@@ -52,7 +54,7 @@ export default function DashboardMenu({ setScreen, currentScreen }) {
           }}
           className={currentScreen === DASHBOARD_SCREENS.RENTAL_HISTORY ? "active" : ""}
         >
-            <img src={userImage} alt="" />
+            <img src={isDark ? RentalHistoryImageDarkMode : RentalHistoryImage} alt="logo historial de préstecs" />
             <span>Històric de préstecs</span>
             <span className="end">&#8702;</span>
         </Button>

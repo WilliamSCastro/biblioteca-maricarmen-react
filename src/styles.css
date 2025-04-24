@@ -965,6 +965,10 @@ main#main-menu {
   background-color: #ffea97; /* Color amarillo */
 }
 
+.app-content.dark .in-progress td {
+  background-color: #8a6e00; /* Color amarillo */
+}
+
 /* Estilos para el contenedor del paginador */
 .pagination {
   display: flex;
