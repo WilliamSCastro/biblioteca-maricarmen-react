@@ -7,6 +7,24 @@ export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isLoadingUserData, setIsLoadingUserData] = useState(true); 
 
+  const [isDark, setIsDark] = useState(() => {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        return savedTheme === "dark";
+      }
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    });
+  
+  useEffect(() => {
+    if (isDark) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+  }, [isDark]);
+
+  const toggleTheme = () => setIsDark((prev) => !prev);
+
   const login = (userData, token) => {
     localStorage.setItem("authToken", token);
     setUser(userData);
@@ -72,7 +90,7 @@ export function UserProvider({ children }) {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, isLoadingUserData, login, logout, handleUserUpdates }}>
+    <UserContext.Provider value={{ user, isLoadingUserData, login, logout, handleUserUpdates, isDark, toggleTheme }}>
       {children}
     </UserContext.Provider>
   );

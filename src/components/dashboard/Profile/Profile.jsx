@@ -7,13 +7,13 @@ export default function Profile() {
   const url = `https://biblioteca4.ieti.site${user.imatge_url}`;
   console.log(url)
   return (
-    <>
+    <section id="user-profile">
       <div id="title-box">
         {user.imatge_url && <img src={url} alt="user_image" />}
         <h2>{user.username}</h2>
       </div>
       <UserInfo user={user} />
       <ProfileForm user={user} onUserUpdate={handleUserUpdates} />
-    </>
+    </section>
   );
 }

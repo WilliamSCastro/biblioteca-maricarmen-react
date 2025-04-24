@@ -3,7 +3,7 @@ export function ProfileInput({ id, label, type = "text", defaultValue, error, ..
       <div className="input-box">
         <label htmlFor={id}>{label}</label>
         <input type={type} id={id} name={id} defaultValue={defaultValue} {...rest} />
-        {error && <div style={{ color: "red" }}>{error}</div>}
+        {error && <div className="redError">{error}</div>}
       </div>
     );
   }

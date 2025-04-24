@@ -39,8 +39,8 @@ function Login({ onLoginSuccess, returnToMainMenu }) {
 
       if (result.success) {
 
-        console.log("Login component received successful user data:", result.userData);
-        console.log("Login component received token:", result.token);
+        // console.log("Login component received successful user data:", result.userData);
+        // console.log("Login component received token:", result.token);
         onLoginSuccess(result.userData, result.token);
 
       } else {

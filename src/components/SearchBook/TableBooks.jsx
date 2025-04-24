@@ -3,7 +3,7 @@ import Button from "../utils/Button";
 import {useContext} from 'react'
 export default function TableBooks() {
 
-    const { fetchCataleg, locatedBooks } = useContext(SearchBooks);
+    const { fetchCataleg, locatedBooks , setSelectedBook} = useContext(SearchBooks);
     return (
 
         <table className="catalogTable">
@@ -21,7 +21,7 @@ export default function TableBooks() {
           <td>{book.titol}</td>
           <td>{book.autor}</td>
           <td className="tableButtonCell">
-            <Button className="default-button" onClick={() => fetchCataleg(book.id)}>
+            <Button className="default-button" onClick={() => {fetchCataleg(book.id), setSelectedBook(book.id)}}>
               Veure detall
             </Button>
           </td>

@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../../App.css";
 import "../../styles.css";
 import NavBar from "./NavBar";
@@ -10,11 +10,13 @@ import { useUserContext } from "../../store/UserProvider";
 import { SearchBooksProvider } from '../../store/SearchBooksProvider';
 import { MAIN_SCREENS } from "../../constants";
 import Footer from "./Footer";
+import Button from "../utils/Button";
 
 
 function AppContent() {
 
-  const { user, login, logout, isLoadingUserData } = useUserContext(); 
+  const { user, login, logout, isLoadingUserData, isDark, toggleTheme } = useUserContext(); 
+
 
   const [currentScreen, setCurrentScreen] = useState(MAIN_SCREENS.CATALEG);
 
@@ -42,14 +44,25 @@ function AppContent() {
 
   if (isLoadingUserData) {
     return (
-      <div id="loading-userdata" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <div
+        id="loading-userdata"
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+          backgroundColor: isDark ? '#071647' : 'inherit',
+          color: isDark ? 'white' : 'inherit',
+        }}
+      >
         <h1>Carregant aplicació...</h1>
       </div>
     );
   }
 
+  // ...existing code...
   return (
-    <>
+    <div className={isDark ? "app-content dark" : "app-content"}>
       <NavBar
         screen={currentScreen}
         onGoToMainMenu={handleGoToMainPage}
@@ -67,7 +80,10 @@ function AppContent() {
         {currentScreen === MAIN_SCREENS.DASHBOARD && user && <Dashboard noUserDetected={handleGoToMainPage}/>}
 
         <Footer screen={currentScreen}/>
-    </>
+        <Button className="toggle-button" onClick={toggleTheme}>
+          {isDark ? "Activar mode clar" : "Activar mode obscur"}
+        </Button>
+      </div>
   );
 }
 
