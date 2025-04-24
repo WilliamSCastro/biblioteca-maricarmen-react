@@ -1,4 +1,4 @@
-import { isAdmin, isBibliotecari, DASHBOARD_SCREENS } from "../../constants";
+import { isAdmin, isBibliotecari, DASHBOARD_SCREENS, isUser } from "../../constants";
 import { useUserContext } from "../../store/UserProvider";
 import Button from "../utils/Button";
 import adminImage from "../../assets/adminDashboard.svg"
@@ -7,6 +7,8 @@ import importImage from "../../assets/importDashboard.svg"
 import adminImageDarkMode from "../../assets/adminDashboardDarkMode.png"
 import userImageDarkMode from "../../assets/userDashboardDarkMode.png"
 import importImageDarkMode from "../../assets/importDashboardDarkMode.png"
+import RentalHistoryImage from "../../assets/rentalHistoryDashboard.svg"
+import RentalHistoryImageDarkMode from "../../assets/rentalHistoryDashboardDarkMode.svg"
 
 export default function DashboardMenu({ setScreen, currentScreen }) {
 
@@ -44,6 +46,18 @@ export default function DashboardMenu({ setScreen, currentScreen }) {
             <span className="end">&#8702;</span>
           </a>
         </>
+      )}
+      {(isUser(user.role)) && (
+        <Button
+          onClick={() => {
+            setScreen(DASHBOARD_SCREENS.RENTAL_HISTORY);
+          }}
+          className={currentScreen === DASHBOARD_SCREENS.RENTAL_HISTORY ? "active" : ""}
+        >
+            <img src={isDark ? RentalHistoryImageDarkMode : RentalHistoryImage} alt="logo historial de préstecs" />
+            <span>Històric de préstecs</span>
+            <span className="end">&#8702;</span>
+        </Button>
       )}
     </aside>
   );
