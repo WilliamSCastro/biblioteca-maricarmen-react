@@ -18,6 +18,13 @@ export function isBibliotecari(userRole){
     return false
 }
 
+export function isUser(userRole){
+    if (userRole === ROLES.USER){
+        return true
+    }
+    return false
+}
+
 export const MAIN_SCREENS = {
     CATALEG: "cataleg",
     DASHBOARD: "dashboard",
@@ -28,5 +35,6 @@ export const MAIN_SCREENS = {
 export const DASHBOARD_SCREENS = {
     WELCOME: "default",
     UPDATE_USER: "updateUserData",
-    IMPORT_USERS: "import"
+    IMPORT_USERS: "import",
+    RENTAL_HISTORY: "rentalHistory",
 }

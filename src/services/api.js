@@ -1,7 +1,8 @@
-const API_URL = "http://https://biblioteca4.ieti.site/api/llibres";
-const API_LOGIN = `https://biblioteca4.ieti.site/api/token`;
-const API_ME = `https://biblioteca4.ieti.site/api/me`;
-const API_UPDATE_USER_DATA = "https://biblioteca4.ieti.site/api/update-profile/";
+const API_URL = "http://127.0.0.1:8000/api/llibres";
+const API_LOGIN = `http://127.0.0.1:8000/api/token`;
+const API_ME = `http://127.0.0.1:8000/api/me`;
+const API_UPDATE_USER_DATA = "http://127.0.0.1:8000/api/update-profile/";
+const API = `http://127.0.0.1:8000/api`;
 
 export const getBooks = () => {
   console.log(`llamando API getBooks en ${API_URL}`);
@@ -245,3 +246,29 @@ export const importCSV = async (file) => {
   }
 };
 
+export const fetchRentalHistory = async (userId, token) => {
+  try {
+    const response = await fetch(`${API}/prestecs/${userId}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Error fetching rental history:", errorData);
+      return { success: false, error: errorData };
+    }
+
+    const data = await response.json();
+    return { success: true, data };
+  } catch (error) {
+    console.error("Network error during fetchRentalHistory API call:", error);
+    return {
+      success: false,
+      error: "Error de xarxa o connexió. Torna a intentar-ho més tard.",
+    };
+  }
+};

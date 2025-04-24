@@ -1,4 +1,4 @@
-import { isAdmin, isBibliotecari, DASHBOARD_SCREENS } from "../../constants";
+import { isAdmin, isBibliotecari, DASHBOARD_SCREENS, isUser } from "../../constants";
 import { useUserContext } from "../../store/UserProvider";
 import Button from "../utils/Button";
 import adminImage from "../../assets/adminDashboard.svg"
@@ -41,6 +41,18 @@ export default function DashboardMenu({ setScreen, currentScreen }) {
             <span className="end">&#8702;</span>
           </a>
         </>
+      )}
+      {(isUser(user.role)) && (
+        <Button
+          onClick={() => {
+            setScreen(DASHBOARD_SCREENS.RENTAL_HISTORY);
+          }}
+          className={currentScreen === DASHBOARD_SCREENS.RENTAL_HISTORY ? "active" : ""}
+        >
+            <img src={userImage} alt="" />
+            <span>Històric de préstecs</span>
+            <span className="end">&#8702;</span>
+        </Button>
       )}
     </aside>
   );

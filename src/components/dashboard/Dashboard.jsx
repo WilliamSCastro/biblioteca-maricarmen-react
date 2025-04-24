@@ -6,6 +6,7 @@ import { DASHBOARD_SCREENS } from "../../constants";
 import DashboardMenu from "./DashboardMenu";
 import UserImport from "./UserImport";
 import Welcome from "./Welcome";
+import RentalHistory from "./RentalHistory";
 
 function Dashboard({ noUserDetected }) {
 
@@ -29,6 +30,9 @@ function Dashboard({ noUserDetected }) {
 
         {currentDashboardScreen === DASHBOARD_SCREENS.IMPORT_USERS && (
          <UserImport/>
+        )}
+        {currentDashboardScreen === DASHBOARD_SCREENS.RENTAL_HISTORY && (
+          <RentalHistory/>
         )}
       </section>
     </main>
