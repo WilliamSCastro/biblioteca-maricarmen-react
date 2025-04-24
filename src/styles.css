@@ -57,7 +57,7 @@ body {
 }
 
 .app-content.dark {
-  background-color: #030a22;
+  background-color: #0d0c0c;
 }
 
 /* MARK: LOADING */
@@ -323,7 +323,7 @@ main {
 }
 
 .app-content.dark main {
-  background-color: #030a22; 
+  background-color: #0d0c0c; 
 }
 
 
@@ -1336,7 +1336,7 @@ main#main-menu {
 
 /* Modo noche para PrestamoView */
 .app-content.dark .prestamo-container {
-  background-color: #030a22;
+  background-color: #0d0c0c;
   color: #ffffff;
 }
 
