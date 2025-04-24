@@ -4,6 +4,7 @@ import { searchUsers, createLoan } from '../../services/api';
 import { useUserContext } from "../../store/UserProvider";
 
 const PrestamoView = () => {
+  
   const { user } = useUserContext();
   const [hasSearchUser , setHasSearchUser] = useState(false)
   const {
@@ -26,7 +27,8 @@ const PrestamoView = () => {
 
   const handleSearchUser = async () => {
     try {
-      const users = await searchUsers(userQuery, user.token);
+      const token = localStorage.getItem("authToken");
+      const users = await searchUsers(userQuery, token);
       setUserResults(users);
       setHasSearchUser(true);
     } catch (error) {
@@ -40,7 +42,9 @@ const PrestamoView = () => {
       return alert('Seleccione primero un usuario');
     }
     try {
-      await createLoan(selectedUser.id, loanExemplarID,  user.token);
+      const token = localStorage.getItem("authToken");
+
+      await createLoan(selectedUser.id, loanExemplarID,  token);
       alert('Préstamo realizado con éxito');
       setIsALoanAButtonActive(false);
       setSelectedUser(null);
