@@ -142,7 +142,7 @@ const CatalegDetail = () => {
             {exemplars.map((exemplar) => (
               <li key={exemplar.id} className="exemplarItem">
                 <p><strong>Registre:</strong> {exemplar.registre}</p>
-                <p><strong>Exclòs Préstec:</strong> {exemplar.exclos_prestec ? 'Sí' : 'No'}</p>
+               {!exemplar.baixa && <p><strong>Exclòs Préstec:</strong> {exemplar.exclos_prestec ? 'Sí' : 'No'}</p>}
                 <p><strong>Baixa:</strong> {exemplar.baixa ? 'Sí' : 'No'}</p>
                 {exemplar.centre && (
                   <p>

@@ -12,7 +12,7 @@ export default function FiveBest() {
           <ItemBestBook
             key={index}
             onClick={() => {fetchCataleg(book["id"]), setSelectedBook(book["id"])}}
-          ><span className="bold-text" >{book["titol"]}</span>  - {book["autor"]}</ItemBestBook>
+          ><span className="bold-text" >{book["titol"]}</span>   - {book["autor"]}</ItemBestBook>
         ))}
       </div>
    
