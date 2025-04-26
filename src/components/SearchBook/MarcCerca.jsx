@@ -8,7 +8,7 @@ export default function MarcCerca(){
         <div className="searchDiv">
 
                 <input className="input-field" onChange={(e) => {setTextInputSearch(e.target.value)}}></input>
-                <Button onClick={searchBooks} className="searchButton">Cercar</Button>
+                <Button onClick={searchBooks} className="searchButton"></Button>
         </div>
 
     );

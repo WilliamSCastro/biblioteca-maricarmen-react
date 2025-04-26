@@ -3,7 +3,7 @@ import MarcCerca from "./MarcCerca";
 export default function SearchBooks() {
   return (
     <div className="containerFindBooks">
-      <h1 className="h1Cataleg">Cerca al catàleg</h1>
+      <h2 className="h1Cataleg">Cerca al catàleg</h2>
       <MarcCerca></MarcCerca>
     </div>
   );

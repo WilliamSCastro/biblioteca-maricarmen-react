@@ -57,7 +57,7 @@ body {
 }
 
 .app-content.dark {
-  background-color: #0d0c0c;
+  background-color: #2E2E2E;
 }
 
 /* MARK: LOADING */
@@ -327,7 +327,7 @@ main {
 }
 
 .app-content.dark main {
-  background-color: #0d0c0c; 
+  background-color: #2E2E2E; 
 }
 
 
@@ -625,61 +625,61 @@ main#main-menu {
   margin: 0 auto;
   align-items: center;
 }
-
-.inputSearch{
-  color: black;
-}
-
-/* Search Book */
-.searchDiv{
-  margin: 0 auto;
-  gap: 30px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.searchDiv button {
-  font-family: "Oswald", sans-serif;
-  width: 94px;
-  height: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #FFFFFFFF;
-  background: #0043A8FF;
-  border: none;
-  border-radius: 3px;
-  font-size: 18px;
-}
-
-.searchDiv button:hover{
-  width: 94px;
-  height: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #FFFFFFFF;
-  background: #003380FF;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.searchDiv input{
-  width: 396px;
-  height: 35px;
-  font-size: 14px;
+.searchDiv {
+  display: inline-flex;
+  max-width: 600px;
+  width: 100%;
+  margin: 1rem auto;
+  border-top: 1px solid #0043A8FF;
+  border-bottom: 1px solid #0043A8FF;
+  border-left: 1px solid #0043A8FF;
+  border-radius: 16px;   /* radio exterior */
+  overflow: hidden;
+  height: 35px;          /* altura de la barra */
 }
 
 .searchDiv input {
-  width: 396px;
-  height: 35px;
+  flex: 1;               /* ocupa todo el espacio sobrante */
+  border: none;
+  width: 550px;
+  height: 100%;
+  padding: 0 12px;
   font-size: 14px;
-  color: black;
-  background: #FFFFFFFF;
-  border-color: #0043A8FF;
+  background-color: #FFFFFF;
+  outline: none;
 }
 
+.searchDiv input::placeholder {
+  color: #999999;
+}
+
+.searchDiv button {
+  width: 50px;           /* ancho fijo */
+  height: 100%;
+  border: none;
+  border-left: 1px solid #0043A8FF;
+  background-color: #0043A8FF;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  padding: 0;
+  text-indent: -9999px;  /* oculta texto */
+  /* radio interior = exterior (16px) - grosor del borde (1px) */
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  /* tu lupa SVG en blanco, tamaño fijo */
+  background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+  <circle cx='11' cy='11' r='8' fill='none' stroke='%23FFFFFF' stroke-width='2'/>\
+  <line x1='21' y1='21' x2='16.65' y2='16.65' stroke='%23FFFFFF' stroke-width='2' stroke-linecap='round'/>\
+</svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 19px 19px;
+}
+
+.searchDiv button:hover {
+  background-color: #003680;
+}
 .h1Cataleg{
   margin: 0 auto;
   font-family: "Oswald", sans-serif;
@@ -886,6 +886,7 @@ main#main-menu {
   font-size: 1.2rem;
 }
 
+/* Estilos para la tabla paginada */
 .catalogTable {
   width: 100%;
   max-width: 900px;
@@ -900,26 +901,20 @@ main#main-menu {
 }
 
 .app-content.dark .catalogTable {
-  color: white;
   background-color: #121c33;
-  border: 1px solid #e6e6e6;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  overflow: hidden;
-  font-family: 'Roboto', sans-serif;
+  border-color: #0b1940;
 }
 
 .catalogTable thead {
-  background: #0043A8FF; /* Color base */
+  background: #0043A8FF;
   color: #fff;
 }
 
 .catalogTable thead th {
   padding: 16px 24px;
-  text-align: left;
   font-size: 1.1rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  text-align: left;
 }
 
 .catalogTable tbody tr {
@@ -928,7 +923,7 @@ main#main-menu {
 }
 
 .app-content.dark .catalogTable tbody tr {
-  border-bottom: 1px solid #002169;
+  border-bottom-color: #002169;
 }
 
 .catalogTable tbody tr:nth-child(even) {
@@ -940,11 +935,11 @@ main#main-menu {
 }
 
 .catalogTable tbody tr:hover {
-  background-color: #e6f0ff; /* Tono azul muy claro basado en el color principal */
+  background-color: #e6f0ff;
 }
 
 .app-content.dark .catalogTable tbody tr:hover {
-  background-color: #002169; /* Tono azul muy claro basado en el color principal */
+  background-color: #002169;
 }
 
 .catalogTable tbody td {
@@ -954,132 +949,62 @@ main#main-menu {
 }
 
 .app-content.dark .catalogTable tbody td {
-  color: white;
+  color: #fff;
 }
-
 
 .catalogTable .tableButtonCell {
   text-align: center;
 }
 
-.catalogTable tbody td a,
-.catalogTable tbody td button {
+/* Controles de paginación */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 20px auto;
+}
+
+.pagination span {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  color: #333;
+}
+
+.app-content.dark .pagination span {
+  color: #fff;
+}
+
+.pagination button {
   background-color: #0043A8FF;
   color: #fff;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 5px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.2s ease;
   display: flex;
-  justify-content: center;
+  justify-content: center;  
   align-items: center;
-}
-
-.catalogTable tbody td a:hover,
-.catalogTable tbody td button:hover {
-  background-color: #003680; /* Un tono más oscuro para el hover */
-  transform: scale(1.03);
-}
-
-.in-progress td {
-  background-color: #ffea97; /* Color amarillo */
-}
-
-.app-content.dark .in-progress td {
-  background-color: #8a6e00; /* Color amarillo */
-}
-
-/* Estilos para el contenedor del paginador */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-/* Estilos para los botones del paginador */
-.pagination button {
-  background-color: #0043A8FF; /* Azul principal */
-  color: #fff;
   border: none;
-  border-radius: 8px; /* Bordes redondeados */
-  padding: 10px 16px;
-  font-size: 16px;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Hover para los botones */
-.pagination button:hover {
-  background-color: #003680; /* Azul más oscuro */
-  transform: scale(1.05); /* Efecto de agrandamiento */
+.pagination button:hover:not(:disabled) {
+  background-color: #003680;
+  transform: scale(1.05);
 }
 
-/* Botón activo (página actual) */
 .pagination button:disabled {
-  background-color: #525252; /* Gris */
-  color: #fff;
+  background-color: #525252;
   cursor: default;
   transform: none;
   box-shadow: none;
 }
 
-/* Botón deshabilitado (sin hover ni clic) */
 .pagination button:disabled:hover {
-  background-color: #525252; /* Gris */
-  transform: none;
-}
-
-.in-progress td {
-  background-color: #ffea97; /* Color amarillo */
-}
-
-/* Estilos para el contenedor del paginador */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-/* Estilos para los botones del paginador */
-.pagination button {
-  background-color: #0043A8FF; /* Azul principal */
-  color: #fff;
-  border: none;
-  border-radius: 8px; /* Bordes redondeados */
-  padding: 10px 16px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Hover para los botones */
-.pagination button:hover {
-  background-color: #003680; /* Azul más oscuro */
-  transform: scale(1.05); /* Efecto de agrandamiento */
-}
-
-/* Botón activo (página actual) */
-.pagination button:disabled {
-  background-color: #525252; /* Gris */
-  color: #fff;
-  cursor: default;
-  transform: none;
-  box-shadow: none;
-}
-
-/* Botón deshabilitado (sin hover ni clic) */
-.pagination button:disabled:hover {
-  background-color: #525252; /* Gris */
+  background-color: #525252;
   transform: none;
 }
 
@@ -1429,3 +1354,6 @@ main#main-menu {
 .app-content.dark .loan-button:hover {
   background-color: var(--primary-blue);
 }
+
+
+
