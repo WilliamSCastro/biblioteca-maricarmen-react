@@ -1,22 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { SearchBooks } from '../../store/SearchBooksProvider';
 import Button from '../utils/Button';
 import { useUserContext } from "../../store/UserProvider";
 
 const CatalegDetail = () => {
   const { infoCataleg, goToBack, setIsALoanAButtonActive, setLoanExemplarId } = useContext(SearchBooks);
-  const { user } = useUserContext();
-  
-  // Si no hay datos, mostramos un mensaje
-  if (!infoCataleg) {
-    return <div className="noData">No hay datos disponibles.</div>;
-  }
-
-  const setChangeOnLoanButton = (exemplarID) => {
-    setIsALoanAButtonActive(true)
-    setLoanExemplarId(exemplarID)
-  }
-
   const {
     titol,
     titol_original,
@@ -31,6 +19,73 @@ const CatalegDetail = () => {
     subclass,
     exemplars
   } = infoCataleg;
+  const { user } = useUserContext();
+  const [countExemplars, setCountExemplars] = useState([0,0,0,0]) 
+  // Si no hay datos, mostramos un mensaje
+  if (!infoCataleg) {
+    return <div className="noData">No hay datos disponibles.</div>;
+  }
+
+  const setChangeOnLoanButton = (exemplarID) => {
+    setIsALoanAButtonActive(true)
+    setLoanExemplarId(exemplarID)
+  }
+
+  const upExclosPrestec = () => {
+    setCountExemplars(prev => {
+      const nuevoArray = [...prev];
+      nuevoArray[0] += 1;
+      return nuevoArray;
+    });
+  };
+
+  const upFreePrestec = () => {
+    setCountExemplars(prev => {
+      const nuevoArray = [...prev];
+      nuevoArray[1] += 1;
+      return nuevoArray;
+    });
+  };
+  const upFreePrestecCentre = () => {
+    setCountExemplars(prev => {
+      const nuevoArray = [...prev];
+      nuevoArray[3] += 1;
+      return nuevoArray;
+    });
+  };
+  const totalExemplars = () => {
+    setCountExemplars(prev => {
+      const nuevoArray = [...prev];
+      nuevoArray[2] = exemplars.length;
+      return nuevoArray;
+    });
+  };
+  useEffect(() => {
+    if (!exemplars) return;
+  
+    let exclosos = 0;
+    let disponibles = 0;
+    let disponiblesCentre = 0;
+    const total = exemplars.length;
+  
+    exemplars.forEach((exemplar) => {
+      if (!exemplar.baixa) {
+        if (exemplar.exclos_prestec) {
+          exclosos += 1;
+        } else {
+          disponibles += 1;
+          if (user?.centre_id === exemplar?.centre.id) {
+            disponiblesCentre += 1;
+          }
+        }
+      }
+    });
+  
+    setCountExemplars([exclosos, disponibles, total, disponiblesCentre]);
+  }, [exemplars, user]);
+
+
+
 
   return (
     <div className="catalegContainer">
@@ -135,11 +190,22 @@ const CatalegDetail = () => {
       </div>
 
       {/* Sección de ejemplars */}
-      <h2 className="subclassTitle">Exemplars</h2>
+      <h2 className="subclassTitle">Exemplars ({countExemplars[2]})</h2>
       <div className="catalegSection">
         {exemplars && exemplars.length > 0 ? (
+          <>
+          <div className="ejemplarsFoundDiv"> 
+  
+  <h5 className="green">Disponibles per préstec: {countExemplars[1]}</h5>
+  <h5 className="green">Disponibles al teu centre: {countExemplars[3]}</h5>
+  <h5 className="red">Exclosos de préstec: {countExemplars[0]}</h5>
+ 
+
+</div>
           <ul className="exemplarsList">
             {exemplars.map((exemplar) => (
+
+             
               <li key={exemplar.id} className="exemplarItem">
                 <p><strong>Registre:</strong> {exemplar.registre}</p>
                {!exemplar.baixa && <p><strong>Exclòs Préstec:</strong> {exemplar.exclos_prestec ? 'Sí' : 'No'}</p>}
@@ -160,7 +226,7 @@ const CatalegDetail = () => {
                   )}
               </li>
             ))}
-          </ul>
+          </ul></>
         ) : (
           <p>No hi ha exemplars disponibles.</p>
         )}

@@ -849,6 +849,21 @@ main#main-menu {
   padding: 0;
 }
 
+.ejemplarsFoundDiv{
+
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  
+}
+
+.red{
+  color: red;
+}
+
+.green{
+  color: green;
+}
 .exemplarItem {
   border-top: 1px solid #eee;
   padding: 10px 0;
