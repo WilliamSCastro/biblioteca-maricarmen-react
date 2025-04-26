@@ -641,7 +641,7 @@ main#main-menu {
 .searchDiv input {
   flex: 1;               /* ocupa todo el espacio sobrante */
   border: none;
-  width: 550px;
+  width: 400px;
   height: 100%;
   padding: 0 12px;
   font-size: 14px;
