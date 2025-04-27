@@ -61,7 +61,7 @@ const CatalegDetail = () => {
     });
   };
   useEffect(() => {
-    if (!exemplars) return;
+   
   
     let exclosos = 0;
     let disponibles = 0;
@@ -83,7 +83,6 @@ const CatalegDetail = () => {
   
     setCountExemplars([exclosos, disponibles, total, disponiblesCentre]);
   }, [exemplars, user]);
-
 
 
 
@@ -194,14 +193,13 @@ const CatalegDetail = () => {
       <div className="catalegSection">
         {exemplars && exemplars.length > 0 ? (
           <>
-          <div className="ejemplarsFoundDiv"> 
-  
-  <h5 className="green">Disponibles per préstec: {countExemplars[1]}</h5>
-  <h5 className="green">Disponibles al teu centre: {countExemplars[3]}</h5>
-  <h5 className="red">Exclosos de préstec: {countExemplars[0]}</h5>
- 
-
-</div>
+       { user?.role?.toLowerCase() === "bibliotecari" && (
+  <div className="ejemplarsFoundDiv"> 
+    <h5 className="green">Disponibles per préstec: {countExemplars[1]}</h5>
+    <h5 className="green">Disponibles al teu centre: {countExemplars[3]}</h5>
+    <h5 className="red">Exclosos de préstec: {countExemplars[0]}</h5>
+  </div>
+)}
           <ul className="exemplarsList">
             {exemplars.map((exemplar) => (
 

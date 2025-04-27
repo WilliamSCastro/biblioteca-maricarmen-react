@@ -11,7 +11,8 @@ import { SearchBooksProvider } from '../../store/SearchBooksProvider';
 import { MAIN_SCREENS } from "../../constants";
 import Footer from "./Footer";
 import Button from "../utils/Button";
-
+import sunIcon from '../../assets/icons8-sun-48.png';
+import moon from '../../assets/moon.png';
 
 function AppContent() {
 
@@ -81,7 +82,25 @@ function AppContent() {
 
         <Footer screen={currentScreen}/>
         <Button className="toggle-button" onClick={toggleTheme}>
-          {isDark ? "Activar mode clar" : "Activar mode obscur"}
+        {isDark ? (
+  <>
+    <img className="fotoModeLigth"
+      src={sunIcon} 
+      alt="Sol" 
+     
+    />
+    Activar mode clar
+  </>
+) : (
+  <>
+     <img className="fotoModeLigth"
+      src={moon} 
+      alt="moon" 
+     
+    />
+    Activar mode obscur
+  </>
+)}
         </Button>
       </div>
   );
