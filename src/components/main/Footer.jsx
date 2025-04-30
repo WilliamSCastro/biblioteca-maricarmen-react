@@ -9,7 +9,7 @@ const Footer = ({ screen }) => {
       <div className="footerContent">
         <img src={logo} alt="Logo de la Web" className="logo" />
         <p className="footerText">
-          © 2025 Biblioteca Maricarmen Brito. Tots els drets reservats.
+          © 2025 Biblioteca Mari Carmen Brito. Tots els drets reservats.
         </p>
       </div>
       {(screen === MAIN_SCREENS.CATALEG || screen === MAIN_SCREENS.LOGIN) && (
