@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { SearchBooks } from '../../store/SearchBooksProvider';
 import Button from '../utils/Button';
 import { useUserContext } from "../../store/UserProvider";
-
+import TimeAgo from '../utils/Timeago'; 
 const CatalegDetail = () => {
   const { infoCataleg, goToBack, setIsALoanAButtonActive, setLoanExemplarId } = useContext(SearchBooks);
   const {
@@ -102,7 +102,7 @@ const CatalegDetail = () => {
         {autor && <p><strong>Autor:</strong> {autor}</p>}
         {CDU && <p><strong>CDU:</strong> {CDU}</p>}
         {signatura && <p><strong>Signatura:</strong> {signatura}</p>}
-        {data_edicio && <p><strong>Data d'edició:</strong> {data_edicio}</p>}
+        {data_edicio && <p><strong>Data d'edició:</strong> {data_edicio}  <TimeAgo timestamp={data_edicio} /></p>}
         {resum && <p><strong>Resum:</strong> {resum}</p>}
         {anotacions && <p><strong>Anotacions:</strong> {anotacions}</p>}
         {mides && <p><strong>Mides:</strong> {mides}</p>}
