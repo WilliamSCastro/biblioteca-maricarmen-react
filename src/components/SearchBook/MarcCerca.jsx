@@ -1,17 +1,19 @@
-import { useContext } from "react";
-import Button from "../utils/Button";
-import { useSearchBooks } from '../../store/SearchBooksProvider';
-export default function MarcCerca(){
+// src/components/SearchBook/MarcCerca.jsx
+import React from "react";
+import SearchBar from "../utils/SearchBar";
+import { useSearchBooks } from "../../store/SearchBooksProvider";
 
-    const { setTextInputSearch, searchBooks } = useSearchBooks();
-    return(
-        <div className="searchDiv">
+export default function MarcCerca() {
+  const { textInputSearch, setTextInputSearch, searchBooks } = useSearchBooks();
 
-                <input className="input-field" onChange={(e) => {setTextInputSearch(e.target.value)}}></input>
-                <Button onClick={searchBooks} className="searchButton"></Button>
-        </div>
-
-    );
-
-
+  return (
+    <SearchBar
+      value={textInputSearch}
+      onChange={setTextInputSearch}
+      onSearch={searchBooks}
+      placeholder="Buscar llibre..."
+      inputClassName="input-field"
+      buttonClassName="searchButton"
+    />
+  );
 }
