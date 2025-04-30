@@ -26,10 +26,10 @@ const PrestamoView = () => {
   };
 
   // Buscar usuarios
-  const handleSearchUser = async (query) => {
+  const handleSearchUser = async () => {
     try {
       const token = localStorage.getItem("authToken");
-      const users = await searchUsers(query, token);
+      const users = await searchUsers(userQuery, token);
       setUserResults(users);
       setHasSearchUser(true);
     } catch (error) {
@@ -69,16 +69,14 @@ const PrestamoView = () => {
       <div className="search-section">
         <h3 className="subheader">Cercar Usuari</h3>
 
-        <SearchBar 
-          onSearch={(query) => {
-            setUserQuery(query);
-            handleSearchUser(query);
-          }}
-          placeholder="Nom, cognom, email, telèfon o nom d'usuari"
-          buttonText="Cercar"
-          inputClassName="search-input"
-          buttonClassName="search-button"
-        />
+       <SearchBar
+             value={userQuery}
+             onChange={setUserQuery}
+             onSearch={handleSearchUser}
+             placeholder="Buscar llibre..."
+             inputClassName="input-field"
+             buttonClassName="searchButton"
+           />
 
         {hasSearchUser && userResults && (
           <table className="results-table">
