@@ -309,3 +309,36 @@ export const fetchRentalHistory = async (userId, token) => {
     };
   }
 };
+
+
+// getExemplars 
+export const getExemplars = async (searchParams, token) => {
+
+  try {
+    const queryString = new URLSearchParams(searchParams).toString();
+    console.log("Query string:", queryString);
+    const url = `${API}/exemplars?${queryString}`;
+
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    console.log("Response status:", response);
+
+    if (!response.ok) {
+      console.error("Error en la solicitud:", response.statusText);
+      return;
+    }
+    const data = await response.json();
+    console.log("Datos recibidos:", data);
+    return data;
+  
+  } catch (networkError) {
+    console.error("Error al obtener los ejemplars:", networkError);
+  }
+
+};
