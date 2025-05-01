@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { fetchRentalHistory } from '../../services/api';
-import { useUserContext } from '../../store/UserProvider';
+import { fetchRentalHistory } from '../../../services/api';
+import { useUserContext } from '../../../store/UserProvider';
 import RentalTable from './RentalTable';
-import Pagination from '../utils/Pagination';
-import Modal from '../utils/Modal'; // Importar el componente Modal
+import Pagination from '../../utils/Pagination';
+import Modal from '../../utils/Modal'; // Importar el componente Modal
 
 const RentalHistory = () => {
     const { user, isLoadingUserData } = useUserContext(); // Obtener el usuario desde el contexto

@@ -38,3 +38,13 @@ export const DASHBOARD_SCREENS = {
     IMPORT_USERS: "import",
     RENTAL_HISTORY: "rentalHistory",
 }
+
+export const ERROR_TYPES = {
+    SAVING_ERROR: "saving_error",
+    ERROR_AT_DATA: "error_at_data",
+    NETWORK_ERROR: "network_error",
+};
+
+export const RESPONSE_TYPES = {
+    SUCCESS_MODIFY: "success_modify",
+};

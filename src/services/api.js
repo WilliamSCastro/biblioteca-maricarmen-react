@@ -1,6 +1,8 @@
+import {ERROR_TYPES, RESPONSE_TYPES} from "../constants";
+
 // API URL
-//const API = `http://127.0.0.1:8000/api`;
-const API = `https://biblioteca4.ieti.site/api`;
+const API = `http://127.0.0.1:8000/api`;
+//const API = `https://biblioteca4.ieti.site/api`;
 
 export const getBooks = () => {
   console.log(`llamando API getBooks en ${API}/llibres/`);
@@ -143,9 +145,6 @@ export const updateUserData = async (formData, token) => {
     const response = await fetch(`${API}/update-profile/`, {
       method: "POST",
       headers: {
-        // Important: If sending FormData, you usually *don't* set Content-Type manually.
-        // The browser sets it correctly, including the boundary.
-        // 'Content-Type': 'multipart/form-data', // Usually remove this line
         Authorization: `Bearer ${token}`,
       },
       body: formData,
@@ -153,10 +152,9 @@ export const updateUserData = async (formData, token) => {
 
     if (!response.ok) {
       if (response.status === 500) {
-	
         return {
           success: false,
-          type: "saving_error",
+          type: ERROR_TYPES.SAVING_ERROR,
           error:
             "Error al intentar actualitzar el perfil. Torna a intentar-ho més tard",
         };
@@ -164,20 +162,20 @@ export const updateUserData = async (formData, token) => {
         const errorData = await response.json();
         return {
           success: false,
-          type: "error_at_data",
+          type: ERROR_TYPES.ERROR_AT_DATA,
           error: errorData,
         };
       }
     }
+
     const data = await response.json();
     return { success: true, data: data };
     
   } catch (error) {
-    // Network error or other exception during fetch/processing
     console.error("Error en la API:", error);
     return {
       success: false,
-      type: "network_error", // More specific type
+      type: ERROR_TYPES.NETWORK_ERROR,
       error: "Error de xarxa o connexió. Torna a intentar-ho més tard.",
     };
   }

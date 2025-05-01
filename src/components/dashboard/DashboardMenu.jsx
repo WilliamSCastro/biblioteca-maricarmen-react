@@ -9,6 +9,7 @@ import userImageDarkMode from "../../assets/userDashboardDarkMode.png"
 import importImageDarkMode from "../../assets/importDashboardDarkMode.png"
 import RentalHistoryImage from "../../assets/rentalHistoryDashboard.svg"
 import RentalHistoryImageDarkMode from "../../assets/rentalHistoryDashboardDarkMode.svg"
+import DashboardMenuItem from "./DashboardMenuItem";
 
 export default function DashboardMenu({ setScreen, currentScreen }) {
 
@@ -24,9 +25,7 @@ export default function DashboardMenu({ setScreen, currentScreen }) {
 
         className={currentScreen === DASHBOARD_SCREENS.UPDATE_USER ? "active" : ""}
       >
-          <img src={isDark ? userImageDarkMode : userImage} alt="logo usuari" />
-          <span>Perfil d'usuari</span>
-          <span className="end">&#8702;</span>
+          <DashboardMenuItem isDark={isDark} imageLight={userImage} imageDark={userImageDarkMode} altText="logo usuari" label="Perfil d'usuari" />
       </Button>
       {(isAdmin(user.role) || isBibliotecari(user.role)) && (
         <>
@@ -36,14 +35,10 @@ export default function DashboardMenu({ setScreen, currentScreen }) {
             }}
             className={currentScreen === DASHBOARD_SCREENS.IMPORT_USERS ? "active" : ""}
           >
-                <img src={isDark ? importImageDarkMode : importImage} alt="logo importar csv" />
-              <span>Importar usuaris amb CSV</span>
-              <span className="end">&#8702;</span>
+              <DashboardMenuItem isDark={isDark} imageLight={importImage} imageDark={importImageDarkMode} altText="logo importar csv" label="Importar usuaris amb CSV" />
           </Button>
           <a href="/admin/">
-          <img src={isDark ? adminImageDarkMode : adminImage} alt="logo administracio" />
-            <span>Administració</span>
-            <span className="end">&#8702;</span>
+            <DashboardMenuItem isDark={isDark} imageLight={adminImage} imageDark={adminImageDarkMode} altText="logo administracio" label="Administració" />
           </a>
         </>
       )}
@@ -54,9 +49,7 @@ export default function DashboardMenu({ setScreen, currentScreen }) {
           }}
           className={currentScreen === DASHBOARD_SCREENS.RENTAL_HISTORY ? "active" : ""}
         >
-            <img src={isDark ? RentalHistoryImageDarkMode : RentalHistoryImage} alt="logo historial de préstecs" />
-            <span>Històric de préstecs</span>
-            <span className="end">&#8702;</span>
+            <DashboardMenuItem isDark={isDark} imageLight={RentalHistoryImage} imageDark={RentalHistoryImageDarkMode} altText="logo historial de préstecs" label="Històric de préstecs" />
         </Button>
       )}
     </aside>
