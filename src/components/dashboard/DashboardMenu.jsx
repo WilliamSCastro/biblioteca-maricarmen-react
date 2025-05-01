@@ -37,6 +37,14 @@ export default function DashboardMenu({ setScreen, currentScreen }) {
           >
               <DashboardMenuItem isDark={isDark} imageLight={importImage} imageDark={importImageDarkMode} altText="logo importar csv" label="Importar usuaris amb CSV" />
           </Button>
+          <Button
+            onClick={() => {
+              setScreen(DASHBOARD_SCREENS.ETIQUETTE_GENERATION);
+            }}
+            className={currentScreen === DASHBOARD_SCREENS.ETIQUETTE_GENERATION ? "active" : ""}
+          >
+              <DashboardMenuItem isDark={isDark} imageLight={importImage} imageDark={importImageDarkMode} altText="logo generacio etiqueta" label="Generació d'etiquetes" />
+          </Button>
           <a href="/admin/">
             <DashboardMenuItem isDark={isDark} imageLight={adminImage} imageDark={adminImageDarkMode} altText="logo administracio" label="Administració" />
           </a>

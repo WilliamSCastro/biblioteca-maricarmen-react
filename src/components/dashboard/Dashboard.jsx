@@ -7,6 +7,7 @@ import DashboardMenu from "./DashboardMenu";
 import UserImport from "./importUsers/UserImport";
 import Welcome from "./welcome/Welcome";
 import RentalHistory from "./userRentalHistory/RentalHistory";
+import MainMenu from "./etiquetteGeneration/MainMenu";
 
 function Dashboard({ noUserDetected }) {
 
@@ -28,6 +29,9 @@ function Dashboard({ noUserDetected }) {
       {currentDashboardScreen === DASHBOARD_SCREENS.UPDATE_USER && <Profile/>}
       {currentDashboardScreen === DASHBOARD_SCREENS.IMPORT_USERS && (
         <UserImport/>
+      )}
+      {currentDashboardScreen === DASHBOARD_SCREENS.ETIQUETTE_GENERATION && (
+        <MainMenu/>
       )}
       {currentDashboardScreen === DASHBOARD_SCREENS.RENTAL_HISTORY && (
         <RentalHistory/>

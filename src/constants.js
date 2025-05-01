@@ -37,6 +37,7 @@ export const DASHBOARD_SCREENS = {
     UPDATE_USER: "updateUserData",
     IMPORT_USERS: "import",
     RENTAL_HISTORY: "rentalHistory",
+    ETIQUETTE_GENERATION: "etiquetteGeneration",
 }
 
 export const ERROR_TYPES = {
