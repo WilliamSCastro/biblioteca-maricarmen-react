@@ -182,30 +182,32 @@ export const updateUserData = async (formData, token) => {
     };
   }
 };
-
 export const getSearch = async (searchParams, limit) => {
   try {
-    const response = await fetch(`${API}/buscar/?${searchParams}`);
+    const token = localStorage.getItem("authToken");
+    console.log(token)
+    const headers = token 
+      ? { Authorization: `Bearer ${token}` }
+      : {};
+
+    const response = await fetch(`${API}/buscar/?${searchParams}`, {
+      headers
+    });
 
     if (!response.ok) {
-      const text = await response.text(); // Intentá al menos ver qué devolvió
-      console.error('Respuesta no válida del servidor:', response.status, text);
+      const text = await response.text();
+      console.error("Respuesta no válida del servidor:", response.status, text);
       return [];
     }
 
     const data = await response.json();
-
-    if (limit === 0) {
-      return data;
-    } else {
-      return data.slice(0, limit);
-    }
+    console.log(data);
+    return limit === 0 ? data : data.slice(0, limit);
   } catch (err) {
-    console.error('Error en getSearch:', err);
+    console.error("Error en getSearch:", err);
     return [];
   }
 };
-
 
 export const fetchCatalegById = async (id) => {
   const response = await fetch(`${API}/cataleg/${id}`);
