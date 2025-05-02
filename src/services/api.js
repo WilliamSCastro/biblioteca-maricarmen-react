@@ -1,6 +1,6 @@
 // API URL
-//const API = `http://127.0.0.1:8000/api`;
-const API = `https://biblioteca4.ieti.site/api`;
+const API = `http://127.0.0.1:8000/api`;
+//const API = `https://biblioteca4.ieti.site/api`;
 
 export const getBooks = () => {
   console.log(`llamando API getBooks en ${API}/llibres/`);
