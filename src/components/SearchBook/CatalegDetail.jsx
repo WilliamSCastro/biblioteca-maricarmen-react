@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { SearchBooks } from '../../store/SearchBooksProvider';
 import Button from '../utils/Button';
 import { useUserContext } from "../../store/UserProvider";
-import TimeAgo from '../utils/Timeago'; 
+import TimeAgo from '../utils/TimeAgo'; 
 const CatalegDetail = () => {
   const { infoCataleg, goToBack, setIsALoanAButtonActive, setLoanExemplarId } = useContext(SearchBooks);
   const {

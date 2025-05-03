@@ -13,7 +13,11 @@ const msalInstance = new PublicClientApplication({
   auth: {
     clientId: MICROSOFT_CLIENT_ID,
     authority: "https://login.microsoftonline.com/common",
+<<<<<<< HEAD
     redirectUri: "http://localhost:8000/"
+=======
+    redirectUri: "https://biblioteca4.ieti.site"
+>>>>>>> 66c9402 (social arreglado)
   }
 });
 
@@ -57,7 +61,7 @@ function Login({ onLoginSuccess, returnToMainMenu }) {
     const idToken = response.credential;
     console.log("TOKEN:", idToken);
     
-    fetch("http://localhost:8000/api/social-login/", {
+    fetch("https://biblioteca4.ieti.site/api/social-login/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -87,7 +91,7 @@ function Login({ onLoginSuccess, returnToMainMenu }) {
         return;
       }
   
-      const response = await fetch("http://localhost:8000/api/social-login/", {
+      const response = await fetch("https://biblioteca4.ieti.site/api/social-login/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
