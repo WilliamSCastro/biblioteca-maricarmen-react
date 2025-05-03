@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useSearchBooks } from "../../store/SearchBooksProvider";
 import { searchUsers, createLoan } from '../../services/api';
 import { useUserContext } from "../../store/UserProvider";
+import SearchBar from "../utils/SearchBar"; 
 
 const PrestamoView = () => {
-
   const { user } = useUserContext();
-  const [hasSearchUser , setHasSearchUser] = useState(false)
+  const [hasSearchUser, setHasSearchUser] = useState(false);
   const {
     fetchCataleg,
     userQuery,
@@ -20,11 +20,12 @@ const PrestamoView = () => {
     selectedBook
   } = useSearchBooks();
 
-  // Funció per tornar enrere
+  // Volver atrás
   const handleBack = () => {
-    setIsALoanAButtonActive(false)
+    setIsALoanAButtonActive(false);
   };
 
+  // Buscar usuarios
   const handleSearchUser = async () => {
     try {
       const token = localStorage.getItem("authToken");
@@ -37,13 +38,13 @@ const PrestamoView = () => {
     }
   };
 
+  // Hacer el préstamo
   const handleLoan = async () => {
     if (!selectedUser) {
       return alert('Seleccioneu primer un usuari');
     }
     try {
       const token = localStorage.getItem("authToken");
-
       await createLoan(selectedUser.id, loanExemplarID, token);
       alert('Préstec realitzat amb èxit');
       setIsALoanAButtonActive(false);
@@ -67,50 +68,49 @@ const PrestamoView = () => {
 
       <div className="search-section">
         <h3 className="subheader">Cercar Usuari</h3>
-        <div className="search-controls">
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Nom, cognom, email, telèfon o nom d'usuari"
-            value={userQuery}
-            onChange={e => setUserQuery(e.target.value)}
-          />
-          <button onClick={handleSearchUser} className="search-button">
-            Cercar
-          </button>
-        </div>
 
-        { hasSearchUser && userResults && ( <table className="results-table">
-          <thead>
-            <tr>
-              <th>Nom</th>
-              <th>Email</th>
-              <th>Telèfon</th>
-              <th>Nom d'usuari</th>
-            </tr>
-          </thead>
-          <tbody>
-            {userResults.map(u => (
-              <tr
-                key={u.id}
-                className={selectedUser?.id === u.id ? 'selected' : ''}
-                onClick={() => setSelectedUser(u)}
-              >
-                <td>{u.firstName} {u.lastName}</td>
-                <td>{u.email}</td>
-                <td>{u.phone}</td>
-                <td>{u.username}</td>
-              </tr>
-            ))}
-            {userResults.length === 0 && (
+       <SearchBar
+             value={userQuery}
+             onChange={setUserQuery}
+             onSearch={handleSearchUser}
+             placeholder="Buscar llibre..."
+             inputClassName="input-field"
+             buttonClassName="searchButton"
+           />
+
+        {hasSearchUser && userResults && (
+          <table className="results-table">
+            <thead>
               <tr>
-                <td colSpan="4" style={{ textAlign: 'center' }}>
-                  Cap resultat
-                </td>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Telèfon</th>
+                <th>Nom d'usuari</th>
               </tr>
-            )}
-          </tbody>
-        </table>) }
+            </thead>
+            <tbody>
+              {userResults.map((u) => (
+                <tr
+                  key={u.id}
+                  className={selectedUser?.id === u.id ? 'selected' : ''}
+                  onClick={() => setSelectedUser(u)}
+                >
+                  <td>{u.firstName} {u.lastName}</td>
+                  <td>{u.email}</td>
+                  <td>{u.phone}</td>
+                  <td>{u.username}</td>
+                </tr>
+              ))}
+              {userResults.length === 0 && (
+                <tr>
+                  <td colSpan="4" style={{ textAlign: 'center' }}>
+                    Cap resultat
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        )}
 
         {selectedUser && (
           <div className="selected-user-card">
