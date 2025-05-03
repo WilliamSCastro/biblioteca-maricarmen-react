@@ -13,11 +13,7 @@ const msalInstance = new PublicClientApplication({
   auth: {
     clientId: MICROSOFT_CLIENT_ID,
     authority: "https://login.microsoftonline.com/common",
-<<<<<<< HEAD
     redirectUri: "http://localhost:8000/"
-=======
-    redirectUri: "https://biblioteca4.ieti.site"
->>>>>>> 66c9402 (social arreglado)
   }
 });
 
