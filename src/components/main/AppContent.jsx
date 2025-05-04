@@ -13,9 +13,41 @@ import Footer from "./Footer";
 import Button from "../utils/Button";
 import sunIcon from '../../assets/icons8-sun-48.png';
 import moon from '../../assets/moon.png';
-
+import { msalInstance } from "../../auth/msalConfig";
 function AppContent() {
+  
 
+
+  useEffect(() => {
+    const handleRedirect = async () => {
+      try {
+        await msalInstance.initialize();
+        const result = await msalInstance.handleRedirectPromise();
+        
+        if (result) {
+          const idToken = result.idToken;
+  
+          const response = await fetch("http://localhost:8000/api/social-login/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              token: idToken,
+              provider: "microsoft"
+            })
+          });
+  
+          const data = await response.json();
+          localStorage.setItem("token", data.token);
+          login(data.user, data.token); // viene de tu contexto
+          setCurrentScreen(MAIN_SCREENS.DASHBOARD); // o lo que uses para navegar
+        }else{return}
+      } catch (err) {
+        console.error("Error al procesar redirección MSAL:", err);
+      }
+    };
+  
+    handleRedirect();
+  }, []);
   const { user, login, logout, isLoadingUserData, isDark, toggleTheme } = useUserContext(); 
 
 

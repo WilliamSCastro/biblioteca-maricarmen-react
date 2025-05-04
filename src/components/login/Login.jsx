@@ -4,25 +4,19 @@ import InputField from "../utils/InputField";
 import Button from "../utils/Button";
 import { PublicClientApplication } from "@azure/msal-browser";
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
-
-
+import { msalInstance } from "../../auth/msalConfig";
 const GOOGLE_CLIENT_ID = "951727392825-l5pgor6a24n5m5uurqpvpiince9l54g7.apps.googleusercontent.com";
 const MICROSOFT_CLIENT_ID = "80ce59e2-3a83-4650-b920-d1f2d194d3e7";
 
-const msalInstance = new PublicClientApplication({
-  auth: {
-    clientId: MICROSOFT_CLIENT_ID,
-    authority: "https://login.microsoftonline.com/common",
-    redirectUri: "http://localhost:8000/"
-  }
-});
+
 
 function Login({ onLoginSuccess, returnToMainMenu }) {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
-    msalInstance.initialize();
-  }, []);
+
+  // Procesar redirección de Microsoft al cargar el componente
+  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setErrors({});
@@ -55,8 +49,7 @@ function Login({ onLoginSuccess, returnToMainMenu }) {
 
   const handleGoogleSuccess = (response) => {
     const idToken = response.credential;
-    console.log("TOKEN:", idToken);
-    
+
     fetch("http://localhost:8000/api/social-login/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -72,36 +65,10 @@ function Login({ onLoginSuccess, returnToMainMenu }) {
       });
   };
 
-  const handleMicrosoftLogin = async () => {
-    try {
-      const result = await msalInstance.loginPopup({
-        scopes: ["openid", "profile", "email"]
-      });
-  
-      console.log("MSAL login result:", result);  // 👈 Añade esto para verificar el objeto
-  
-      const idToken = result.idToken;
-  
-      if (!idToken || idToken.split(".").length !== 3) {
-        console.error("El token no es un JWT válido:", idToken);
-        return;
-      }
-  
-      const response = await fetch("http://localhost:8000/api/social-login/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          token: idToken,
-          provider: "microsoft"
-        })
-      });
-  
-      const data = await response.json();
-      localStorage.setItem("token", data.token);
-      onLoginSuccess(data.user, data.token);
-    } catch (err) {
-      console.error("Error en login Microsoft:", err);
-    }
+  const handleMicrosoftLogin = () => {
+    msalInstance.loginRedirect({
+      scopes: ["openid", "profile", "email"]
+    });
   };
 
   return (
@@ -125,13 +92,14 @@ function Login({ onLoginSuccess, returnToMainMenu }) {
         </form>
 
         <div style={{ marginTop: "1rem" }}>
-        <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-        <GoogleLogin
-  onSuccess={handleGoogleSuccess}
-  onError={() => console.log("Error Google Login")}
-  ux_mode="popup"
-/>
-</GoogleOAuthProvider>
+          <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+            <GoogleLogin
+              onSuccess={handleGoogleSuccess}
+              onError={() => console.log("Error Google Login")}
+              ux_mode="popup"
+            />
+          </GoogleOAuthProvider>
+
           <button onClick={handleMicrosoftLogin} style={{ marginTop: "1rem" }}>
             Inicia sessió amb Microsoft
           </button>

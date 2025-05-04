@@ -1,5 +1,5 @@
 import React from 'react';
-import TimeAgo from '../utils/Timeago'; // Asegúrate de importar correctamente
+import TimeAgo from '../utils/TimeAgo'; // Asegúrate de importar correctamente
 
 const RentalTable = ({ rentals }) => {
 
