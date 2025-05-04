@@ -5,8 +5,9 @@ import Button from "../utils/Button";
 import { PublicClientApplication } from "@azure/msal-browser";
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { msalInstance } from "../../auth/msalConfig";
+
 const GOOGLE_CLIENT_ID = "951727392825-l5pgor6a24n5m5uurqpvpiince9l54g7.apps.googleusercontent.com";
-const MICROSOFT_CLIENT_ID = "80ce59e2-3a83-4650-b920-d1f2d194d3e7";
+
 
 
 
@@ -14,7 +15,7 @@ function Login({ onLoginSuccess, returnToMainMenu }) {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  // Procesar redirección de Microsoft al cargar el componente
+ 
   
 
   const handleSubmit = async (event) => {
@@ -50,7 +51,7 @@ function Login({ onLoginSuccess, returnToMainMenu }) {
   const handleGoogleSuccess = (response) => {
     const idToken = response.credential;
 
-    fetch("http://localhost:8000/api/social-login/", {
+    fetch(window.location.origin + "/api/social-login/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
