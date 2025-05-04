@@ -27,7 +27,7 @@ function AppContent() {
         if (result) {
           const idToken = result.idToken;
   
-          const response = await fetch("http://localhost:8000/api/social-login/", {
+          const response = await fetch(window.location.origin + "/api/social-login/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

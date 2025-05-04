@@ -6,6 +6,6 @@ export const msalInstance = new PublicClientApplication({
   auth: {
     clientId: MICROSOFT_CLIENT_ID,
     authority: "https://login.microsoftonline.com/common",
-    redirectUri: "http://localhost:8000" // ajusta a producción si es necesario
+    redirectUri: window.location.origin
   }
 });

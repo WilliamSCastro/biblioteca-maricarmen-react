@@ -1,6 +1,6 @@
 // API URL
-const API = `http://127.0.0.1:8000/api`;
-//const API = `https://biblioteca4.ieti.site/api`;
+
+const API = window.location.origin + "/api"
 
 export const getBooks = () => {
   console.log(`llamando API getBooks en ${API}/llibres/`);
@@ -184,6 +184,7 @@ export const updateUserData = async (formData, token) => {
 };
 export const getSearch = async (searchParams, limit) => {
   try {
+    console.log("Apiii", API)
     const token = localStorage.getItem("authToken");
     console.log(token)
     const headers = token 
