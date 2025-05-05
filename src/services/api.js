@@ -1,8 +1,13 @@
 import {ERROR_TYPES, RESPONSE_TYPES} from "../constants";
 
 // API URL
+<<<<<<< HEAD
 const API = `http://127.0.0.1:8000/api`;
 //const API = `https://biblioteca4.ieti.site/api`;
+=======
+
+const API = window.location.origin + "/api"
+>>>>>>> dev
 
 export const getBooks = () => {
   console.log(`llamando API getBooks en ${API}/llibres/`);
@@ -180,30 +185,33 @@ export const updateUserData = async (formData, token) => {
     };
   }
 };
-
 export const getSearch = async (searchParams, limit) => {
   try {
-    const response = await fetch(`${API}/buscar/?${searchParams}`);
+    
+    const token = localStorage.getItem("authToken");
+   
+    const headers = token 
+      ? { Authorization: `Bearer ${token}` }
+      : {};
+
+    const response = await fetch(`${API}/buscar/?${searchParams}`, {
+      headers
+    });
 
     if (!response.ok) {
-      const text = await response.text(); // Intentá al menos ver qué devolvió
-      console.error('Respuesta no válida del servidor:', response.status, text);
+      const text = await response.text();
+      console.error("Respuesta no válida del servidor:", response.status, text);
       return [];
     }
 
     const data = await response.json();
-
-    if (limit === 0) {
-      return data;
-    } else {
-      return data.slice(0, limit);
-    }
+    console.log(data);
+    return limit === 0 ? data : data.slice(0, limit);
   } catch (err) {
-    console.error('Error en getSearch:', err);
+    console.error("Error en getSearch:", err);
     return [];
   }
 };
-
 
 export const fetchCatalegById = async (id) => {
   const response = await fetch(`${API}/cataleg/${id}`);
@@ -342,3 +350,35 @@ export const getExemplars = async (searchParams, token) => {
   }
 
 };
+export async function googleSocialLogin(idToken) {
+  const response = await fetch(`${window.location.origin}/api/social-login/`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      token: idToken,
+      provider: "google"
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error("Error al iniciar sessió amb Google");
+  }
+
+  return await response.json();
+}
+
+
+export async function microsoftSocialLogin(idToken) {
+
+   const response = await fetch(window.location.origin + "/api/social-login/", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                token: idToken,
+                provider: "microsoft"
+              })
+            });
+    
+  return await response.json();
+
+}

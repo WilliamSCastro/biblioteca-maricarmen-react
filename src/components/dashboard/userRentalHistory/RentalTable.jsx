@@ -1,4 +1,5 @@
 import React from 'react';
+import TimeAgo from '../utils/TimeAgo'; // Asegúrate de importar correctamente
 
 const RentalTable = ({ rentals }) => {
 
@@ -24,8 +25,18 @@ const RentalTable = ({ rentals }) => {
                     return (
                         <tr key={index} className={status === 'En procés' ? 'in-progress' : ''}>
                             <td>{rental.cataleg_titol}</td>
-                            <td>{new Date(rental.data_prestec).toLocaleDateString()}</td>
-                            <td>{rental.data_retorn ? new Date(rental.data_retorn).toLocaleDateString() : 'No retornat'}</td>
+                            <td>
+                                {new Date(rental.data_prestec).toLocaleDateString()}{' '}
+                                <TimeAgo timestamp={rental.data_prestec} />
+                            </td>
+                            <td>
+                                {rental.data_retorn
+                                    ? <>
+                                        {new Date(rental.data_retorn).toLocaleDateString()}{' '}
+                                        <TimeAgo timestamp={rental.data_retorn} />
+                                      </>
+                                    : 'No retornat'}
+                            </td>
                             <td>{status}</td>
                         </tr>
                     );
