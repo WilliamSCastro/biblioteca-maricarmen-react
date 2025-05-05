@@ -86,7 +86,7 @@ function AppContent() {
     );
   }
 
-  // ...existing code...
+
   return (
     <div className={isDark ? "app-content dark" : "app-content"}>
       <NavBar
