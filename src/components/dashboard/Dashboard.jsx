@@ -7,7 +7,7 @@ import DashboardMenu from "./DashboardMenu";
 import UserImport from "./importUsers/UserImport";
 import Welcome from "./welcome/Welcome";
 import RentalHistory from "./userRentalHistory/RentalHistory";
-import MainMenu from "./etiquetteGeneration/MainMenu";
+import EtiquetteSection from "./etiquetteGeneration/EtiquetteSection";
 
 function Dashboard({ noUserDetected }) {
 
@@ -31,7 +31,7 @@ function Dashboard({ noUserDetected }) {
         <UserImport/>
       )}
       {currentDashboardScreen === DASHBOARD_SCREENS.ETIQUETTE_GENERATION && (
-        <MainMenu/>
+        <EtiquetteSection/>
       )}
       {currentDashboardScreen === DASHBOARD_SCREENS.RENTAL_HISTORY && (
         <RentalHistory/>

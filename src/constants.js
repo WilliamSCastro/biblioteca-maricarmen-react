@@ -40,6 +40,11 @@ export const DASHBOARD_SCREENS = {
     ETIQUETTE_GENERATION: "etiquetteGeneration",
 }
 
+export const ETIQUETTE_SCREENS = {
+    SELECTION: "selection",
+    PRINT: "print",
+}
+
 export const ERROR_TYPES = {
     SAVING_ERROR: "saving_error",
     ERROR_AT_DATA: "error_at_data",

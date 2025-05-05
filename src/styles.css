@@ -1525,3 +1525,24 @@ main#main-menu {
     margin-right: 8px, 
     
 }
+
+
+section#etiquette-section {
+  margin: 10px 10px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px #0000001a;
+  font-family: Roboto, sans-serif;
+}
+
+section#etiquette-section .title-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-content.dark section#etiquette-section {
+  background-color: #3b3b3b;
+  box-shadow: 0 6px 20px #ffffff1a;
+}
