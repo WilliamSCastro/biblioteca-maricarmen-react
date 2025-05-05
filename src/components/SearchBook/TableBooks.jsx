@@ -31,15 +31,18 @@ export default function TableBooks() {
 
   return (
     <div>
-      <div>Els llibres disponibles que es mostren son el del teu centr de refencia si tens iniciad la sessió, en cas contrari es de totes les biblioteques registrades.</div>
+      <div class="info-message">
+  Els llibres disponibles que es mostren són els del teu centre de referència si tens la sessió iniciada; en cas contrari, són els de totes les biblioteques registrades.
+</div>
       <table className="catalogTable">
-        
+
         <thead>
           <tr>
             <th>Títol</th>
             <th>Autor</th>
-            <th>Més Dades</th>
+            <th>Tipus</th>
             <th>Disponibilitat</th>
+            <th>Més Dades</th>
           </tr>
         </thead>
         <tbody>
@@ -47,6 +50,16 @@ export default function TableBooks() {
             <tr key={idx}>
               <td>{book.titol}</td>
               <td>{book.autor}</td>
+              <td>{book.typeCat}</td>
+              <td>
+                <div className='disponibilityDiv'>
+
+                  <div class="disponibles tooltip" data-tooltip="Disponibles">{book.disponibles}</div>
+                  <div class="prestados tooltip" data-tooltip="Prestat">{book.prestats}</div>
+                  <div class="exclos tooltip" data-tooltip="Exclòs">{book.exclos_prestec}</div>
+
+                </div>
+              </td>
               <td className="tableButtonCell">
                 <Button
                   className="default-button"
@@ -58,11 +71,7 @@ export default function TableBooks() {
                   Veure detall
                 </Button>
               </td>
-              <td>
-                <div>{book.disponibles}</div>
-                <div>{book.prestats}</div>
-                <div>{book.exclos_prestec}</div>
-              </td>
+              
             </tr>
           ))}
         </tbody>

@@ -360,10 +360,35 @@ main#login div h2 {
   color: #000;
   margin-bottom:20px
 }
-
-.app-content.dark main#login div h2 {
-  color:#eee
+.login-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 350px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #fff;
+  color: #202124;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
+
+.login-button img {
+  width: 20px;
+  height: 20px;
+}
+
+.login-button:hover {
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
 
 main#login div p {
   color: red;
@@ -904,7 +929,21 @@ main#main-menu {
   margin-top: 40px;
   font-size:1.2rem
 }
-
+.info-message {
+  margin-top: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: #f5f5f5;
+  color: #333;
+  border: 1px solid #ccc;
+}
+.app-content.dark .info-message{
+  background-color: #1e1e1e;
+  color: #ddd;
+  border: 1px solid #444;
+}
 .catalogTable {
   width: 100%;
   max-width: 900px;
@@ -1002,6 +1041,76 @@ main#main-menu {
   color:#e0e0e0
 }
 
+.disponibilityDiv {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.disponibilityDiv > div {
+  padding: 6px 10px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  text-align: center;
+  min-width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s ease;
+}
+
+.disponibilityDiv > div:hover {
+  transform: scale(1.05);
+}
+
+/* Nuevos colores */
+.disponibles {
+  background-color: #d4ecff;
+  color: #003c73;
+  border: 1px solid #3794ff;
+}
+
+.prestados {
+  background-color: #fff0e1;
+  color: #a34700;
+  border: 1px solid #ff9f4d;
+}
+
+.exclos {
+  background-color: #fae1f4;
+  color: #7a004e;
+  border: 1px solid #e05aa3;
+}
+
+.tooltip {
+  position: relative;
+  cursor: default;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  color: #000000;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
 .in-progress td {
   background-color:#ffea97
 }

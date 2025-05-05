@@ -1,5 +1,7 @@
 
 import { useState, useEffect } from "react";
+
+import { microsoftSocialLogin } from '../../services/api';
 import "../../App.css";
 import "../../styles.css";
 import NavBar from "./NavBar";
@@ -27,16 +29,7 @@ function AppContent() {
         if (result) {
           const idToken = result.idToken;
   
-          const response = await fetch(window.location.origin + "/api/social-login/", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              token: idToken,
-              provider: "microsoft"
-            })
-          });
-  
-          const data = await response.json();
+          const data = await microsoftSocialLogin(idToken);
           localStorage.setItem("token", data.token);
           login(data.user, data.token); // viene de tu contexto
           setCurrentScreen(MAIN_SCREENS.DASHBOARD); // o lo que uses para navegar
