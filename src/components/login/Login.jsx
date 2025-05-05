@@ -90,8 +90,15 @@ function Login({ onLoginSuccess, returnToMainMenu }) {
             <GoogleLogin
               onSuccess={handleGoogleSuccess}
               onError={() => console.log("Error Google Login")}
+              
               ux_mode="popup"
+              theme="outline"         // o "filled_blue", "filled_black"
+              size="large"            // "small", "medium", "large"
+              text="signin_with"      // "signin", "signup", "continue_with", etc.
+              shape="pill"     // o "pill", "circle", "square"
+              logo_alignment="center"   // o "center
             />
+            
           </GoogleOAuthProvider>
 
           <Button
