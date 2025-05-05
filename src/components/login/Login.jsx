@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { logIn } from '../../services/api';
+import { googleSocialLogin, logIn } from '../../services/api';
 import InputField from "../utils/InputField";
 import Button from "../utils/Button";
-import { PublicClientApplication } from "@azure/msal-browser";
+
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { msalInstance } from "../../auth/msalConfig";
 
@@ -15,8 +15,8 @@ function Login({ onLoginSuccess, returnToMainMenu }) {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
- 
-  
+
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -48,24 +48,17 @@ function Login({ onLoginSuccess, returnToMainMenu }) {
     }
   };
 
-  const handleGoogleSuccess = (response) => {
-    const idToken = response.credential;
-
-    fetch(window.location.origin + "/api/social-login/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        token: idToken,
-        provider: "google"
-      })
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        localStorage.setItem("token", data.token);
-        onLoginSuccess(data.user, data.token);
-      });
+  const handleGoogleSuccess = async (response) => {
+    try {
+      const idToken = response.credential;
+      const data = await googleSocialLogin(idToken);
+      localStorage.setItem("token", data.token);
+      onLoginSuccess(data.user, data.token);
+    } catch (error) {
+      console.error("Error en login de Google:", error);
+      setErrors({ api: "Error en l'autenticació amb Google." });
+    }
   };
-
   const handleMicrosoftLogin = () => {
     msalInstance.loginRedirect({
       scopes: ["openid", "profile", "email"]
@@ -101,9 +94,17 @@ function Login({ onLoginSuccess, returnToMainMenu }) {
             />
           </GoogleOAuthProvider>
 
-          <button onClick={handleMicrosoftLogin} style={{ marginTop: "1rem" }}>
+          <Button
+            onClick={handleMicrosoftLogin}
+            className="login-button microsoft"
+            style={{ marginTop: "1rem" }}
+          >
+            <img
+              src="https://img.icons8.com/color/20/microsoft.png"
+              alt="Microsoft logo"
+            />
             Inicia sessió amb Microsoft
-          </button>
+          </Button>
         </div>
       </div>
     </main>

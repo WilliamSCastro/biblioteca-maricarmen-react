@@ -184,9 +184,9 @@ export const updateUserData = async (formData, token) => {
 };
 export const getSearch = async (searchParams, limit) => {
   try {
-    console.log("Apiii", API)
+    
     const token = localStorage.getItem("authToken");
-    console.log(token)
+   
     const headers = token 
       ? { Authorization: `Bearer ${token}` }
       : {};
@@ -314,3 +314,37 @@ export const fetchRentalHistory = async (userId, token) => {
     };
   }
 };
+
+
+export async function googleSocialLogin(idToken) {
+  const response = await fetch(`${window.location.origin}/api/social-login/`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      token: idToken,
+      provider: "google"
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error("Error al iniciar sessió amb Google");
+  }
+
+  return await response.json();
+}
+
+
+export async function microsoftSocialLogin(idToken) {
+
+   const response = await fetch(window.location.origin + "/api/social-login/", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                token: idToken,
+                provider: "microsoft"
+              })
+            });
+    
+  return await response.json();
+
+}
