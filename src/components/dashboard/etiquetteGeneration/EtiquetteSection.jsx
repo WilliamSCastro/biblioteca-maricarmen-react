@@ -8,7 +8,7 @@ import { ETIQUETTE_SCREENS } from "../../../constants";
 import Modal from "../../utils/Modal";
 
 export default function EtiquetteSection() {
-  const { currentEtiquetteScreen, setCurrentEtiquetteScreen, isModalOpen} = useEtiquetteContext();
+  const { currentEtiquetteScreen, setCurrentEtiquetteScreen, isModalOpen, exemplarToPrint} = useEtiquetteContext();
 
   return (
     <>
@@ -30,7 +30,7 @@ export default function EtiquetteSection() {
         {currentEtiquetteScreen === ETIQUETTE_SCREENS.PRINT && (
           <>
             <div className="title-box">
-              <h2>Impressió d'etiquetes</h2>
+              <h2>Impressió d'etiquetes ({exemplarToPrint.length} exemplars)</h2>
               <Button onClick={() => setCurrentEtiquetteScreen(ETIQUETTE_SCREENS.SELECTION)} className="default-important-button">Tornar a la selecció</Button>
             </div>
             <EtiquettePrintView />

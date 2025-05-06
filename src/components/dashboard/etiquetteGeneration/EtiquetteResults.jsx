@@ -1,9 +1,23 @@
 import { useEtiquetteContext } from "../../../store/EtiquetteGenerationProvider";
 import Button from "../../utils/Button";
+import Pagination from "../../utils/Pagination";
+import { useState } from "react";
 
 export default function EtiquetteResults() {
   const { exemplars, exemplarToPrint, handleAddToPrint, hasSearched } =
     useEtiquetteContext();
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentExemplars = exemplars.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(exemplars.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   if (!hasSearched)
     return (
@@ -34,7 +48,7 @@ export default function EtiquetteResults() {
           </tr>
         </thead>
         <tbody>
-          {exemplars.map((e) => {
+          {currentExemplars.map((e) => {
             const added = exemplarToPrint.some(
               (item) => item.registre === e.registre
             );
@@ -49,7 +63,12 @@ export default function EtiquetteResults() {
                   {added ? (
                     <span>Afegit a impressió</span>
                   ) : (
-                    <Button onClick={() => handleAddToPrint(e)} className="default-button-table-interaction">Afegir a impressió</Button>
+                    <Button
+                      onClick={() => handleAddToPrint(e)}
+                      className="default-button-table-interaction"
+                    >
+                      Afegir a impressió
+                    </Button>
                   )}
                 </td>
               </tr>
@@ -57,6 +76,11 @@ export default function EtiquetteResults() {
           })}
         </tbody>
       </table>
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 }

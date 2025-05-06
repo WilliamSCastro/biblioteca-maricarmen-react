@@ -1,5 +1,7 @@
 import { useEtiquetteContext } from "../../../store/EtiquetteGenerationProvider";
 import Button from "../../utils/Button";
+import Pagination from "../../utils/Pagination";
+import { useState } from "react";
 
 export default function EtiquettePrintView() {
   const {
@@ -8,6 +10,17 @@ export default function EtiquettePrintView() {
     handleRemoveAllFromPrint,
     handlePrint,
   } = useEtiquetteContext();
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentPrintingExemplars = exemplarToPrint.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(exemplarToPrint.length / itemsPerPage);
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   if (exemplarToPrint.length === 0)
     return (
@@ -41,7 +54,7 @@ export default function EtiquettePrintView() {
           </tr>
         </thead>
         <tbody>
-          {exemplarToPrint.map((e) => (
+          {currentPrintingExemplars.map((e) => (
             <tr key={e.registre}>
               <td>{e.registre}</td>
               <td>{e.CDU}</td>
@@ -57,6 +70,11 @@ export default function EtiquettePrintView() {
           ))}
         </tbody>
       </table>
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
     </>
   );
 }
