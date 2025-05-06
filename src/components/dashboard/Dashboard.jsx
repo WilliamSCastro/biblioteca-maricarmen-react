@@ -8,6 +8,7 @@ import UserImport from "./importUsers/UserImport";
 import Welcome from "./welcome/Welcome";
 import RentalHistory from "./userRentalHistory/RentalHistory";
 import EtiquetteSection from "./etiquetteGeneration/EtiquetteSection";
+import { EtiquetteGenerationProvider } from "../../store/EtiquetteGenerationProvider";
 
 function Dashboard({ noUserDetected }) {
 
@@ -31,7 +32,9 @@ function Dashboard({ noUserDetected }) {
         <UserImport/>
       )}
       {currentDashboardScreen === DASHBOARD_SCREENS.ETIQUETTE_GENERATION && (
-        <EtiquetteSection/>
+         <EtiquetteGenerationProvider>
+         <EtiquetteSection />
+       </EtiquetteGenerationProvider>
       )}
       {currentDashboardScreen === DASHBOARD_SCREENS.RENTAL_HISTORY && (
         <RentalHistory/>

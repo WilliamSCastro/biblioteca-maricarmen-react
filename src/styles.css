@@ -1650,6 +1650,8 @@ section#etiquette-section form {
   align-items: center;
   width: 100%;
   position: relative;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 .submit-button {
@@ -1798,9 +1800,16 @@ section#etiquette-section form {
   cursor:pointer
 }
 
+.first-time-entering {
+  text-align: center;
+  margin-top:80px;
+  font-size:1.2rem
+}
+
 .no-results {
   margin-top: 40px;
-  font-size:1.2rem
+  font-size: 1.3rem;
+  text-align: center;
 }
 
 .no-results p {
@@ -1808,10 +1817,9 @@ section#etiquette-section form {
   margin-top: 60px;
 }
 
-.first-time-entering {
+.results-found-title {
+  font-size: 1.3rem;
   text-align: center;
-  margin-top:80px;
-  font-size:1.2rem
 }
 
 .print-actions {
