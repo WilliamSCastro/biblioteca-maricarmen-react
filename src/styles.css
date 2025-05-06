@@ -89,7 +89,7 @@ body {
   color: #eee;
   background: #0043a8;
   border: none;
-  border-radius: 3px;
+  border-radius: 10px;
   justify-content: space-around;
   box-shadow:0 1px 3px #0000001a;
   gap: 5px;
@@ -108,7 +108,7 @@ body {
   color: #eee;
   background: #036;
   border: none;
-  border-radius: 3px;
+  border-radius: 10px;
   box-shadow:0 1px 3px #0000001a;
   gap: 5px;
 }
@@ -365,20 +365,22 @@ main#login div h2 {
 }
 .login-button {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 350px;
-  border: 1px solid #dcdcdc;
-  border-radius: 6px;
-  padding: 10px 16px;
-  font-size: 16px;
-  font-weight: 500;
-  background-color: #fff;
-  color: #202124;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  cursor: pointer;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+align-items: center;
+justify-content: center;
+gap: 10px;
+width: 350px;
+border: 1px solid #dcdcdc;
+border-radius: 28px;
+-webkit-padding-start: 10px 16px;
+height: 38px;
+font-size: 16px;
+font-weight: 500;
+background-color: #fff;
+color: #202124;
+box-shadow: 0 1px 2px #0000000d;
+cursor: pointer;
+transition: background-color .2s ease,box-shadow .2s ease;
+
 }
 
 .login-button img {
@@ -405,12 +407,13 @@ main#login div form {
   margin-top:25px
 }
 
+
 main#login div form button {
   font-family: Oswald, sans-serif;
   color: #fff;
   background: #0043a8;
   border: none;
-  border-radius: 3px;
+  border-radius: 10px;
   font-size: 18px;
   font-weight: 700;
   height: 44px;
@@ -426,7 +429,9 @@ main#login div form button:disabled {
   background: #bdc1ca;
   cursor:not-allowed
 }
-
+.app-content.dark main#login  h2 {
+  color:#eee
+}
 #return-button {
   color: #303030;
   background-color: #f0f0f0;
