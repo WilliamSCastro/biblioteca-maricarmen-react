@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 export function AvatarInput({ error }) {
 
   return (

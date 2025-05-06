@@ -1,7 +1,7 @@
 // UserImport.jsx
 import React, { useState } from "react";
-import { importCSV } from "../../services/api";
-import Modal from "../utils/Modal";
+import { importCSV } from "../../../services/api";
+import Modal from "../../utils/Modal";
 const UserImport = () => {
   const [file, setFile] = useState(null);
   const [summary, setSummary] = useState(null);
