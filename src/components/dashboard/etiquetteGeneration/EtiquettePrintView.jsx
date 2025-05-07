@@ -1,4 +1,5 @@
 import { useEtiquetteContext } from "../../../store/EtiquetteGenerationProvider";
+import { useUserContext } from "../../../store/UserProvider";
 import Button from "../../utils/Button";
 import Pagination from "../../utils/Pagination";
 import { useState } from "react";
@@ -11,6 +12,8 @@ export default function EtiquettePrintView() {
     handlePrint,
   } = useEtiquetteContext();
 
+  const { user } = useUserContext();
+  
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
@@ -32,7 +35,7 @@ export default function EtiquettePrintView() {
   return (
     <>
       <div className="print-actions">
-        <Button onClick={handlePrint} className="print-button">
+        <Button onClick={() => handlePrint(user.centre_name)} className="print-button">
           Imprimir tots
         </Button>
         <Button
