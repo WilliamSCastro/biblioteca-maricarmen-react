@@ -35,7 +35,7 @@ export default function EtiquetteResults() {
 
   return (
     <div>
-      <h3 className="results-found-title">Resultats de la cerca</h3>
+      <h3 className="results-found-title">Resultats de la cerca: {exemplars.length} exemplars</h3>
       <table className="exemplars-table">
         <thead>
           <tr>

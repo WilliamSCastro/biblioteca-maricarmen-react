@@ -55,7 +55,7 @@ function EtiquetteGenerationProvider({ children }) {
     setModalText("Generant PDF...");
     setIsModalOpen(true);
 
-    setTimeout(() => {
+    // setTimeout(() => {
     const pdf = new jsPDF("portrait", "mm", "a4");
     const LIBRARY_NAME = centreName;
   
@@ -107,8 +107,8 @@ function EtiquetteGenerationProvider({ children }) {
       try {
         const canvas = document.createElement("canvas");
         bwipjs.toCanvas(canvas, {
-          bcid: "code128",       // ← cambio aquí
-          text: barcodeValue,    // ← ahora usamos el registre directamente
+          bcid: "code128",       
+          text: barcodeValue,    
           scale: 1.7,
           height: 6,
           includetext: true,
@@ -144,7 +144,7 @@ function EtiquetteGenerationProvider({ children }) {
     pdf.save("etiquetes.pdf");
     setIsModalOpen(false);
 
-  }, 5000);
+  // }, 5000);
 
   };
 
