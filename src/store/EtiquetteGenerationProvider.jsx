@@ -1,10 +1,9 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getExemplars } from "../services/api";
 import { ETIQUETTE_SCREENS } from "../constants";
 import jsPDF from "jspdf";
 import bwipjs from "bwip-js";
-
-const EtiquetteContext = createContext();
+import { EtiquetteContext } from "./EtiquetteContext";
 
 function EtiquetteGenerationProvider({ children }) {
   const [currentEtiquetteScreen, setCurrentEtiquetteScreen] = useState(
@@ -175,4 +174,4 @@ function useEtiquetteContext() {
 }
 
 // No default export — named exports only
-export { EtiquetteGenerationProvider, useEtiquetteContext };
+export { EtiquetteGenerationProvider };

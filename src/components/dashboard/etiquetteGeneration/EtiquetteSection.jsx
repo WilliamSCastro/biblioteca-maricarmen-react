@@ -1,5 +1,5 @@
 
-import { useEtiquetteContext } from "../../../store/EtiquetteGenerationProvider";
+import { useEtiquetteContext } from "../../../store/useEtiquetteContext";
 import EtiquetteForm from "./EtiquetteForm";
 import EtiquetteResults from "./EtiquetteResults";
 import EtiquettePrintView from "./EtiquettePrintView";
