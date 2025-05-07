@@ -8,12 +8,12 @@ import { ETIQUETTE_SCREENS } from "../../../constants";
 import Modal from "../../utils/Modal";
 
 export default function EtiquetteSection() {
-  const { currentEtiquetteScreen, setCurrentEtiquetteScreen, isModalOpen, exemplarToPrint} = useEtiquetteContext();
+  const { currentEtiquetteScreen, setCurrentEtiquetteScreen, isModalOpen, modalText, exemplarToPrint} = useEtiquetteContext();
 
   return (
     <>
        <Modal isOpen={isModalOpen}>
-        <p>Carregant exemplars</p>
+        <p>{modalText}</p>
       </Modal>
       <section id="etiquette-section">
         {currentEtiquetteScreen === ETIQUETTE_SCREENS.SELECTION && (

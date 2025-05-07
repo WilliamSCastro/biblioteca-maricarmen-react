@@ -32,9 +32,9 @@ function Dashboard({ noUserDetected }) {
         <UserImport/>
       )}
       {currentDashboardScreen === DASHBOARD_SCREENS.ETIQUETTE_GENERATION && (
-         <EtiquetteGenerationProvider>
-         <EtiquetteSection />
-       </EtiquetteGenerationProvider>
+        <EtiquetteGenerationProvider>
+          <EtiquetteSection />
+        </EtiquetteGenerationProvider>
       )}
       {currentDashboardScreen === DASHBOARD_SCREENS.RENTAL_HISTORY && (
         <RentalHistory/>
