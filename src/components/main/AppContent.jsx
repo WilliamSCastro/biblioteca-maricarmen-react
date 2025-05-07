@@ -18,6 +18,7 @@ import moon from '../../assets/moon.png';
 import { msalInstance } from "../../auth/msalConfig";
 function AppContent() {
   
+  
 
 
   useEffect(() => {
@@ -88,6 +89,8 @@ function AppContent() {
 
 
   return (
+
+    
     <div className={isDark ? "app-content dark" : "app-content"}>
       <NavBar
         screen={currentScreen}
@@ -128,7 +131,10 @@ function AppContent() {
 )}
         </Button>
       </div>
+      
   );
+
+ 
 }
 
 export default AppContent;

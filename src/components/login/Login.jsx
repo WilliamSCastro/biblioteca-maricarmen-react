@@ -1,22 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { googleSocialLogin, logIn } from '../../services/api';
+import React, { useState} from "react";
+import {logIn } from '../../services/api';
 import InputField from "../utils/InputField";
+import CustomGoogleButton from "./CustomGoogleButton"
 import Button from "../utils/Button";
 
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { msalInstance } from "../../auth/msalConfig";
-
-const GOOGLE_CLIENT_ID = "951727392825-l5pgor6a24n5m5uurqpvpiince9l54g7.apps.googleusercontent.com";
-
-
 
 
 function Login({ onLoginSuccess, returnToMainMenu }) {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-
-
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -48,35 +41,15 @@ function Login({ onLoginSuccess, returnToMainMenu }) {
     }
   };
 
-  const handleGoogleSuccess = async (response) => {
-    try {
-      const idToken = response.credential;
-      const data = await googleSocialLogin(idToken);
-      localStorage.setItem("token", data.token);
-      onLoginSuccess(data.user, data.token);
-    } catch (error) {
-      console.error("Error en login de Google:", error);
-      setErrors({ api: "Error en l'autenticació amb Google." });
-    }
-  };
+
   const handleMicrosoftLogin = () => {
     msalInstance.loginRedirect({
       scopes: ["openid", "profile", "email"]
     });
   };
-  const [isReady, setIsReady] = useState(false);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (window.google) {
-        setIsReady(true);
-        clearInterval(interval);
-      }
-    }, 100);
 
-    // por si nunca carga
-    return () => clearInterval(interval);
-  }, []);
+  
   return (
     <main id="login">
       <div>
@@ -98,26 +71,10 @@ function Login({ onLoginSuccess, returnToMainMenu }) {
         </form>
 
         <div style={{ marginTop: "1rem" }}>
-          <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-          <div>
-      {!isReady ? (
-        <button className="bg-gray-200 text-gray-400 px-4 py-2 rounded-full animate-pulse">
-          Iniciant sessió amb Google...
-        </button>
-      ) : (
-        <GoogleLogin
-          onSuccess={handleGoogleSuccess}
-          onError={() => console.log("Error Google Login")}
-          ux_mode="popup"
-          theme="outline"
-          size="large"
-          text="signin_with"
-          shape="pill"
-          logo_alignment="center"
-        />
-      )}
-    </div>
-          </GoogleOAuthProvider>
+         
+        <CustomGoogleButton onLoginSuccess={onLoginSuccess} setErrors={setErrors} />
+          
+
 
           <Button
             onClick={handleMicrosoftLogin}
