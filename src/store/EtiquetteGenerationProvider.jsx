@@ -6,13 +6,14 @@ import bwipjs from "bwip-js";
 
 const EtiquetteContext = createContext();
 
-export function EtiquetteGenerationProvider({ children }) {
+function EtiquetteGenerationProvider({ children }) {
   const [currentEtiquetteScreen, setCurrentEtiquetteScreen] = useState(
     ETIQUETTE_SCREENS.SELECTION
   );
   const [hasSearched, setHasSearched] = useState(false);
   const [exemplars, setExemplars] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalText, setModalText] = useState("");
   const [exemplarToPrint, setExemplarToPrint] = useState(() => {
     const saved = localStorage.getItem("exemplarsToPrint");
     return saved ? JSON.parse(saved) : [];
@@ -23,6 +24,7 @@ export function EtiquetteGenerationProvider({ children }) {
   }, [exemplarToPrint]);
 
   const handleSubmit = async (formData) => {
+    setModalText("Cercant exemplars...");
     setIsModalOpen(true);
     const token = localStorage.getItem("authToken");
     if (token) {
@@ -49,6 +51,11 @@ export function EtiquetteGenerationProvider({ children }) {
   };
 
   const handlePrint = async (centreName) => {
+
+    setModalText("Generant PDF...");
+    setIsModalOpen(true);
+
+    setTimeout(() => {
     const pdf = new jsPDF("portrait", "mm", "a4");
     const LIBRARY_NAME = centreName;
   
@@ -135,6 +142,10 @@ export function EtiquetteGenerationProvider({ children }) {
     }
   
     pdf.save("etiquetes.pdf");
+    setIsModalOpen(false);
+
+  }, 5000);
+
   };
 
   return (
@@ -145,6 +156,7 @@ export function EtiquetteGenerationProvider({ children }) {
         hasSearched,
         exemplars,
         isModalOpen,
+        modalText,
         handleSubmit,
         exemplarToPrint,
         handleAddToPrint,
@@ -158,6 +170,9 @@ export function EtiquetteGenerationProvider({ children }) {
   );
 }
 
-export function useEtiquetteContext() {
+function useEtiquetteContext() {
   return useContext(EtiquetteContext);
 }
+
+// No default export — named exports only
+export { EtiquetteGenerationProvider, useEtiquetteContext };
