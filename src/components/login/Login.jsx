@@ -64,7 +64,19 @@ function Login({ onLoginSuccess, returnToMainMenu }) {
       scopes: ["openid", "profile", "email"]
     });
   };
+  const [isReady, setIsReady] = useState(false);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (window.google) {
+        setIsReady(true);
+        clearInterval(interval);
+      }
+    }, 100);
+
+    // por si nunca carga
+    return () => clearInterval(interval);
+  }, []);
   return (
     <main id="login">
       <div>
@@ -87,18 +99,24 @@ function Login({ onLoginSuccess, returnToMainMenu }) {
 
         <div style={{ marginTop: "1rem" }}>
           <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-            <GoogleLogin
-              onSuccess={handleGoogleSuccess}
-              onError={() => console.log("Error Google Login")}
-              
-              ux_mode="popup"
-              theme="outline"         // o "filled_blue", "filled_black"
-              size="large"            // "small", "medium", "large"
-              text="signin_with"      // "signin", "signup", "continue_with", etc.
-              shape="pill"     // o "pill", "circle", "square"
-              logo_alignment="center"   // o "center
-            />
-            
+          <div>
+      {!isReady ? (
+        <button className="bg-gray-200 text-gray-400 px-4 py-2 rounded-full animate-pulse">
+          Iniciant sessió amb Google...
+        </button>
+      ) : (
+        <GoogleLogin
+          onSuccess={handleGoogleSuccess}
+          onError={() => console.log("Error Google Login")}
+          ux_mode="popup"
+          theme="outline"
+          size="large"
+          text="signin_with"
+          shape="pill"
+          logo_alignment="center"
+        />
+      )}
+    </div>
           </GoogleOAuthProvider>
 
           <Button

@@ -159,7 +159,7 @@ body {
   line-height: 26px;
   font-weight: 400;
   background-color: #fff;
-  border-radius: 2px;
+  border-radius: 10px;
   outline: none;
   box-shadow:0 1px 3px #0000001a
 }
@@ -1074,24 +1074,91 @@ main#main-menu {
 .disponibilityDiv > div:hover {
   transform: scale(1.05);
 }
+.colorLegend{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: auto;
+  gap: 20px;
+  align-items: center;
+  font-weight: bold;
+}
+.colorLegend p{
+ font-weight: bold;
+}
+.disponiblesLeg {
+  background-color: #d4ecff;
+  color: #003c73;
+  border: 1px solid #3794ff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: auto;
+  padding: 5px;
+  padding-left: 10px ;
+  padding-right: 10px ;
+  border-radius: 10px;
+}
 
+.prestadosLeg {
+  background-color: #fff0e1;
+  color: #a34700;
+  border: 1px solid #ff9f4d;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: auto;
+  padding: 5px;
+  padding-left: 10px ;
+  padding-right: 10px ;
+  border-radius: 15px;
+}
+
+.exclosLeg {
+  background-color: #fae1f4;
+  color: #7a004e;
+  border: 1px solid #e05aa3;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: auto;
+  padding: 5px;
+  padding-left: 10px ;
+  padding-right: 10px ;
+  border-radius: 15px;
+}
 /* Nuevos colores */
 .disponibles {
   background-color: #d4ecff;
   color: #003c73;
   border: 1px solid #3794ff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: auto;
+  padding: 5px;
 }
 
 .prestados {
   background-color: #fff0e1;
   color: #a34700;
   border: 1px solid #ff9f4d;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: auto;
+  padding: 5px;
 }
 
 .exclos {
   background-color: #fae1f4;
   color: #7a004e;
   border: 1px solid #e05aa3;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: auto;
+  padding: 5px;
 }
 
 .tooltip {

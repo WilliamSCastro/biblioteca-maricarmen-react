@@ -33,7 +33,16 @@ export default function TableBooks() {
     <div>
       <div class="info-message">
   Els llibres disponibles que es mostren són els del teu centre de referència si tens la sessió iniciada; en cas contrari, són els de totes les biblioteques registrades.
+  
+  <div className='colorLegend'>
+  <p>Llegenda de colors: </p> 
+      <div class="disponiblesLeg">Disponible</div>
+      <div class="prestadosLeg">Prestat</div>
+      <div class="exclosLeg">Exclòs</div>
+  </div>
+  
 </div>
+
       <table className="catalogTable">
 
         <thead>
