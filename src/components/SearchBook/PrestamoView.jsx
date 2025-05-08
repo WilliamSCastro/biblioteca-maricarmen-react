@@ -73,7 +73,7 @@ const PrestamoView = () => {
              value={userQuery}
              onChange={setUserQuery}
              onSearch={handleSearchUser}
-             placeholder="Buscar llibre..."
+             placeholder="Buscar usuari..."
              inputClassName="input-field"
              buttonClassName="searchButton"
            />

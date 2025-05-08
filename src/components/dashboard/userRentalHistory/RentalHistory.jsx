@@ -74,7 +74,7 @@ const RentalHistory = () => {
         );
     }
 
-    return <section id="user-profile">{content}</section>;
+    return <section id="user-loans">{content}</section>;
 };
 
 export default RentalHistory;
