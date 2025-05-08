@@ -13,7 +13,7 @@ export default function SearchBar({
     <div className="searchDiv">
       <input
         type="text"
-        className={inputClassName}
+        className="input-field"
         value={value}
         onChange={e => onChange(e.target.value)}
         placeholder={placeholder}
