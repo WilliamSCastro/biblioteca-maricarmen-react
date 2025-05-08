@@ -1,11 +1,7 @@
 import {ERROR_TYPES, RESPONSE_TYPES} from "../constants";
 
-// API URL
-// const API = `http://127.0.0.1:8000/api`;
-//const API = `https://biblioteca4.ieti.site/api`;
-
 const API = window.location.origin + "/api"
-
+console.log("API URL:", API);
 
 export const getBooks = () => {
   console.log(`llamando API getBooks en ${API}/llibres/`);

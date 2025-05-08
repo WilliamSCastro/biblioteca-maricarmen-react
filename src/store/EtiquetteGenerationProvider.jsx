@@ -1,10 +1,9 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getExemplars } from "../services/api";
 import { ETIQUETTE_SCREENS } from "../constants";
 import jsPDF from "jspdf";
 import bwipjs from "bwip-js";
-
-const EtiquetteContext = createContext();
+import { EtiquetteContext } from "./EtiquetteContext";
 
 function EtiquetteGenerationProvider({ children }) {
   const [currentEtiquetteScreen, setCurrentEtiquetteScreen] = useState(
@@ -57,8 +56,8 @@ function EtiquetteGenerationProvider({ children }) {
 
     // setTimeout(() => {
     const pdf = new jsPDF("portrait", "mm", "a4");
-    const LIBRARY_NAME = centreName;
-  
+    const LIBRARY_NAME =  centreName?.length > 28 ? centreName.slice(0, 28) + "..." : centreName;
+    
     const marginX = 7;
     const marginY = 7;
     const cols = 4;
@@ -69,18 +68,18 @@ function EtiquetteGenerationProvider({ children }) {
     let row = 0;
     let col = 0;
   
-    // Dibuja las líneas de la cuadrícula
-    const drawGridLines = (pdfInstance) => {
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const x = marginX + c * labelWidth;
-          const y = marginY + r * labelHeight;
-          pdfInstance.rect(x, y, labelWidth, labelHeight);
-        }
-      }
-    };
+    // // Dibuja las líneas de la cuadrícula
+    // const drawGridLines = (pdfInstance) => {
+    //   for (let r = 0; r < rows; r++) {
+    //     for (let c = 0; c < cols; c++) {
+    //       const x = marginX + c * labelWidth;
+    //       const y = marginY + r * labelHeight;
+    //       pdfInstance.rect(x, y, labelWidth, labelHeight);
+    //     }
+    //   }
+    // };
   
-    drawGridLines(pdf); // Primera página
+    // drawGridLines(pdf); // Primera página
   
     for (let i = 0; i < exemplarToPrint.length; i++) {
       const { registre, titol, CDU } = exemplarToPrint[i];
@@ -92,7 +91,7 @@ function EtiquetteGenerationProvider({ children }) {
   
       if (row >= rows) {
         pdf.addPage();
-        drawGridLines(pdf); // Dibuja cuadrícula en nueva página
+        // drawGridLines(pdf); // Dibuja cuadrícula en nueva página
         row = 0;
         col = 0;
       }
@@ -175,4 +174,4 @@ function useEtiquetteContext() {
 }
 
 // No default export — named exports only
-export { EtiquetteGenerationProvider, useEtiquetteContext };
+export { EtiquetteGenerationProvider };
