@@ -3,6 +3,7 @@ import {ERROR_TYPES, RESPONSE_TYPES} from "../constants";
 const API = window.location.origin + "/api"
 
 
+
 export const getBooks = () => {
  
   return fetch(`${API}/llibres/`)
