@@ -101,9 +101,7 @@ function EtiquetteGenerationProvider({ children }) {
       const y = marginY + row * labelHeight;
       
       // Generar 128code
-      console.log("registre", registre);
       const barcodeValue = registre.replace(/-/g, "");
-      console.log(barcodeValue);
       try {
         const canvas = document.createElement("canvas");
         bwipjs.toCanvas(canvas, {
