@@ -101,8 +101,9 @@ function EtiquetteGenerationProvider({ children }) {
       const y = marginY + row * labelHeight;
       
       // Generar 128code
-      const barcodeValue = registre;
-      
+      console.log("registre", registre);
+      const barcodeValue = registre.replace(/-/g, "");
+      console.log(barcodeValue);
       try {
         const canvas = document.createElement("canvas");
         bwipjs.toCanvas(canvas, {
@@ -110,7 +111,7 @@ function EtiquetteGenerationProvider({ children }) {
           text: barcodeValue,    
           scale: 1.7,
           height: 6,
-          includetext: true,
+          includetext: false,
         });
         
         const imgData = canvas.toDataURL("image/png");
@@ -122,8 +123,8 @@ function EtiquetteGenerationProvider({ children }) {
         pdf.setFontSize(6);
         pdf.text(LIBRARY_NAME, x1 + padding, cursorY + 2);
       
-        // const shortTitle = registre?.length > 25 ? registre.slice(0, 25) + "..." : registre;
-        // pdf.text(`${shortTitle}`, x1 + padding, cursorY + 5.2);
+        const registreText = registre?.length > 25 ? registre.slice(0, 25) + "..." : registre;
+        pdf.text(`${registreText}`, x1 + padding, cursorY + 5.2);
       
         const barcodeWidth = labelWidth - 2 * padding;
         const barcodeHeight = 6;
