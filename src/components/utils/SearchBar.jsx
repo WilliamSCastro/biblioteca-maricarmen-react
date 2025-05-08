@@ -7,7 +7,6 @@ export default function SearchBar({
   onChange,
   onSearch,
   placeholder = "Buscar...",
-  inputClassName = "input-field",
   buttonClassName = "searchButton",
 }) {
   return (
