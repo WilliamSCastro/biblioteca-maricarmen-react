@@ -1,10 +1,10 @@
 import {ERROR_TYPES, RESPONSE_TYPES} from "../constants";
 
 const API = window.location.origin + "/api"
-console.log("API URL:", API);
+
 
 export const getBooks = () => {
-  console.log(`llamando API getBooks en ${API}/llibres/`);
+ 
   return fetch(`${API}/llibres/`)
     .then((response) => {
       if (!response.ok) {
@@ -21,9 +21,7 @@ export const getBooks = () => {
 export const logIn = async (username, password) => {
   const credentials = btoa(`${username}:${password}`);
   const authHeader = `Basic ${credentials}`;
-  // console.log(`llamando API logIn en ${API_LOGIN}`);
-  // console.log(credentials)
-  // console.log(authHeader)
+
   try {
     const response = await fetch(`${API}/token`, {
       method: "GET",
@@ -52,7 +50,7 @@ export const logIn = async (username, password) => {
 
     try {
       const rawData = await response.json();
-      // console.log("API Login Success Raw Data:", rawData);
+
 
       if (
         !rawData ||
@@ -92,20 +90,20 @@ export const logIn = async (username, password) => {
 };
 
 export const getUserData = async (token) => {
-  // console.log(`Calling API getUserData at ${API_ME} with token`);
+ 
 
   try {
     const response = await fetch(`${API}/me`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${token}`, // Use Bearer token authentication
+        Authorization: `Bearer ${token}`, 
       },
     });
 
     if (!response.ok) {
       // Handle errors like invalid/expired token (e.g., 401 Unauthorized)
       let errorMessage = `Error fetching user data (Status: ${response.status})`;
-      // console.log(response.status);
+     
       if (response.status === 401) {
         errorMessage = "Invalid or expired token.";
       } else {
@@ -127,7 +125,7 @@ export const getUserData = async (token) => {
 
     // Token is valid, get user data
     const userData = await response.json();
-    // console.log("API getUserData Success:", userData);
+
     // The backend should NOT return the token again here, just user info
     return { success: true, userData: userData };
   } catch (networkError) {
@@ -199,7 +197,7 @@ export const getSearch = async (searchParams, limit) => {
     }
 
     const data = await response.json();
-    console.log(data);
+ 
     return limit === 0 ? data : data.slice(0, limit);
   } catch (err) {
     console.error("Error en getSearch:", err);
@@ -318,7 +316,7 @@ export const getExemplars = async (searchParams, token) => {
 
   try {
     const queryString = new URLSearchParams(searchParams).toString();
-    console.log("Query string:", queryString);
+
     const url = `${API}/exemplars?${queryString}`;
 
     const response = await fetch(url, {
@@ -329,14 +327,14 @@ export const getExemplars = async (searchParams, token) => {
       },
     });
 
-    console.log("Response status:", response);
+
 
     if (!response.ok) {
       console.error("Error en la solicitud:", response.statusText);
       return;
     }
     const data = await response.json();
-    console.log("Datos recibidos:", data);
+    
     return data;
   
   } catch (networkError) {

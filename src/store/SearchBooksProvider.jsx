@@ -78,7 +78,7 @@ export function SearchBooksProvider({ children }) {
       setLocatedBooks([]);
       
     } catch (err) {
-      console.log(err.message);
+
     }
   }
 

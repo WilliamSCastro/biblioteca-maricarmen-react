@@ -102,7 +102,7 @@ function EtiquetteGenerationProvider({ children }) {
       
       // Generar 128code
       const barcodeValue = registre;
-      console.log(barcodeValue)
+      
       try {
         const canvas = document.createElement("canvas");
         bwipjs.toCanvas(canvas, {

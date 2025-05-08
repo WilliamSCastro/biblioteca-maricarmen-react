@@ -42,31 +42,31 @@ export function UserProvider({ children }) {
   useEffect(() => {
 
     const checkLoginStatus = async () => {
-      console.log("Iniciando verificación de estado de login...");
+  
       let token = null;
 
       try {
         token = localStorage.getItem("authToken");
 
         if (token) {
-          console.log("Token encontrado. Verificando con API...");
+         
           const response = await getUserData(token);
-          console.log("Respuesta de getUserData:", response);
+          
 
           if (response && response.success) {
-            console.log("Token válido. Usuario autenticado.");
+           
             setUser(response.userData);
           } else {
             setUser(null);
             try {
               localStorage.removeItem("authToken");
-              console.log("Token inválido eliminado de localStorage.");
+             
             } catch (e) {
               console.error("Error eliminando token inválido:", e);
             }
           }
         } else {
-          console.log("No se encontró token en localStorage.");
+          
           setUser(null);
         }
       } catch (error) {
@@ -75,7 +75,7 @@ export function UserProvider({ children }) {
         try {
           if (token) {
             localStorage.removeItem("authToken");
-            console.log("Token eliminado de localStorage debido a error.");
+          
           }
         } catch (e) {
           console.error("Error limpiando token tras error general:", e);

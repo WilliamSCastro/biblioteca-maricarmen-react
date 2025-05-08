@@ -5,8 +5,7 @@ import { ProfileForm } from "./ProfileForm";
 export default function Profile() {
   const { user, handleUserUpdates } = useUserContext();
   const url = `https://biblioteca4.ieti.site${user.imatge_url}`;
-  console.log(`IMATGE A: ${user.imatge_url}`);
-  console.log(`URL COMPLETA: ${url}`);
+ 
   
   return (
     <section id="user-profile">
