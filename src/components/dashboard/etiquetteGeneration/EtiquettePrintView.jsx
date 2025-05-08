@@ -1,4 +1,4 @@
-import { useEtiquetteContext } from "../../../store/EtiquetteGenerationProvider";
+import { useEtiquetteContext } from "../../../store/useEtiquetteContext";
 import { useUserContext } from "../../../store/UserProvider";
 import Button from "../../utils/Button";
 import Pagination from "../../utils/Pagination";
